@@ -7,9 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+
+
+    <StackPanel >
+        <NavigationView PaneDisplayMode="Left" PaneTitle="MON TITRE">
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Zone 1"/>
+                <NavigationViewItem Content="Clients" Icon="People"/>
+                <NavigationViewItem Content="Agenda" Icon="Calendar"/>
+                <NavigationViewItemSeparator />
+                <NavigationViewItem Content="Commandes" Icon="Shop"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+   
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+        
+
+
     </StackPanel>
+     </StackPanel>
 </Window>
