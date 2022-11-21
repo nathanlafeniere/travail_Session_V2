@@ -11,7 +11,5 @@
         <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
         <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
         <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-      <Button x:Name="Bouton Alex" Click="myButton_Click">Click Me</Button>
-      
     </StackPanel>
 </Window>
