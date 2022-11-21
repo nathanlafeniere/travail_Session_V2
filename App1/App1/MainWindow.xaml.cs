@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -28,6 +29,34 @@ namespace App1
             this.InitializeComponent();
         }
 
-     
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+
+            //tblHeader.Text = "hi" ;
+            var item = (NavigationViewItem)args.SelectedItem;
+            
+
+            switch (item.Name)
+            {
+                case "Connection":
+                    mainFrame.Navigate(typeof(Connection));
+                    break;
+                case "Accueil":
+                    mainFrame.Navigate(typeof(MainWindow));
+                    break;
+
+                default:
+                    break;
+            }
+
+
+
+
+        }
+
+        private void NavigationView_SelectionChanged_1(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+
+        }
     }
 }
