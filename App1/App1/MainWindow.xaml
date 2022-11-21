@@ -13,7 +13,7 @@
         <NavigationView PaneDisplayMode="Left" PaneTitle="MON TITRE" SelectionChanged="NavigationView_SelectionChanged">
 
             <NavigationView.Header>
-                <TextBlock Text="Mon En-Tête" x:Name="tblHeader"/>
+                <TextBlock Text="Mon En-Tête" x:Name="tblHeader" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </NavigationView.Header>
 
             <NavigationView.MenuItems>
