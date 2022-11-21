@@ -11,23 +11,19 @@
 
     <StackPanel >
         <NavigationView PaneDisplayMode="Left" PaneTitle="MON TITRE" SelectionChanged="NavigationView_SelectionChanged">
+
+            <NavigationView.Header>
+                <TextBlock Text="Mon En-Tête" x:Name="tblHeader"/>
+            </NavigationView.Header>
+
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Zone 1"/>
-                <NavigationViewItem Content="Acceuil"  Name="Acceuil" Tag="Acceuil" Icon="Home"/>
+                <NavigationViewItem Content="Accueil"  Name="Accueil" Tag="Accueil" Icon="Home"/>
                 <NavigationViewItem Content="Connection"  Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Commandes" Icon="Shop"/>
             </NavigationView.MenuItems>
             <Frame x:Name="mainFrame" />
         </NavigationView>
-   
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <!--
-        Vue trajet
-        
-        List view
-        -->
-
-        </StackPanel>
-     </StackPanel>
+    </StackPanel>
 </Window>

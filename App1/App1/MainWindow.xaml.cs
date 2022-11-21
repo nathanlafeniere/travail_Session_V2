@@ -34,7 +34,7 @@ namespace App1
 
             //tblHeader.Text = "hi" ;
             var item = (NavigationViewItem)args.SelectedItem;
-            
+            tblHeader.Text = item.Content.ToString();
 
             switch (item.Name)
             {
@@ -42,7 +42,7 @@ namespace App1
                     mainFrame.Navigate(typeof(Connection));
                     break;
                 case "Accueil":
-                    mainFrame.Navigate(typeof(MainWindow));
+                    mainFrame.Navigate(typeof(Accueil));
                     break;
 
                 default:
@@ -54,9 +54,6 @@ namespace App1
 
         }
 
-        private void NavigationView_SelectionChanged_1(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-
-        }
+       
     }
 }
