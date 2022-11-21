@@ -30,7 +30,20 @@ namespace App1
 
         public ObservableCollection<Trajet> getTrajet()
         {
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
 
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection= con;
+            commande.CommandText = "SELECT * FROM Trajet";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
         }
     }
 }
