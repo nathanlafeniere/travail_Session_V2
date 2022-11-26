@@ -48,5 +48,23 @@ namespace App1
 
             return listeTrajet;
         }
+
+        public ObservableCollection<Trajet> getTrajetEnCour()
+        {
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "SELECT t.no_trajet, t.heure_depart, t.heure_arrive, t.arret, t.type_vehicule, t.nb_place, t.no_voiture FROM trajet t INNER JOIN voiture v on t.no_voiture = v.no_voiture WHERE v.en_service = TRUE;";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
     }
 }
