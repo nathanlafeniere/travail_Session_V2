@@ -55,7 +55,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT t.no_trajet, t.heure_depart, t.heure_arrive, t.arret, t.type_vehicule, t.nb_place,\r\nt.no_voiture, t.no_chauffeur, t.prix_place  FROM trajet t\r\n           INNER JOIN voiture v on t.no_voiture = v.no_voiture WHERE v.en_service = TRUE;";
+            commande.CommandText = "SELECT   t.no_trajet, t.heure_depart ,t.heure_arrive\r\n      , CASE\r\n          WHEN arret = true THEN 'Arrêt disponible'\r\n          ELSE 'Pas d arrêt'\r\n          END\r\n          , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place\r\nFROM trajet t  INNER JOIN voiture v on t.no_voiture = v.no_voiture\r\nWHERE v.en_service = TRUE AND curdate() = t.date;";
 
             con.Open();
 
@@ -65,7 +65,7 @@ namespace App1
                 listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
-                    r.GetBoolean(3),
+                    r.GetString(3),
                     r.GetString(4),
                     r.GetInt32(5),
                     r.GetInt32(6),

@@ -17,14 +17,14 @@ namespace App1
         int id;
         string heure_depart;
         string heure_arrive;
-        Boolean arret;
+        string arret;
         string type_vehicule;
         int nb_place;
         int no_voiture;
         int no_chauffeur;
         int prix_place;
 
-        public Trajet(int id, string heure_depart, string heure_arrive, bool arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
+        public Trajet(int id, string heure_depart, string heure_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
         {
             this.id = id;
             this.heure_depart = heure_depart;
@@ -40,7 +40,7 @@ namespace App1
         public int Id { get => id; set => id = value; }
         public string Heure_depart { get => heure_depart; set => heure_depart = value; }
         public string Heure_arrive { get => heure_arrive; set => heure_arrive = value; }
-        public bool Arret { get => arret; set => arret = value; }
+        public string Arret { get => arret; set => arret = value; }
         public string Type_vehicule { get => type_vehicule; set => type_vehicule = value; }
         public int Nb_place { get => nb_place; set => nb_place = value; }
         public int No_voiture { get => no_voiture; set => no_voiture = value; }
