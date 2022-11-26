@@ -8,18 +8,14 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid >
-        <TextBlock Text="Liste des trajet en cours"/>
+    <StackPanel>
+        <!--TITRE PAGE-->
+        <TextBlock Text="Liste des trajet en cours" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
 
+        <!--LISTVIEW POUR AFFICHAGE DES TRAJETS-->
+        <ListView x:Name="lvTrajet" HorizontalAlignment="Center" VerticalAlignment="Center"></ListView>
         
-        <!--
-        <ListView x:Name="lvTrajets" ItemsSource="{x:Bind liste}"></ListView>
         
-        <TextBlock Name="tblHeader" Text="Acceuil"/>
-        Vue trajet
         
-        List view
-        -->
-        
-    </Grid>
+    </StackPanel>
 </Page>

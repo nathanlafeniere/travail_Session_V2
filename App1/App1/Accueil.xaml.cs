@@ -26,6 +26,7 @@ namespace App1
         public Accueil()
         {
             this.InitializeComponent();
+            lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetEnCour();
         }
     }
 }
