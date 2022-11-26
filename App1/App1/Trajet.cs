@@ -50,7 +50,7 @@ namespace App1
         public override string ToString()
         {
             // modifier plus tard
-            return null;
+            return id + " " + heure_depart + " " + heure_arrive + " " + arret + " " + type_vehicule + " " + nb_place + " " + no_voiture + " " + no_chauffeur + " " + prix_place;
         }
     }
 }

@@ -12,13 +12,16 @@ namespace App1
     {
         MySqlConnection con;
         static GestionBD gestionBD = null;
-         
 
+        int z = 0;
 
         public GestionBD()
         {
             this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326_eq5;Uid=2130666;Pwd=2130666");
+            
         }
+
+       
 
         public static GestionBD getInstance()
         {

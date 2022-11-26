@@ -8,11 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="">
+    <Grid >
         <TextBlock Text="Liste des trajet en cours"/>
 
-        <ListView x:Name="lvTrajets" ItemsSource="{x:Bind liste}"></ListView>
+        
         <!--
+        <ListView x:Name="lvTrajets" ItemsSource="{x:Bind liste}"></ListView>
+        
         <TextBlock Name="tblHeader" Text="Acceuil"/>
         Vue trajet
         
