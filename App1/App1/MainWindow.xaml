@@ -9,21 +9,28 @@
 
 
 
-    <StackPanel >
-        <NavigationView PaneDisplayMode="Left" PaneTitle="MON TITRE" SelectionChanged="NavigationView_SelectionChanged">
+    <StackPanel>
+        <!--TITRE DU PANEL-->
+        <NavigationView PaneDisplayMode="Left" PaneTitle="Menu Principal" SelectionChanged="NavigationView_SelectionChanged">
 
+            
             <NavigationView.Header>
-                <TextBlock Text="Mon En-Tête" x:Name="tblHeader" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <!--TITRE PANEL DE DROITE-->
+                <TextBlock Text="Page d'accueil" x:Name="tblHeader" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </NavigationView.Header>
 
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Zone 1"/>
+                <!--<NavigationViewItemHeader Content="Zone 1"/>-->
+                <!--LISTE DES OPTIONS DU MENU-->
                 <NavigationViewItem Content="Accueil"  Name="Accueil" Tag="Accueil" Icon="Home"/>
                 <NavigationViewItem Content="Connection"  Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Commandes" Icon="Shop"/>
             </NavigationView.MenuItems>
-            <Frame x:Name="mainFrame" />
+            
+            <!--FRAME QUI AFFICHE LES DIFFÉRENTES PAGES-->
+            <Frame x:Name="mainFrame"/>
+            
         </NavigationView>
     </StackPanel>
 </Window>

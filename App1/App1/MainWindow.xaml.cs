@@ -27,12 +27,12 @@ namespace App1
         public MainWindow()
         {
             this.InitializeComponent();
+            mainFrame.Navigate(typeof(Accueil));
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-
-            //tblHeader.Text = "hi" ;
+            
             var item = (NavigationViewItem)args.SelectedItem;
             tblHeader.Text = item.Content.ToString();
 
