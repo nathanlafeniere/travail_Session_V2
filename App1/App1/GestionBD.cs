@@ -17,7 +17,7 @@ namespace App1
 
         public GestionBD()
         {
-            this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326_eq5;Uid=2130666;Pwd=2130666");
+            this.con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2022_420326ri_eq5;Uid=2130666;Pwd=2130666");
             
         }
 

@@ -11,6 +11,8 @@
        <!--
         <TextBlock Name="tblHeader" Text="allo"/>
         -->
-        
+
+        <TextBox x:Name="nom" ></TextBox>
+                
     </StackPanel>
 </Page>
