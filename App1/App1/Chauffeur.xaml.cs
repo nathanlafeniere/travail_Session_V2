@@ -30,5 +30,62 @@ namespace App1
         {
             this.InitializeComponent();
         }
+
+        private void btAjout_Click(object sender, RoutedEventArgs e)
+        {
+            bool valide = true;
+
+            CompteChauffeur chauffeur = new CompteChauffeur();
+            {
+
+
+                if (nom.Text == "")
+                {
+
+                    valide = false;
+                    nomE.Visibility = Visibility.Visible;
+                }
+
+                if (prenom.Text == "")
+                {
+                    valide = false;
+                    prenomE.Visibility = Visibility.Visible;
+                }
+
+                if (email.Text == "")
+                {
+                    valide = false;
+                    emailE.Visibility = Visibility.Visible;
+                }
+                if (Adresse.Text == "")
+                {
+                    valide = false;
+                    AdresseE.Visibility = Visibility.Visible;
+                }
+                if (no_permis.Text == "")
+                {
+                    valide = false;
+                    permisE.Visibility = Visibility.Visible;
+                }
+                if (Telephone.Text == "")
+                {
+                    valide = false;
+                    telE.Visibility = Visibility.Visible;
+                }
+
+                chauffeur.Nom = nom.Text;
+                chauffeur.Prenom = prenom.Text;
+                chauffeur.Email= email.Text;
+                chauffeur.Adresse = Adresse.Text;
+                chauffeur.No_permis = no_permis.Text;
+                chauffeur.Telephone = Telephone.Text;
+
+            };
+            if (valide)
+            {
+                GestionBD.getInstance().ajouterChauffeur(chauffeur);
+                fin.Text = "enregistrement réussi";
+            }
+        }
     }
 }
