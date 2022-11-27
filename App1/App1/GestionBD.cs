@@ -42,7 +42,18 @@ namespace App1
             con.Open();
 
             MySqlDataReader r = commande.ExecuteReader();
-
+            while (r.Read())
+            {
+                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                    r.GetString(1),
+                    r.GetString(2),
+                    r.GetString(3),
+                    r.GetString(4),
+                    r.GetInt32(5),
+                    r.GetInt32(6),
+                    r.GetInt32(7),
+                    r.GetInt32(8)));
+            }
             r.Close();
             con.Close();
 
@@ -78,5 +89,50 @@ namespace App1
 
             return listeTrajet;
         }
+
+        /*
+         * Creation de compte chauffeur/client
+         * 
+         * 
+         * 
+         */
+        
+            public void ajouterChauffeur(CompteChauffeur m)
+            {
+                int retour;
+
+
+
+                try
+                {
+                    MySqlCommand commande = new MySqlCommand();
+                    commande.Connection = con;
+
+
+                    
+                    commande.Parameters.AddWithValue("@nom", m.Nom);
+                    commande.Parameters.AddWithValue("@prenom", m.Prenom);
+                commande.Parameters.AddWithValue("@adresse", m.Adresse);
+                commande.Parameters.AddWithValue("@telephone", m.Telephone);
+                commande.Parameters.AddWithValue("@email", m.Email);
+                commande.Parameters.AddWithValue("@email", m.No_permis);
+                commande.Parameters.AddWithValue("@email", m.Email);
+
+                commande.CommandText = "insert into chauffeur (nom, prenom, addresse, email , no_telephone, no_permis) values(@nom, @prenom, @adresse,  @telephone,  @email, @no_telephone, @no_permis) ";
+
+                    con.Open();
+                    commande.Prepare();
+                    retour = commande.ExecuteNonQuery();
+
+                    con.Close();
+
+                }
+                catch (MySqlException ex)
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                        con.Close();
+                }
+            }
+        
     }
 }
