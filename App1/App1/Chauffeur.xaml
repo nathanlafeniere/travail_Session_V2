@@ -21,7 +21,7 @@
         <TextBox x:Name="Adresse" Header="Adresse:"/>
         <TextBox x:Name="AdresseE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
-        <TextBox x:Name="Telephone" Header="Téléphone:" Text="Exemple: (891)266-6543"/>
+        <TextBox x:Name="Telephone" Header="Téléphone: Exemple: (891)266-6543" />
         <TextBox x:Name="telE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="email" Header="Email:"/>
