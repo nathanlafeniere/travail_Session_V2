@@ -91,6 +91,44 @@ namespace App1
         }
 
         /*
+         * Creation de compte client
+         * 
+         * 
+         * 
+         */
+
+        public void ajouterClient(Compte client)
+        {
+            int retour;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@nom", client.Nom);
+                commande.Parameters.AddWithValue("@prenom", client.Prenom);
+                commande.Parameters.AddWithValue("@email", client.Email);
+                commande.Parameters.AddWithValue("@adresse", client.Adresse);
+                commande.Parameters.AddWithValue("@telephone", client.Telephone);
+
+                commande.CommandText = "INSERT INTO Client (nom, prenom, email, addresse, no_telephone) VALUES(@nom, @prenom, @email, @adresse, @telephone)";
+
+                con.Open();
+                commande.Prepare();
+
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch(MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+        /*
          * Creation de compte chauffeur/client
          * 
          * 

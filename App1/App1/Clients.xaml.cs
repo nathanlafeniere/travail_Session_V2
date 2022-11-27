@@ -30,5 +30,80 @@ namespace App1
         {
             this.InitializeComponent();
         }
+
+        private void btValidation_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean validation = true;
+
+            if(tbxNom.Text == "")
+            {
+                validation = false;
+                tblAlertNom.Text = "Vous devez entrer un nom!";
+                tblAlertNom.Visibility = Visibility.Visible;
+            }
+
+            if(tbxPrenom.Text == "")
+            {
+                validation = false;
+                tblAlertPrenom.Text = "Vous devez entrer un prenom!";
+                tblAlertPrenom.Visibility= Visibility.Visible;
+            }
+
+            if(tbxEmail.Text == "")
+            {
+                validation = false;
+                tblAlertEmail.Text = "Vous devez entrer un courriel!";
+                tblAlertEmail.Visibility= Visibility.Visible;
+            }
+
+            if(tbxAdresse.Text == "")
+            {
+                validation = false;
+                tblAlertAdresse.Text = "Vous devez entrer une adresse!";
+                tblAlertAdresse.Visibility= Visibility.Visible;
+            }
+
+            if(tbxNoTel.Text == "")
+            {
+                validation = false;
+                tblAlertAdresse.Text = "Vous devez entrer un numero de telephone!";
+                tblAlertAdresse.Visibility= Visibility.Visible;
+            }
+
+            //QUAND TOUT EST VALIDER ON PEUT CRÉER NOTRE OBJET
+            if(validation)
+            {
+                //METTRE TOUS LES TEXTBLOCKS COLLAPSED
+                tblAlertNom.Visibility= Visibility.Collapsed;
+                tblAlertPrenom.Visibility= Visibility.Collapsed;
+                tblAlertEmail.Visibility= Visibility.Collapsed;
+                tblAlertAdresse.Visibility= Visibility.Collapsed;
+                tblAlertNoTel.Visibility= Visibility.Collapsed;
+
+
+                //CRÉER NOTRE OBJET AVEC TOUS LES CHAMPS
+
+                Compte client = new Compte();
+                {
+                    client.Nom = tbxNom.Text;
+                    client.Prenom = tbxPrenom.Text;
+                    client.Email = tbxEmail.Text;
+                    client.Adresse = tbxAdresse.Text;
+                    client.Telephone = tbxNoTel.Text;
+                }
+
+                //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD
+                GestionBD.getInstance().ajouterClient(client);
+
+                //MESSAGE D'ENREGISTREMENT RÉUSSI
+                tblAlertValidation.Text = "Enregistrement réussi!";
+                tblAlertValidation.Visibility= Visibility.Visible;
+            }
+
+
+
+
+
+        }
     }
 }

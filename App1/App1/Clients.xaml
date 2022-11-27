@@ -33,7 +33,7 @@
         <TextBlock x:Name="tblAlertNoTel" Foreground="red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"></TextBlock>
                
         <!--BOUTON POUR VALIDER ET CRÉER-->
-        <Button x:Name="btValidation" Content="Enregistrer" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
+        <Button x:Name="btValidation" Content="Enregistrer" Click="btValidation_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
         
         <!--TEXTBLOCK ALERT POUR ENREGISTREMENT RÉUSSI-->
         <TextBlock x:Name="tblAlertValidation" Visibility="Collapsed" Foreground="green" HorizontalAlignment="Center" Margin="0,0,0,50"/>
