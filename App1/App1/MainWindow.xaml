@@ -26,7 +26,7 @@
                 <NavigationViewItem Content="Connection"  Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" />
                 <NavigationViewItemSeparator />
-                <NavigationViewItem Content="Commandes" Icon="Shop"/>
+                <NavigationViewItem Content="Créer un compte chauffeur" Name="CreationChauffeur" Tag="CreationChauffeur" Icon="Contact" />
             </NavigationView.MenuItems>
             
             <!--FRAME QUI AFFICHE LES DIFFÉRENTES PAGES-->

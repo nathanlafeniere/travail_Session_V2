@@ -31,9 +31,10 @@ namespace App1
             this.InitializeComponent();
         }
 
-        private void btAjout_Click(object sender, RoutedEventArgs e)
+
+        private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
-            bool valide = true;
+ bool valide = true;
 
             CompteChauffeur chauffeur = new CompteChauffeur();
             {

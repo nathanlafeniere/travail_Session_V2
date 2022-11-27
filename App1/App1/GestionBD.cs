@@ -115,10 +115,10 @@ namespace App1
                 commande.Parameters.AddWithValue("@adresse", m.Adresse);
                 commande.Parameters.AddWithValue("@telephone", m.Telephone);
                 commande.Parameters.AddWithValue("@email", m.Email);
-                commande.Parameters.AddWithValue("@email", m.No_permis);
-                commande.Parameters.AddWithValue("@email", m.Email);
+                commande.Parameters.AddWithValue("@no_permis", m.No_permis);
+                
 
-                commande.CommandText = "insert into chauffeur (nom, prenom, addresse, email , no_telephone, no_permis) values(@nom, @prenom, @adresse,  @telephone,  @email, @no_telephone, @no_permis) ";
+                commande.CommandText = "insert into chauffeur (nom, prenom,email , addresse,  no_telephone, no_permis) values(@nom, @prenom,@email, @adresse,  @telephone,   @no_permis) ";
 
                     con.Open();
                     commande.Prepare();
