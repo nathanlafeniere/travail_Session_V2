@@ -39,7 +39,7 @@ namespace App1
             CompteChauffeur chauffeur = new CompteChauffeur();
             {
 
-
+                //nom
                 if (nom.Text == "")
                 {
 
@@ -47,30 +47,81 @@ namespace App1
                     nomE.Visibility = Visibility.Visible;
                 }
 
+                if (nom.Text.Length > 30)
+                {
+
+                    valide = false;
+                    nomE.Text = "Le nom doit avoir un maximum de 30 caratère";
+                    nomE.Visibility = Visibility.Visible;
+                }
+                //prenom
                 if (prenom.Text == "")
                 {
                     valide = false;
                     prenomE.Visibility = Visibility.Visible;
                 }
 
+                if (prenom.Text.Length > 30)
+                {
+
+                    valide = false;
+                    prenomE.Text = "Le prenom doit avoir un maximum de 30 caratère";
+                    prenomE.Visibility = Visibility.Visible;
+                }
+                //email
                 if (email.Text == "")
                 {
                     valide = false;
                     emailE.Visibility = Visibility.Visible;
                 }
+
+                if (email.Text.Length > 50)
+                {
+
+                    valide = false;
+                    emailE.Text = "L' email doit avoir un maximum de 50 caratère";
+                    emailE.Visibility = Visibility.Visible;
+                }
+                //adresse
                 if (Adresse.Text == "")
                 {
                     valide = false;
                     AdresseE.Visibility = Visibility.Visible;
                 }
+
+                if (Adresse.Text.Length > 30)
+                {
+
+                    valide = false;
+                    AdresseE.Text = "L' Adresse doit avoir un maximum de 50 caratère";
+                    AdresseE.Visibility = Visibility.Visible;
+                }
+                //permis
                 if (no_permis.Text == "")
                 {
                     valide = false;
                     permisE.Visibility = Visibility.Visible;
                 }
+
+                if (no_permis.Text.Length > 13)
+                {
+
+                    valide = false;
+                    permisE.Text = "Le permis doit avoir un maximum de 13 lettre";
+                    permisE.Visibility = Visibility.Visible;
+                }
+                //telephone
                 if (Telephone.Text == "")
                 {
                     valide = false;
+                    telE.Visibility = Visibility.Visible;
+                }
+
+                if (Telephone.Text.Length > 13)
+                {
+
+                    valide = false;
+                    telE.Text = "Le nom doit avoir un maximum de 13 lettre et le meme format que dans l'exemple";
                     telE.Visibility = Visibility.Visible;
                 }
 
