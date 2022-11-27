@@ -44,7 +44,9 @@ namespace App1
                 case "Accueil":
                     mainFrame.Navigate(typeof(Accueil));
                     break;
-
+                case "CreationClient":
+                    mainFrame.Navigate(typeof(Clients));
+                    break;
                 default:
                     break;
             }

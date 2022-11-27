@@ -15,21 +15,23 @@
         <!--TITRE PAGE-->
         <TextBlock Text="Création d'un compte client" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
         
+        
         <!--TEXTBOX POUR PERMETTRE LES ENTRÉES UTILISATEUR-->
         <TextBox x:Name="tbxNom" Header="Entrer votre nom:" HorizontalAlignment="Center"></TextBox>
         <TextBlock x:Name="tblAlertNom" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"></TextBlock>
         
         <TextBox x:Name="tbxPrenom" Header="Entrer votre prenom:" HorizontalAlignment="Center"></TextBox>
         <TextBlock x:Name="tblAlertPrenom" Foreground="red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"></TextBlock>
+
+        <TextBox x:Name="tbxEmail" Header="Entrer votre courriel:" HorizontalAlignment="Center"></TextBox>
+        <TextBlock x:Name="tblAlertEmail" Foreground="red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"></TextBlock>
         
         <TextBox x:Name="tbxAdresse" Header="Entrer votre adresse:" HorizontalAlignment="Center"></TextBox>
         <TextBlock x:Name="tblAlertAdresse" Foreground="red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"></TextBlock>
         
-        <TextBox></TextBox>
-        <TextBlock></TextBlock>
-        
-        <TextBox></TextBox>
-        <TextBlock></TextBlock>
+        <TextBox x:Name="tbxNoTel" Header="Entrer votre numero de telephone:" HorizontalAlignment="Center"></TextBox>
+        <TextBlock x:Name="tblAlertNoTel" Foreground="red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"></TextBlock>
+               
 
     </StackPanel>
 </Page>

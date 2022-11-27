@@ -24,6 +24,7 @@
                 <!--LISTE DES OPTIONS DU MENU-->
                 <NavigationViewItem Content="Page d'accueil"  Name="Accueil" Tag="Accueil" Icon="Home"/>
                 <NavigationViewItem Content="Connection"  Name="Connection" Tag="Connection" Icon="People"/>
+                <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" />
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Commandes" Icon="Shop"/>
             </NavigationView.MenuItems>
