@@ -123,12 +123,10 @@ namespace App1
                 commande.Parameters.AddWithValue("@arret", t.Arret);
                 commande.Parameters.AddWithValue("@Type_vehicule", t.Type_vehicule);
                 commande.Parameters.AddWithValue("@nb_place", t.Nb_place);
-                commande.Parameters.AddWithValue("@No_voiture", t.No_voiture);
-                commande.Parameters.AddWithValue("@No_chauffeur", t.No_chauffeur);
                 commande.Parameters.AddWithValue("@Prix_place", t.Prix_place);
 
 
-                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive, arret, type_vehicule, nb_place, no_voiture, no_chauffeur, prix_place) values(@date, @Heure_depart,@Heure_arrive, @arret,  @Type_vehicule,   @nb_place,@No_voiture , @No_chauffeur, @Prix_place ) ";
+                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive, arret, type_vehicule, nb_place, prix_place) values(@date, @Heure_depart,@Heure_arrive, @arret,  @Type_vehicule,   @nb_place, @Prix_place ) ";
 
                 con.Open();
                 commande.Prepare();
