@@ -53,10 +53,11 @@ namespace App1
                     r.GetString(2),
                     r.GetString(3),
                     r.GetString(4),
-                    r.GetInt32(5),
+                    r.GetString(5),
                     r.GetInt32(6),
                     r.GetInt32(7),
-                    r.GetInt32(8)));
+                    r.GetInt32(8),
+                    r.GetInt32(9)));
             }
             r.Close();
             con.Close();
@@ -74,7 +75,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.heure_depart ,t.heure_arrive\r\n      , CASE\r\n          WHEN arret = true THEN 'Arrêt disponible'\r\n          ELSE 'Pas d arrêt'\r\n          END\r\n          , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place\r\nFROM trajet t  INNER JOIN voiture v on t.no_voiture = v.no_voiture\r\nWHERE v.en_service = TRUE AND curdate() = t.date;";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'        END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place\r\nFROM trajet t  INNER JOIN voiture v on t.no_voiture = v.no_voiture\r\nWHERE v.en_service = TRUE AND curdate() = t.dateTrajet;";
 
             con.Open();
 
@@ -86,10 +87,11 @@ namespace App1
                     r.GetString(2),
                     r.GetString(3),
                     r.GetString(4),
-                    r.GetInt32(5),
+                    r.GetString(5),
                     r.GetInt32(6),
                     r.GetInt32(7),
-                    r.GetInt32(8)));
+                    r.GetInt32(8),
+                    r.GetInt32(9))); ;
             }
 
             r.Close();
@@ -126,7 +128,7 @@ namespace App1
                 commande.Parameters.AddWithValue("@Prix_place", t.Prix_place);
 
 
-                commande.CommandText = "insert into chauffeur (nom, prenom,email , addresse,  no_telephone, no_permis) values(@nom, @prenom,@email, @adresse,  @telephone,   @no_permis) ";
+                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive, arret, type_vehicule, nb_place, no_voiture, no_chauffeur, prix_place) values(@date, @Heure_depart,@Heure_arrive, @arret,  @Type_vehicule,   @nb_place,@No_voiture , @No_chauffeur, @Prix_place ) ";
 
                 con.Open();
                 commande.Prepare();
