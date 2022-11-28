@@ -30,7 +30,11 @@ namespace App1
 
             return gestionBD;
         }
-
+        // INSTANCES TRAJET
+        /*
+         * GET TRAJET
+         * 
+         */
         public ObservableCollection<Trajet> getTrajet()
         {
             ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
@@ -60,6 +64,10 @@ namespace App1
             return listeTrajet;
         }
 
+        /*
+         * GET TRAJET SEULEMENT SI ILS SONT EN COURS
+         * 
+         */
         public ObservableCollection<Trajet> getTrajetEnCour()
         {
             ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
@@ -90,6 +98,52 @@ namespace App1
             return listeTrajet;
         }
 
+        /*
+        * AJOUTER UN TRAJET
+        * 
+        */
+        public void ajouterTrajet(Trajet t)
+        {
+            int retour;
+
+
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+
+
+                commande.Parameters.AddWithValue("@date", t.Date_depart);
+                commande.Parameters.AddWithValue("@Heure_depart", t.Heure_depart);
+                commande.Parameters.AddWithValue("@Heure_arrive", t.Heure_arrive);
+                commande.Parameters.AddWithValue("@arret", t.Arret);
+                commande.Parameters.AddWithValue("@Type_vehicule", t.Type_vehicule);
+                commande.Parameters.AddWithValue("@nb_place", t.Nb_place);
+                commande.Parameters.AddWithValue("@No_voiture", t.No_voiture);
+                commande.Parameters.AddWithValue("@No_chauffeur", t.No_chauffeur);
+                commande.Parameters.AddWithValue("@Prix_place", t.Prix_place);
+
+
+                commande.CommandText = "insert into chauffeur (nom, prenom,email , addresse,  no_telephone, no_permis) values(@nom, @prenom,@email, @adresse,  @telephone,   @no_permis) ";
+
+                con.Open();
+                commande.Prepare();
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+        // INSTANCES CREATION COMPTE
+        // INSTANCES CLIENT
         /*
          * Creation de compte client
          * 
@@ -128,14 +182,15 @@ namespace App1
             }
         }
 
+        
         /*
-         * Creation de compte chauffeur/client
+         * Creation de compte chauffeur
          * 
          * 
          * 
          */
-        
-            public void ajouterChauffeur(CompteChauffeur m)
+
+        public void ajouterChauffeur(CompteChauffeur m)
             {
                 int retour;
 

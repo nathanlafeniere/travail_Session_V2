@@ -15,6 +15,7 @@ namespace App1
          * 
          */
         int id;
+        string date_depart;
         string heure_depart;
         string heure_arrive;
         string arret;
@@ -24,9 +25,10 @@ namespace App1
         int no_chauffeur;
         int prix_place;
 
-        public Trajet(int id, string heure_depart, string heure_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
+        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
         {
             this.id = id;
+            this.date_depart = date_depart;
             this.heure_depart = heure_depart;
             this.heure_arrive = heure_arrive;
             this.arret = arret;
@@ -38,6 +40,7 @@ namespace App1
         }
 
         public int Id { get => id; set => id = value; }
+        public string Date_depart { get => date_depart; set => date_depart = value; }
         public string Heure_depart { get => heure_depart; set => heure_depart = value; }
         public string Heure_arrive { get => heure_arrive; set => heure_arrive = value; }
         public string Arret { get => arret; set => arret = value; }
@@ -50,7 +53,7 @@ namespace App1
         public override string ToString()
         {
             // modifier plus tard
-            return id + " " + heure_depart + " " + heure_arrive + " " + arret + " " + type_vehicule + " " + nb_place + " " + no_voiture + " " + no_chauffeur + " " + prix_place;
+            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + arret + " " + type_vehicule + " " + nb_place + " " + no_voiture + " " + no_chauffeur + " " + prix_place;
         }
     }
 }
