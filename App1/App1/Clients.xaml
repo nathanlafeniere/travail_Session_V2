@@ -13,7 +13,8 @@
 
     <StackPanel>
         <!--TITRE PAGE-->
-        <TextBlock Text="Creation d'un compte client" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
+                        
+        <!--<TextBlock Text="Creation d'un compte client" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>-->
         
         
         <!--TEXTBOX POUR PERMETTRE LES ENTRÉES UTILISATEUR-->

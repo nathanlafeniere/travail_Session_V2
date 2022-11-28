@@ -10,7 +10,7 @@
 
     <StackPanel>
         <!--TITRE PAGE-->
-        <TextBlock Text="Liste des trajet en cours" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
+        <!--<TextBlock Text="Liste des trajet en cours" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>-->
 
         <!--LISTVIEW POUR AFFICHAGE DES TRAJETS-->
         <ListView x:Name="lvTrajet" HorizontalAlignment="Center" VerticalAlignment="Center"/>
