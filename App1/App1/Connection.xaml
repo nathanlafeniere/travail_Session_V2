@@ -13,8 +13,8 @@
         
         <!--STACKPANEL AVEC LES DIFFÉRENTES OPTIONS DE CONNEXIONS-->
         <StackPanel Orientation="Horizontal" x:Name="stkpnlOptionConnexion" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="btDejaCompte" Content="Déjà un compte? Se connecter" Margin="0,0,30,50"></Button>
-            <Button x:Name="btCreationCompte" Content="Créer un compte!" Margin="0,0,0,50"></Button>
+            <Button x:Name="btDejaCompte" Content="Déjà un compte? Se connecter" Click="btDejaCompte_Click" Margin="0,0,30,50"></Button>
+            <Button x:Name="btCreationCompte" Content="Créer un compte!" Margin="0,0,0,50" Click="btCreationCompte_Click"></Button>
         </StackPanel>
         
 
@@ -33,7 +33,7 @@
                         
         
         <!--BOUTON QUI GÈRE LA CONNEXION-->
-            <Button x:Name="btLogin" Content="Se connecter" Click="btLogin_Click" Margin="0,0,0,50"/>
+            <Button x:Name="btLogin" Content="Se connecter" HorizontalAlignment="Center" Click="btLogin_Click" Margin="0,0,0,50"/>
         </StackPanel>
         
         
@@ -49,7 +49,7 @@
             <TextBlock x:Name="tblAlertCreerMdp" Foreground="Red" Margin="0,10,0,30"></TextBlock>
             
             <!--BOUTON POUR CRÉER UN COMPTE-->
-            <Button x:Name="btCreerCompte" Click="btCreerCompte_Click" HorizontalAlignment="Center"></Button>
+            <Button x:Name="btCreerCompte" Content="Créer un compte" Click="btCreerCompte_Click" HorizontalAlignment="Center"></Button>
             
             <!--MESSAGE D'ALERTE POUR ENREGISTREMENT RÉUSSI-->
             <TextBlock x:Name="tblAlertEnr" Foreground="green" HorizontalAlignment="Center" Margin="0,10,0,50"/>

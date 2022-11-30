@@ -28,6 +28,8 @@ namespace App1
             this.InitializeComponent();
         }
 
+
+
         //FONCTION QUI GÈRE LA CONNEXION
         private void btLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -35,11 +37,14 @@ namespace App1
             //VALIDER SI LE MOT DE PASSE == LE MOT DE PASSE HASHER DE LA BD ***************************
         }
 
+
+
+
         //FONCTION QUI GÈRE LES VALIDATIONS ET LA CRÉATION D'UN COMPTE
         private void btCreationCompte_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+            stkpnlDejaCompte.Visibility = Visibility.Collapsed;
+            stkpnlCreerCompte.Visibility = Visibility.Visible;   
         }
 
         private void btCreerCompte_Click(object sender, RoutedEventArgs e)
@@ -86,6 +91,12 @@ namespace App1
                 tblAlertEnr.Visibility = Visibility.Visible;
 
             }
+        }
+
+        private void btDejaCompte_Click(object sender, RoutedEventArgs e)
+        {
+            stkpnlCreerCompte.Visibility = Visibility.Collapsed;
+            stkpnlDejaCompte.Visibility = Visibility.Visible;
         }
     }
 }
