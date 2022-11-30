@@ -27,5 +27,10 @@ namespace App1
         {
             this.InitializeComponent();
         }
+
+        private void nb_ajout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

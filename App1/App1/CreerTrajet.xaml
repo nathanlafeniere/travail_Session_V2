@@ -13,21 +13,24 @@
         <!--Ajout de données pour l'insertion-->
         <StackPanel>
             <!--Date-->
-            <TextBlock x:Name="tbxDateTrajet" />
+            
+            <TextBox x:Name="tbxDateTrajet" Header="Ajouter La date du projet" />
 
             <!--HeureDepart-->
-
+            <TextBox x:Name="tbxHeureDepart" Header="Ajouter l'heure de depart" />
             <!--heureArriver-->
-
+            <TextBox x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
             <!--arret-->
-
+            <TextBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet"  />
             <!--typeVehicule-->
-
+            <TextBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" />
             <!--nbplace-->
-
+            <TextBox x:Name="tbxNbPlace" Header="Nombre de place disponible dans le vehicule au depart " />
             <!--Prix place-->
+            <TextBox x:Name="tbxPrixPlace" Header="Prix par place" />
 
-            
+            <Button x:Name="nb_ajout" Click="nb_ajout_Click">Confirmer l'ajout d'un trajet</Button>
+
         </StackPanel>
         
     </StackPanel>

@@ -16,7 +16,7 @@
     <None Remove="Clients.xaml" />
     <None Remove="Chauffeur.xaml" />
     <None Remove="Connection.xaml" />
-    <None Remove="CréerTrajet.xaml" />
+    <None Remove="CreerTrajet.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +45,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="CréerTrajet.xaml">
+    <Page Update="CreerTrajet.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
