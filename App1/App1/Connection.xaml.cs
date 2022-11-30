@@ -30,6 +30,8 @@ namespace App1
 
 
 
+
+
         //FONCTION QUI GÈRE LA CONNEXION
         private void btLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -59,11 +61,19 @@ namespace App1
             }
 
 
-            if (tbxCreerMdp.Text == "")
+            if (pwdbxCreerMdp.Password == "")
             {
                 validation = false;
                 tblAlertCreerMdp.Text = "Vous devez entrer votre mot de passe!";
                 tblAlertCreerMdp.Visibility = Visibility.Visible;
+            }
+
+            //VALIDER SI LES 2 MDP SONT IDENTIQUES
+            if(pwdbxCreerMdp.Password != pwdbxMdpConfirmation.Password)
+            {
+                validation = false;
+                tblAlertMdpConfirmation.Text = "Le mot de passe est erroné!";
+                tblAlertMdpConfirmation.Visibility = Visibility.Visible;
             }
 
             //QUAND LES VALIDATIONS SONT OKAY 
@@ -73,17 +83,18 @@ namespace App1
                 //MISE À COLLAPSED DES MESSAGES D'ALERTES
                 tblAlertCreerCourriel.Visibility = Visibility.Collapsed;
                 tblAlertCreerMdp.Visibility = Visibility.Collapsed;
+                tblAlertMdpConfirmation.Visibility = Visibility.Collapsed;
 
                 //CRÉATION OBJET 
 
                 Usager u = new Usager();
                 {
                     u.Email = tbxCreerCourriel.Text;
-                    u.Password = tbxCreerMdp.Text;
+                    u.Password = pwdbxCreerMdp.Password;
                 }
 
                 //APPEL À LA GESTIONBD ET À LA FONCTION POUR CRÉER ET AJOUTER MON OBJET DANS LA TABLE USAGER
-                //GestionBD.getInstance().
+                GestionBD.getInstance().ajouterUsager(u);
 
 
                 //AFFICHAGE MESSAGE DE RÉUSSITE DE L'ENREGISTREMENT

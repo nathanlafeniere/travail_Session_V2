@@ -28,12 +28,12 @@
         <TextBox x:Name="tbxCourrielUsager" Header="Adresse courriel:" PlaceholderText="exemple@gmail.com" HorizontalAlignment="Center" Margin="0,10,0,30"/>
         <TextBlock x:Name="tblAlertEmail" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
         
-        <TextBox x:Name="tbxMdp" Header="Mot de passe:" HorizontalAlignment="Center" Margin="0,10,0,30"/>
-        <TextBlock x:Name="tblAlertMdp" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
-                        
         
+        <PasswordBox x:Name="pwdbxMdp" Header="Mot de passe:" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+        <TextBlock x:Name="tblAlertMdp"  Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+
         <!--BOUTON QUI GÈRE LA CONNEXION-->
-            <Button x:Name="btLogin" Content="Se connecter" HorizontalAlignment="Center" Click="btLogin_Click" Margin="0,0,0,50"/>
+        <Button x:Name="btLogin" Content="Se connecter" HorizontalAlignment="Center" Click="btLogin_Click" Margin="0,0,0,50"/>
         </StackPanel>
         
         
@@ -42,12 +42,17 @@
         <StackPanel x:Name="stkpnlCreerCompte" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
             
             <!--BLOC DE TEXTBOX ET TEXTBLOCK POUR ENTRER LES INFORMATIONS-->
-            <TextBox x:Name="tbxCreerCourriel" Header="Entrer une adresse courriel:" HorizontalAlignment="Center"></TextBox>
-            <TextBlock x:Name="tblAlertCreerCourriel" Foreground="Red" Margin="0,10,0,30"></TextBlock>
+            <TextBox x:Name="tbxCreerCourriel" Header="Entrer une adresse courriel:" PlaceholderText="exemple@gmail.com" HorizontalAlignment="Center"></TextBox>
+            <TextBlock x:Name="tblAlertCreerCourriel" HorizontalAlignment="Center" Visibility="Collapsed" Foreground="Red" Margin="0,10,0,30"></TextBlock>
+
+            <!--MOT DE PASSE ET CONFIRMATION DU MOT DE PASSE-->
+            <PasswordBox x:Name="pwdbxCreerMdp" Header="Entrer un mot de passe:" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblAlertCreerMdp" HorizontalAlignment="Center" Visibility="Collapsed" Foreground="Red" Margin="0,10,0,30"></TextBlock>
             
-            <TextBox x:Name="tbxCreerMdp" Header="Entrer un mot de passe:" HorizontalAlignment="Center"></TextBox>
-            <TextBlock x:Name="tblAlertCreerMdp" Foreground="Red" Margin="0,10,0,30"></TextBlock>
-            
+            <!--CONFIRMATION DU MOT DE PASSE-->
+            <PasswordBox x:Name="pwdbxMdpConfirmation" Header="Entrer le mot de passe de nouveau:" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+            <TextBlock x:Name="tblAlertMdpConfirmation" HorizontalAlignment="Center" Visibility="Collapsed" Foreground="Red" Margin="0,10,0,30"/>
+
             <!--BOUTON POUR CRÉER UN COMPTE-->
             <Button x:Name="btCreerCompte" Content="Créer un compte" Click="btCreerCompte_Click" HorizontalAlignment="Center"></Button>
             
