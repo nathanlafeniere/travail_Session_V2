@@ -23,7 +23,7 @@
                 <!--<NavigationViewItemHeader Content="Zone 1"/>-->
                 <!--LISTE DES OPTIONS DU MENU-->
                 <NavigationViewItem Content="Page d'accueil"  Name="Accueil" Tag="Accueil" Icon="Home"/>
-                <NavigationViewItem Content="Connection"  Name="Connection" Tag="Connection" Icon="People"/>
+                <NavigationViewItem Content="Connexion"  Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" />
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Créer un compte chauffeur" Name="CreationChauffeur" Tag="CreationChauffeur" Icon="Contact" />

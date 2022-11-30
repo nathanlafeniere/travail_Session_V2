@@ -7,12 +7,56 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-       <!--
-        <TextBlock Name="tblHeader" Text="allo"/>
-        -->
+    <!--PAGE DE LOGIN DES USERS-->
+    <StackPanel>
+        
+        
+        <!--STACKPANEL AVEC LES DIFFÉRENTES OPTIONS DE CONNEXIONS-->
+        <StackPanel Orientation="Horizontal" x:Name="stkpnlOptionConnexion" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btDejaCompte" Content="Déjà un compte? Se connecter" Margin="0,0,30,50"></Button>
+            <Button x:Name="btCreationCompte" Content="Créer un compte!" Margin="0,0,0,50"></Button>
+        </StackPanel>
+        
 
-        <TextBox x:Name="nom" ></TextBox>
-                
+        <!--STACKPANEL POUR LES UTILISATEURS QUI ONT DÉJÀ UN COMPTE-->
+        <StackPanel x:Name="stkpnlDejaCompte" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
+        <!--MESSAGE D'ALERTE LORS DE LA CONNEXION-->
+        <TextBlock x:Name="tblAlertConnexion" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,50,0,30"/>
+
+        <!--BLOC DE TEXTBOX ET TEXTBLOCK POUR LA CONNECTION-->
+        <TextBox x:Name="tbxCourrielUsager" Header="Adresse courriel:" PlaceholderText="exemple@gmail.com" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+        <TextBlock x:Name="tblAlertEmail" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+        
+        <TextBox x:Name="tbxMdp" Header="Mot de passe:" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+        <TextBlock x:Name="tblAlertMdp" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+                        
+        
+        <!--BOUTON QUI GÈRE LA CONNEXION-->
+            <Button x:Name="btLogin" Content="Se connecter" Click="btLogin_Click" Margin="0,0,0,50"/>
+        </StackPanel>
+        
+        
+        
+        <!--STACKPANEL CRÉER UN COMPTE (VISIBILITY À COLLAPSED)-->
+        <StackPanel x:Name="stkpnlCreerCompte" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            
+            <!--BLOC DE TEXTBOX ET TEXTBLOCK POUR ENTRER LES INFORMATIONS-->
+            <TextBox x:Name="tbxCreerCourriel" Header="Entrer une adresse courriel:" HorizontalAlignment="Center"></TextBox>
+            <TextBlock x:Name="tblAlertCreerCourriel" Foreground="Red" Margin="0,10,0,30"></TextBlock>
+            
+            <TextBox x:Name="tbxCreerMdp" Header="Entrer un mot de passe:" HorizontalAlignment="Center"></TextBox>
+            <TextBlock x:Name="tblAlertCreerMdp" Foreground="Red" Margin="0,10,0,30"></TextBlock>
+            
+            <!--BOUTON POUR CRÉER UN COMPTE-->
+            <Button x:Name="btCreerCompte" Click="btCreerCompte_Click" HorizontalAlignment="Center"></Button>
+            
+            <!--MESSAGE D'ALERTE POUR ENREGISTREMENT RÉUSSI-->
+            <TextBlock x:Name="tblAlertEnr" Foreground="green" HorizontalAlignment="Center" Margin="0,10,0,50"/>
+        </StackPanel>
+        
+        
+
     </StackPanel>
+    
 </Page>

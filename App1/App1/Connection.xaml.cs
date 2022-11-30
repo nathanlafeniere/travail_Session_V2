@@ -27,5 +27,65 @@ namespace App1
         {
             this.InitializeComponent();
         }
+
+        //FONCTION QUI GÈRE LA CONNEXION
+        private void btLogin_Click(object sender, RoutedEventArgs e)
+        {
+            //VALIDER SI LE COURRIEL EST VALIDE *******************************************************
+            //VALIDER SI LE MOT DE PASSE == LE MOT DE PASSE HASHER DE LA BD ***************************
+        }
+
+        //FONCTION QUI GÈRE LES VALIDATIONS ET LA CRÉATION D'UN COMPTE
+        private void btCreationCompte_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+        }
+
+        private void btCreerCompte_Click(object sender, RoutedEventArgs e)
+        {
+            Boolean validation = true;
+
+            if (tbxCreerCourriel.Text == "")
+            {
+                validation = false;
+                tblAlertCreerCourriel.Text = "Vous devez entrer un courriel!";
+                tblAlertCreerCourriel.Visibility = Visibility.Visible;
+            }
+
+
+            if (tbxCreerMdp.Text == "")
+            {
+                validation = false;
+                tblAlertCreerMdp.Text = "Vous devez entrer votre mot de passe!";
+                tblAlertCreerMdp.Visibility = Visibility.Visible;
+            }
+
+            //QUAND LES VALIDATIONS SONT OKAY 
+
+            if (validation)
+            {
+                //MISE À COLLAPSED DES MESSAGES D'ALERTES
+                tblAlertCreerCourriel.Visibility = Visibility.Collapsed;
+                tblAlertCreerMdp.Visibility = Visibility.Collapsed;
+
+                //CRÉATION OBJET 
+
+                Usager u = new Usager();
+                {
+                    u.Email = tbxCreerCourriel.Text;
+                    u.Password = tbxCreerMdp.Text;
+                }
+
+                //APPEL À LA GESTIONBD ET À LA FONCTION POUR CRÉER ET AJOUTER MON OBJET DANS LA TABLE USAGER
+                //GestionBD.getInstance().
+
+
+                //AFFICHAGE MESSAGE DE RÉUSSITE DE L'ENREGISTREMENT
+                tblAlertEnr.Text = "Enregistrement réussi!";
+                tblAlertEnr.Visibility = Visibility.Visible;
+
+            }
+        }
     }
 }
