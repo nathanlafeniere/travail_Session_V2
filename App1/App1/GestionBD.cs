@@ -226,6 +226,39 @@ namespace App1
                         con.Close();
                 }
             }
-        
+
+        public void ajouterUsager(Usager u)
+        {
+            int retour;
+
+
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+
+
+                commande.Parameters.AddWithValue("@nom", u.Email);
+                commande.Parameters.AddWithValue("@mdp", u.Password);
+                
+
+                //cahnger nom pour email
+                commande.CommandText = "insert into user (nom ,mdp) values(@nom, @mdp) ";
+
+                con.Open();
+                commande.Prepare();
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
     }
 }
