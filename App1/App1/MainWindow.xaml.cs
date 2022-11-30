@@ -51,7 +51,7 @@ namespace App1
                     mainFrame.Navigate(typeof(Chauffeur));
                     break;
                 case "CreationTrajet":
-                    mainFrame.Navigate(typeof());
+                    mainFrame.Navigate(typeof(AjoutTrajet));
                     break;
                 default:
                     break;

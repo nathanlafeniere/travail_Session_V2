@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="App1.CréerTrajet"
+    x:Class="App1.AjoutTrajet"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:App1"
@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
- 
+
         <!--Ajout de données pour l'insertion-->
         <StackPanel>
             <!--Date-->
-            
+
             <TextBox x:Name="tbxDateTrajet" Header="Ajouter La date du projet" />
 
             <!--HeureDepart-->
@@ -32,6 +32,6 @@
             <Button x:Name="nb_ajout" Click="nb_ajout_Click">Confirmer l'ajout d'un trajet</Button>
 
         </StackPanel>
-        
+
     </StackPanel>
 </Page>

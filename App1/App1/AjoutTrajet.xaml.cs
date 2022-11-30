@@ -21,9 +21,9 @@ namespace App1
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CréerTrajet : Page
+    public sealed partial class AjoutTrajet : Page
     {
-        public CréerTrajet()
+        public AjoutTrajet()
         {
             this.InitializeComponent();
         }

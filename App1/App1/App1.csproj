@@ -13,10 +13,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Accueil.xaml" />
+    <None Remove="AjoutTrajet.xaml" />
     <None Remove="Clients.xaml" />
     <None Remove="Chauffeur.xaml" />
     <None Remove="Connection.xaml" />
-    <None Remove="CreerTrajet.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +45,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="CreerTrajet.xaml">
+    <Page Update="AjoutTrajet.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
