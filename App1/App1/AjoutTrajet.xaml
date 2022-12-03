@@ -14,23 +14,33 @@
         <StackPanel>
             <!--Date-->
 
-            <TextBox x:Name="tbxDateTrajet" Header="Ajouter La date du projet" />
-
+            <TextBlock x:Name="DateTrajet" Header="Ajouter La date du projet" />
+            <DatePicker Header="Date:" x:Name="tbxDateTrajet"></DatePicker>
+            <TextBlock x:Name="tbxDateTrajetE" Text="" Visibility="Collapsed"/>
             <!--HeureDepart-->
             <TextBox x:Name="tbxHeureDepart" Header="Ajouter l'heure de depart" />
+            <TextBlock x:Name="tbxHeureDepartE" Text="" Visibility="Collapsed"/>
             <!--heureArriver-->
             <TextBox x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
+            <TextBlock x:Name="tbxHeureArriverE" Text="" Visibility="Collapsed"/>
             <!--arret-->
-            <TextBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet"  />
+            <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet">
+                
+            </ComboBox>
+            <TextBlock x:Name="tbxArretE" Text="" Visibility="Collapsed"/>
             <!--typeVehicule-->
             <TextBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" />
+            <TextBlock x:Name="tbxTypeVehiculeE" Text="" Visibility="Collapsed"/>
             <!--nbplace-->
-            <TextBox x:Name="tbxNbPlace" Header="Nombre de place disponible dans le vehicule au depart " />
+            <NumberBox x:Name="tbxNbPlace" Header="Nombre de place disponible dans le vehicule au depart " Maximum="5" Minimum="0" />
+            <TextBlock x:Name="tbxNbPlaceE" Text="" Visibility="Collapsed"/>
             <!--Prix place-->
-            <TextBox x:Name="tbxPrixPlace" Header="Prix par place" />
+            <NumberBox x:Name="tbxPrixPlace" Header="Prix par place" Maximum="15" Minimum="10"/>
+            <TextBlock x:Name="tbxPrixPlaceE" Text="" Visibility="Collapsed"/>
 
             <Button x:Name="nb_ajout" Click="nb_ajout_Click">Confirmer l'ajout d'un trajet</Button>
 
+            <TextBlock x:Name="tblAlertValidation" Text="" Visibility="Collapsed"/>
         </StackPanel>
 
     </StackPanel>
