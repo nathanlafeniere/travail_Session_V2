@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Controls;
 using MySql.Data.MySqlClient;
 
 namespace App1
@@ -244,7 +245,7 @@ namespace App1
                 commande.Parameters.AddWithValue("@mdp", u.Password);
                 
 
-                //cahnger nom pour email
+                //changer nom pour email
                 commande.CommandText = "insert into user (nom ,mdp) values(@nom, @mdp) ";
 
                 con.Open();
@@ -259,6 +260,40 @@ namespace App1
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
+        }
+
+
+        //FONCTION POUR GÉRER LE LOGIN
+
+        public void verifierInfo(string e, string p)
+        {
+
+            try
+            {
+                int retour = 0;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT * FROM User WHERE nom LIKE " + e + " " + "AND mdp LIKE " + p;
+
+                con.Open();
+
+                MySqlDataReader r = commande.ExecuteReader();
+                
+                if(retour == 1)
+                {
+                    while (r.Read()) 
+                    {
+                        r.GetString(1);
+                    }
+                }
+            }
+            catch(MySqlException ex) 
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
         }
     }
 }

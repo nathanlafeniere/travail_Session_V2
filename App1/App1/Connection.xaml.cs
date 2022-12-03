@@ -29,16 +29,41 @@ namespace App1
         }
 
 
-
-
-
         //FONCTION QUI GÈRE LA CONNEXION
         private void btLogin_Click(object sender, RoutedEventArgs e)
-        {
-            //VALIDER SI LE COURRIEL EST VALIDE *******************************************************
-            //VALIDER SI LE MOT DE PASSE == LE MOT DE PASSE HASHER DE LA BD ***************************
-        }
+        {            
 
+            Boolean validation = true;
+
+            if (tbxCourrielUsager.Text == "")
+            {
+                validation = false;
+                tblAlertConnexion.Text = "Les informations de connexion";
+                tblAlertConnexion.Visibility = Visibility.Visible;
+            }
+
+            if(pwdbxMdp.Password == "")
+            {
+                validation = false;
+                tblAlertConnexion.Text = "Les informations de connexion";
+                tblAlertConnexion.Visibility = Visibility.Visible;
+            }
+
+            //SI LES VALIDATIONS SONT OKAY !!!
+
+            if(validation) 
+            {
+                //METTRE LES TBL À COLLAPSED
+                tblAlertConnexion.Visibility = Visibility.Collapsed;
+
+                //APPEL À LA FONCTION
+                GestionBD.getInstance().verifierInfo(tbxCourrielUsager.Text, pwdbxMdp.Password);
+
+                //MESSAGE DE CONNECTION RÉUSSI
+                tblAlertConnectionValide.Text = "Vous êtes connecté!";
+                tblAlertConnectionValide.Visibility = Visibility.Visible;
+            }
+        }
 
 
 

@@ -34,6 +34,7 @@
 
         <!--BOUTON QUI GÈRE LA CONNEXION-->
         <Button x:Name="btLogin" Content="Se connecter" HorizontalAlignment="Center" Click="btLogin_Click" Margin="0,0,0,50"/>
+        <TextBlock x:Name="tblAlertConnectionValide" Foreground="green" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
         </StackPanel>
         
         
