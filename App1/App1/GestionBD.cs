@@ -270,7 +270,7 @@ namespace App1
 
             try
             {
-                int retour = 0;
+                int retour =0;
 
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
@@ -281,24 +281,29 @@ namespace App1
                 commande.CommandText = "SELECT * FROM User WHERE nom = @nom AND mdp = @mdp";
 
                 con.Open();
-
+                commande.Prepare();
                 MySqlDataReader r = commande.ExecuteReader();
                 
-                if(retour == 1)
-                {
-                    while (r.Read()) 
+                  if(retour == 1)
                     {
-                        r.GetString(1);
-                        r.GetString(2);
-                    }
-                }
+                        while (r.Read())
+                        {
+                            r.GetString(1);
+                            r.GetString(2);
+                        }
+                    }                                                  
+
+                con.Close();
             }
             catch(MySqlException ex) 
             {
+                
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
 
         }
+
+
     }
 }
