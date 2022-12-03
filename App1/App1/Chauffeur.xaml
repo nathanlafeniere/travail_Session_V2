@@ -36,9 +36,7 @@
         <TextBlock x:Name="fin" Text=""/>
         </StackPanel>
 
-        <StackPanel x:Name="info" Visibility="Collapsed">
-            <!--combo box + list view-->
-        </StackPanel>
+        
        
     </StackPanel>
 </Page>

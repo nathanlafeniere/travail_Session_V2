@@ -17,6 +17,7 @@
     <None Remove="Clients.xaml" />
     <None Remove="Chauffeur.xaml" />
     <None Remove="Connection.xaml" />
+    <None Remove="InfoChauffeur.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +44,11 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="InfoChauffeur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AjoutTrajet.xaml">
