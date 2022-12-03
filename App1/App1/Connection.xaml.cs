@@ -38,14 +38,14 @@ namespace App1
             if (tbxCourrielUsager.Text == "")
             {
                 validation = false;
-                tblAlertConnexion.Text = "Les informations de connexion";
+                tblAlertConnexion.Text = "Les informations de connexion ne sont pas valide!";
                 tblAlertConnexion.Visibility = Visibility.Visible;
             }
 
             if(pwdbxMdp.Password == "")
             {
                 validation = false;
-                tblAlertConnexion.Text = "Les informations de connexion";
+                tblAlertConnexion.Text = "Les informations de connexion ne sont pas valide!";
                 tblAlertConnexion.Visibility = Visibility.Visible;
             }
 
@@ -56,8 +56,10 @@ namespace App1
                 //METTRE LES TBL À COLLAPSED
                 tblAlertConnexion.Visibility = Visibility.Collapsed;
 
+                Usager usager = new Usager(tbxCourrielUsager.Text, pwdbxMdp.Password);
+
                 //APPEL À LA FONCTION
-                GestionBD.getInstance().verifierInfo(tbxCourrielUsager.Text, pwdbxMdp.Password);
+                GestionBD.getInstance().verifierInfo(usager);
 
                 //MESSAGE DE CONNECTION RÉUSSI
                 tblAlertConnectionValide.Text = "Vous êtes connecté!";

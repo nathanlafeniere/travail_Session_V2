@@ -265,7 +265,7 @@ namespace App1
 
         //FONCTION POUR GÉRER LE LOGIN
 
-        public void verifierInfo(string e, string p)
+        public void verifierInfo(Usager u)
         {
 
             try
@@ -274,7 +274,11 @@ namespace App1
 
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
-                commande.CommandText = "SELECT * FROM User WHERE nom LIKE " + e + " " + "AND mdp LIKE " + p;
+
+                commande.Parameters.AddWithValue("@nom", u.Email);
+                commande.Parameters.AddWithValue("@mdp", u.Password);
+
+                commande.CommandText = "SELECT * FROM User WHERE nom = @nom AND mdp = @mdp";
 
                 con.Open();
 
@@ -285,6 +289,7 @@ namespace App1
                     while (r.Read()) 
                     {
                         r.GetString(1);
+                        r.GetString(2);
                     }
                 }
             }

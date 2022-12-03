@@ -11,6 +11,17 @@ namespace App1
         string email;
         string password;
 
+        public Usager() 
+        {
+
+        }
+
+        public Usager(string e, string p)        
+        {
+            email = e;
+            password = p;
+        }
+
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
 
