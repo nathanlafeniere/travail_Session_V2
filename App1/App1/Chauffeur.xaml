@@ -11,8 +11,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <TextBox x:Name="nom" Header="Nom:"/>
+    <StackPanel >
+        <StackPanel x:Name="conn" Visibility="Visible">
+             <TextBox x:Name="nom" Header="Nom:"/>
         <TextBox x:Name="nomE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="prenom" Header="Prenom:"/>
@@ -33,5 +34,11 @@
         <Button x:Name="Ajouter" Click="Ajouter_Click">Confirmer les informations</Button>
 
         <TextBlock x:Name="fin" Text=""/>
+        </StackPanel>
+
+        <StackPanel x:Name="info" Visibility="Collapsed">
+            <!--combo box + list view-->
+        </StackPanel>
+       
     </StackPanel>
 </Page>

@@ -14,7 +14,7 @@
         <StackPanel>
             <!--Date-->
 
-            <TextBlock x:Name="DateTrajet" Header="Ajouter La date du projet" />
+            <TextBlock x:Name="DateTrajet" Text="Ajouter La date du projet" />
             <DatePicker Header="Date:" x:Name="tbxDateTrajet"></DatePicker>
             <TextBlock x:Name="tbxDateTrajetE" Text="" Visibility="Collapsed"/>
             <!--HeureDepart-->
@@ -23,10 +23,19 @@
             <!--heureArriver-->
             <TextBox x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
             <TextBlock x:Name="tbxHeureArriverE" Text="" Visibility="Collapsed"/>
+            <!--Ville de depart-->
+            <ComboBox>
+                
+            </ComboBox>
+            <!--ville d'arriver-->
+            <ComboBox>
+                
+            </ComboBox>
             <!--arret-->
             <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet">
                 
             </ComboBox>
+            
             <TextBlock x:Name="tbxArretE" Text="" Visibility="Collapsed"/>
             <!--typeVehicule-->
             <TextBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" />
