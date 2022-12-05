@@ -23,9 +23,12 @@ namespace App1
     /// </summary>
     public sealed partial class Connection : Page
     {
+
+        Usager u = new Usager();
         public Connection()
         {
             this.InitializeComponent();
+            lvtest.ItemsSource = GestionBD.getInstance().verifierInfo();
         }
 
 
@@ -62,8 +65,8 @@ namespace App1
                 GestionBD.getInstance().verifierInfo(usager);
 
                 //MESSAGE DE CONNECTION RÉUSSI
-                tblAlertConnectionValide.Text = "Vous êtes connecté!";
-                tblAlertConnectionValide.Visibility = Visibility.Visible;
+                //tblAlertConnectionValide.Text = "Vous êtes connecté!";
+                //tblAlertConnectionValide.Visibility = Visibility.Visible;
             }
         }
 

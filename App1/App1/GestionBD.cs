@@ -333,7 +333,7 @@ namespace App1
 
         public void verifierInfo(Usager u)
         {
-
+            ObservableCollection<Usager> lvtest= new ObservableCollection<Usager>();
             try
             {
                 int retour =0;
@@ -344,21 +344,21 @@ namespace App1
                 commande.Parameters.AddWithValue("@nom", u.Email);
                 commande.Parameters.AddWithValue("@mdp", u.Password);
 
-                commande.CommandText = "SELECT f_mot_de_passe(@nom, @mdp) AS 'login'";
+                commande.CommandText = "SELECT f_mot_de_passe2(@nom, @mdp) AS 'login'";
 
                 con.Open();
                 commande.Prepare();
                 MySqlDataReader r = commande.ExecuteReader();
                 
-                  if(retour == 1)
-                    {
+                  
                         while (r.Read())
                         {
-                            r.GetString(1);
-                            r.GetString(2);
+                            lvtest.Add(new Usager(r.GetInt32(0)));
+                            
                         }
-                    }                                                  
+                                                                   
 
+                        
                 con.Close();
             }
             catch(MySqlException ex) 

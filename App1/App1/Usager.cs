@@ -10,10 +10,16 @@ namespace App1
     {
         string email;
         string password;
+        private int v;
 
         public Usager() 
         {
 
+        }
+
+        public Usager(int v)
+        {
+            this.v = v;
         }
 
         public Usager(string e, string p)        

@@ -59,6 +59,7 @@
             
             <!--MESSAGE D'ALERTE POUR ENREGISTREMENT RÉUSSI-->
             <TextBlock x:Name="tblAlertEnr" Foreground="green" HorizontalAlignment="Center" Margin="0,10,0,50"/>
+            <ListView x:Name="lvtest"/>
         </StackPanel>
         
         
