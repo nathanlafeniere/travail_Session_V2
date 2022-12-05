@@ -29,7 +29,7 @@ namespace App1
         public InfoChauffeur()
         {
             this.InitializeComponent();
-
+            lvListe.ItemsSource = GestionBD.getInstance().getTrajetsChauffeur("1");
         }
     }
 }
