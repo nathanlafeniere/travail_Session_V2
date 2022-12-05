@@ -104,8 +104,8 @@ namespace App1
                     trajet.Heure_depart = tbxHeureDepart.Text;
                     trajet.Heure_arrive = tbxHeureArriver.Text;
                     trajet.Type_vehicule = tbxTypeVehicule.Text;
-                    trajet.Nb_place = tbxNbPlace.Value;
-                    trajet.Prix_place = tbxPrixPlace.Value;
+                    trajet.Nb_place = (int)tbxNbPlace.Value;
+                    trajet.Prix_place = (int)tbxPrixPlace.Value;
                 }
 
                 //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD
