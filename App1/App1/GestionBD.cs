@@ -136,16 +136,17 @@ namespace App1
             return listeTrajetClient;
         }
 
-        public ObservableCollection<Trajet> getTrajetsChauffeur(string valeur)
+        public ObservableCollection<Trajet> getTrajetsChauffeur(int valeur)
         {
             ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
-
+        
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,  t.type_vehicule , t.nb_place, t.no_voiture, t.no_chauffeur, t.prix_place\r\nFROM trajet t  INNER JOIN chauffeur c on t.no_chauffeur = c.no_chauffeur   WHERE @valeur = t.no_chauffeur\r\nGROUP BY c.no_chauffeur;";
-
+            commande.Parameters.AddWithValue("@valeur", valeur);
+            commande.CommandText = "SELECT t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,  t.type_vehicule , t.nb_place, t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t  INNER JOIN chauffeur c on t.no_chauffeur = c.no_chauffeur   WHERE t.no_chauffeur = @valeur GROUP BY c.no_chauffeur;";
+            
             con.Open();
-
+            
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
@@ -154,11 +155,10 @@ namespace App1
                     r.GetString(2),
                     r.GetString(3),
                     r.GetString(4),
-                    r.GetString(5),
+                    r.GetInt32(5),
                     r.GetInt32(6),
                     r.GetInt32(7),
-                    r.GetInt32(8),
-                    r.GetInt32(9))); ;
+                    r.GetInt32(8))); ;
             }
 
             r.Close();
