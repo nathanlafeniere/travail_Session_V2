@@ -337,7 +337,7 @@ namespace App1
             try
             {
                 int retour =0;
-
+                
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
 
@@ -353,7 +353,7 @@ namespace App1
                   
                         while (r.Read())
                         {
-                            lvtest.Add(new Usager(r.GetInt32(0)));
+                           MainWindow.type = r.GetInt32(0);
                             
                         }
                                                                    

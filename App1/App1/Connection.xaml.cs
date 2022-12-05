@@ -28,7 +28,7 @@ namespace App1
         public Connection()
         {
             this.InitializeComponent();
-            lvtest.ItemsSource = GestionBD.getInstance().verifierInfo();
+            
         }
 
 
@@ -66,7 +66,9 @@ namespace App1
 
                 //MESSAGE DE CONNECTION RÉUSSI
                 //tblAlertConnectionValide.Text = "Vous êtes connecté!";
-                //tblAlertConnectionValide.Visibility = Visibility.Visible;
+                tblAlertConnectionValide.Text = MainWindow.type.ToString();
+                tblAlertConnectionValide.Visibility = Visibility.Visible;
+
             }
         }
 
@@ -129,6 +131,7 @@ namespace App1
 
                 //AFFICHAGE MESSAGE DE RÉUSSITE DE L'ENREGISTREMENT
                 tblAlertEnr.Text = "Enregistrement réussi!";
+                
                 tblAlertEnr.Visibility = Visibility.Visible;
 
             }
