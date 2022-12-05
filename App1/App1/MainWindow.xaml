@@ -27,9 +27,9 @@
                 <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" />
                 <NavigationViewItem Content="Infos client" Name="InfoClient" Tag="InfoClient" Icon="MapDrive"/>
                 <NavigationViewItemSeparator />
-                <NavigationViewItem Content="Infos chauffeur" Name="InfoChauf" Tag="InfoChauf" Icon="Italic"/>
+                <NavigationViewItem Content="Infos chauffeur" Name="InfoChauf" Tag="InfoChauf" Icon="Italic" Visibility="Collapsed"/>
                 <NavigationViewItem Content="Créer un compte chauffeur" Name="CreationChauffeur" Tag="CreationChauffeur" Icon="Contact" />
-                <NavigationViewItem Content="Créer un Trajet" Name="CreationTrajet" Tag="CreationTrajet" Icon="GlobalNavigationButton" />
+                <NavigationViewItem Content="Créer un Trajet" Name="CreationTrajet" Tag="CreationTrajet" Icon="GlobalNavigationButton" Visibility="Collapsed" />
                 
             </NavigationView.MenuItems>
             

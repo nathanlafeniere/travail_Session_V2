@@ -30,6 +30,7 @@ namespace App1
         {
             this.InitializeComponent();
             lvTrajetClient.ItemsSource = GestionBD.getInstance().getTrajetClient();  
+            
         }
 
         private void btEmbarquer_Click(object sender, RoutedEventArgs e)

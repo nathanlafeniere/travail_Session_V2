@@ -24,14 +24,35 @@ namespace App1
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             this.InitializeComponent();
             mainFrame.Navigate(typeof(Accueil));
+            
+            
         }
+        internal static int type;
+
+       
+
+
+
+
+
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
+            if (type == 1)
+            {
+                InfoChauf.Visibility = Visibility.Visible;
+                CreationTrajet.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                InfoChauf.Visibility = Visibility.Collapsed;
+                CreationTrajet.Visibility = Visibility.Collapsed;
+            }
             
             var item = (NavigationViewItem)args.SelectedItem;
             tblHeader.Text = item.Content.ToString();
