@@ -25,8 +25,25 @@ namespace App1
         int no_chauffeur;
         int prix_place;
 
+        
+
         public Trajet()
         {
+        }
+
+        public Trajet(int v1, string v2, string v3, string v4, string v5, int v6, int v7, int v9 ,int v11)
+        {
+            this.id = v1;
+            this.date_depart = v2;
+            this.heure_depart = v3;
+            this.heure_arrive = v4;
+            this.type_vehicule = v5;
+         
+            this.nb_place = v6;
+            this.no_voiture = v7;
+            this.no_chauffeur = v9;
+        
+            this.prix_place = v11;
         }
 
         public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
@@ -42,7 +59,8 @@ namespace App1
             this.no_chauffeur = no_chauffeur;
             this.prix_place = prix_place;
         }
-        
+
+      
 
         public int Id { get => id; set => id = value; }
         public string Date_depart { get => date_depart; set => date_depart = value; }

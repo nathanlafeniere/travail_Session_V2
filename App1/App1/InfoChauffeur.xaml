@@ -15,7 +15,7 @@
         <StackPanel >
             <!--combo box + list view-->
             <StackPanel>
-                <ListView x:Name="lvListe"/>
+                <ListView x:Name="listeTrajet"/>
             </StackPanel>
 
         </StackPanel>

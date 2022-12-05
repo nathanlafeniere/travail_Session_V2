@@ -56,6 +56,9 @@ namespace App1
                 case "InfoClient":
                     mainFrame.Navigate(typeof(InfoClient));
                     break;
+                case "InfoChauf":
+                    mainFrame.Navigate(typeof(InfoChauffeur));
+                    break;
                 default:
                     break;
             }
