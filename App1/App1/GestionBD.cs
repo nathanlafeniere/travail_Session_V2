@@ -93,7 +93,7 @@ namespace App1
                     r.GetInt32(6),
                     r.GetInt32(7),
                     r.GetInt32(8),
-                    r.GetInt32(9))); ;
+                    r.GetInt32(9)));;
             }
 
             r.Close();
@@ -110,7 +110,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT no_trajet, dateTrajet, ville_depart, ville_arrive, heure_depart, heure_arrive, CASE WHEN arret = true THEN 'arrêt disponible' ELSE 'pas d''arrêt' END AS 'arrêt', type_vehicule, nb_place, prix_place FROM trajet INNER JOIN voiture v on trajet.no_voiture = v.no_voiture WHERE nb_place > 0 AND dateTrajet = CURRENT_DATE AND heure_depart <= CURRENT_TIME() AND heure_arrive >= CURRENT_TIME()";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,\r\n       CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE nb_place > 0 AND curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
 
             con.Open();
 
@@ -344,7 +344,7 @@ namespace App1
                 commande.Parameters.AddWithValue("@nom", u.Email);
                 commande.Parameters.AddWithValue("@mdp", u.Password);
 
-                commande.CommandText = "SELECT * FROM User WHERE nom = @nom AND mdp = @mdp";
+                commande.CommandText = "SELECT f_mot_de_passe(@nom, @mdp) AS 'login'";
 
                 con.Open();
                 commande.Prepare();
