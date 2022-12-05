@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Controls;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509;
 
 namespace App1
 {
@@ -99,6 +100,40 @@ namespace App1
             con.Close();
 
             return listeTrajet;
+        }
+
+        //FONCTION POUR AFFICHER LES TRAJETS EN COURS AVEC LE NOMBRE DE PLACE > 0
+        //LES FORMATS ??? CEUX DE DATAGRIP OU CLASSE TRAJET ??? POUR LA POSITION 7 (TYPE VÉHICULE)
+        public ObservableCollection<Trajet> getTrajetClient()
+        {
+            ObservableCollection<Trajet> listeTrajetClient = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "SELECT no_trajet, dateTrajet, ville_depart, ville_arrive, heure_depart, heure_arrive, CASE WHEN arret = true THEN 'arrêt disponible' ELSE 'pas d''arrêt' END AS 'arrêt', type_vehicule, nb_place, prix_place FROM trajet INNER JOIN voiture v on trajet.no_voiture = v.no_voiture WHERE nb_place > 0 AND dateTrajet = CURRENT_DATE AND heure_depart <= CURRENT_TIME() AND heure_arrive >= CURRENT_TIME()";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                listeTrajetClient.Add(new Trajet(
+                    r.GetInt32(0),
+                    r.GetString(1),
+                    r.GetString(2),
+                    r.GetString(3),
+                    r.GetString(4),
+                    r.GetString(5),
+                    r.GetInt32(6),
+                    r.GetInt32(7),
+                    r.GetInt32(8),
+                    r.GetInt32(9))); ;
+            }
+
+            r.Close();
+            con.Close();
+
+            return listeTrajetClient;
         }
 
         public ObservableCollection<Trajet> getTrajetsChauffeur(string valeur)

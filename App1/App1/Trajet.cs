@@ -20,16 +20,16 @@ namespace App1
         string heure_arrive;
         string arret;
         string type_vehicule;
-        double nb_place;
+        int nb_place;
         int no_voiture;
         int no_chauffeur;
-        double prix_place;
+        int prix_place;
 
         public Trajet()
         {
         }
 
-        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string arret, string type_vehicule, double nb_place, int no_voiture, int no_chauffeur, double prix_place)
+        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
         {
             this.id = id;
             this.date_depart = date_depart;
@@ -42,6 +42,7 @@ namespace App1
             this.no_chauffeur = no_chauffeur;
             this.prix_place = prix_place;
         }
+        
 
         public int Id { get => id; set => id = value; }
         public string Date_depart { get => date_depart; set => date_depart = value; }
@@ -49,10 +50,10 @@ namespace App1
         public string Heure_arrive { get => heure_arrive; set => heure_arrive = value; }
         public string Arret { get => arret; set => arret = value; }
         public string Type_vehicule { get => type_vehicule; set => type_vehicule = value; }
-        public double Nb_place { get => nb_place; set => nb_place = value; }
+        public int Nb_place { get => nb_place; set => nb_place = value; }
         public int No_voiture { get => no_voiture; set => no_voiture = value; }
         public int No_chauffeur { get => no_chauffeur; set => no_chauffeur = value; }
-        public double Prix_place { get => prix_place; set => prix_place = value; }
+        public int Prix_place { get => prix_place; set => prix_place = value; }
 
         public override string ToString()
         {

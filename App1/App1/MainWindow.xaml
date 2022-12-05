@@ -25,9 +25,10 @@
                 <NavigationViewItem Content="Page d'accueil"  Name="Accueil" Tag="Accueil" Icon="Home"/>
                 <NavigationViewItem Content="Connexion"  Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" />
+                <NavigationViewItem Content="Infos client" Name="InfoClient" Tag="InfoClient" Icon="MapDrive"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Créer un compte chauffeur" Name="CreationChauffeur" Tag="CreationChauffeur" Icon="Contact" />
-                <NavigationViewItem Content="Créer un Tajet" Name="CreationTrajet" Tag="CreationTrajet" Icon="GlobalNavigationButton" />
+                <NavigationViewItem Content="Créer un Trajet" Name="CreationTrajet" Tag="CreationTrajet" Icon="GlobalNavigationButton" />
             </NavigationView.MenuItems>
             
             <!--FRAME QUI AFFICHE LES DIFFÉRENTES PAGES-->

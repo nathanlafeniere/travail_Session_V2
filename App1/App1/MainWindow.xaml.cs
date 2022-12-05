@@ -53,6 +53,9 @@ namespace App1
                 case "CreationTrajet":
                     mainFrame.Navigate(typeof(AjoutTrajet));
                     break;
+                case "InfoClient":
+                    mainFrame.Navigate(typeof(InfoClient));
+                    break;
                 default:
                     break;
             }
