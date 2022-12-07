@@ -28,6 +28,10 @@ namespace App1
         public MainWindow()
         {
             this.InitializeComponent();
+
+            GestionBD.getInstance().Frame = mainFrame;
+            GestionBD.getInstance().Connexion = Connection;
+
             mainFrame.Navigate(typeof(Accueil));
             
             
@@ -35,11 +39,6 @@ namespace App1
         internal static string type;
         internal static int noUsager;
         internal static int reponse;
-
-
-
-
-
 
 
 

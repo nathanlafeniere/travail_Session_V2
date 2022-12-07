@@ -15,7 +15,13 @@ namespace App1
         MySqlConnection con;
         static GestionBD gestionBD = null;
 
+        Frame frame;
+        NavigationViewItem connexion;
+
         int z = 0;
+
+        public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
+        public Frame Frame { get => frame; set => frame = value; }
 
         public GestionBD()
         {

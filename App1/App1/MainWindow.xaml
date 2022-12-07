@@ -23,7 +23,7 @@
                 <!--<NavigationViewItemHeader Content="Zone 1"/>-->
                 <!--LISTE DES OPTIONS DU MENU-->
                 <NavigationViewItem Content="Page d'accueil"  Name="Accueil" Tag="Accueil" Icon="Home"/>
-                <NavigationViewItem Content="Connexion"  Name="Connection" Tag="Connection" Icon="People"/>
+                <NavigationViewItem Content="Connexion"  x:Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" Visibility="Collapsed" />
                 <NavigationViewItem Content="Infos client" Name="InfoClient" Tag="InfoClient" Icon="MapDrive" Visibility="Collapsed"/>
                 <NavigationViewItemSeparator />

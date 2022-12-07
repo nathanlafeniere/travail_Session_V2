@@ -71,6 +71,9 @@ namespace App1
                 tblAlertConnectionValide.Text = MainWindow.type;
                 tblAlertConnectionValide.Visibility = Visibility.Visible;
 
+                GestionBD.getInstance().Connexion.Visibility = Visibility.Collapsed;
+                GestionBD.getInstance().Frame.Navigate(typeof(Accueil));
+
             }
         }
 
