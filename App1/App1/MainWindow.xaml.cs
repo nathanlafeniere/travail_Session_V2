@@ -45,6 +45,20 @@ namespace App1
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
+            if (MainWindow.noUsager > 0)
+            {
+                CreationChauffeur.Visibility = Visibility.Visible;
+                CreationClient.Visibility = Visibility.Visible;
+                Connection.Visibility = Visibility.Collapsed;
+                deconnection.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                CreationChauffeur.Visibility = Visibility.Collapsed;
+                CreationClient.Visibility = Visibility.Collapsed;
+                deconnection.Visibility= Visibility.Collapsed;
+                Connection.Visibility = Visibility.Visible;
+            }
             if (type == "chauffeur")
             {
                 InfoChauf.Visibility = Visibility.Visible;
@@ -65,16 +79,7 @@ namespace App1
             {
                 InfoClient.Visibility = Visibility.Collapsed;
             }
-            if (MainWindow.noUsager > 0)
-            {
-                CreationChauffeur.Visibility = Visibility.Visible;
-                CreationClient.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                CreationChauffeur.Visibility = Visibility.Collapsed;
-                CreationClient.Visibility = Visibility.Collapsed;
-            }
+            
 
             
             var item = (NavigationViewItem)args.SelectedItem;
@@ -103,6 +108,7 @@ namespace App1
                 case "InfoChauf":
                     mainFrame.Navigate(typeof(InfoChauffeur));
                     break;
+                
                 default:
                     break;
             }
@@ -112,6 +118,11 @@ namespace App1
 
         }
 
-       
+        private void deconnection_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.reponse = 0;
+            MainWindow.type = "";
+            MainWindow.noUsager = 0;
+        }
     }
 }

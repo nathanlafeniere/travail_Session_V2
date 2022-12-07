@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using System.Text.RegularExpressions;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -126,6 +127,8 @@ namespace App1
                     telE.Text = "Le nom doit avoir un maximum de 13 lettre et le meme format que dans l'exemple";
                     telE.Visibility = Visibility.Visible;
                 }
+
+                
 
                 //
 
