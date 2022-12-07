@@ -140,6 +140,8 @@ namespace App1
             if (valide)
             {
                 GestionBD.getInstance().ajouterChauffeur(chauffeur);
+                GestionBD.getInstance().getChauffeurType(MainWindow.noUsager);
+               
                 fin.Text = "enregistrement réussi";
             }
         }

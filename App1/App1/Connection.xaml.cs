@@ -63,10 +63,12 @@ namespace App1
 
                 //APPEL À LA FONCTION
                 GestionBD.getInstance().verifierInfo(usager);
+                GestionBD.getInstance().getChauffeurType(MainWindow.noUsager);
+                GestionBD.getInstance().getClientType(MainWindow.noUsager);
 
                 //MESSAGE DE CONNECTION RÉUSSI
                 //tblAlertConnectionValide.Text = "Vous êtes connecté!";
-                tblAlertConnectionValide.Text = MainWindow.type.ToString();
+                tblAlertConnectionValide.Text = MainWindow.type;
                 tblAlertConnectionValide.Visibility = Visibility.Visible;
 
             }

@@ -94,7 +94,8 @@ namespace App1
 
                 //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD
                 GestionBD.getInstance().ajouterClient(client);
-
+              
+                GestionBD.getInstance().getClientType(MainWindow.noUsager);
                 //MESSAGE D'ENREGISTREMENT RÉUSSI
                 tblAlertValidation.Text = "Enregistrement réussi!";
                 tblAlertValidation.Visibility= Visibility.Visible;

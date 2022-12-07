@@ -32,9 +32,11 @@ namespace App1
             
             
         }
-        internal static int type;
+        internal static string type;
+        internal static int noUsager;
+        internal static int reponse;
 
-       
+
 
 
 
@@ -43,16 +45,37 @@ namespace App1
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            if (type == 1)
+            if (type == "chauffeur")
             {
                 InfoChauf.Visibility = Visibility.Visible;
                 CreationTrajet.Visibility = Visibility.Visible;
+                CreationChauffeur.Visibility = Visibility.Collapsed;
             }
             else
             {
                 InfoChauf.Visibility = Visibility.Collapsed;
                 CreationTrajet.Visibility = Visibility.Collapsed;
             }
+            if (type == "client")
+            {
+                InfoClient.Visibility = Visibility.Visible;
+                CreationClient.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                InfoClient.Visibility = Visibility.Collapsed;
+            }
+            if (MainWindow.noUsager > 0)
+            {
+                CreationChauffeur.Visibility = Visibility.Visible;
+                CreationClient.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                CreationChauffeur.Visibility = Visibility.Collapsed;
+                CreationClient.Visibility = Visibility.Collapsed;
+            }
+
             
             var item = (NavigationViewItem)args.SelectedItem;
             tblHeader.Text = item.Content.ToString();

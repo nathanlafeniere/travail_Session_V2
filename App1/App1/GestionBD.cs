@@ -232,8 +232,9 @@ namespace App1
                 commande.Parameters.AddWithValue("@email", client.Email);
                 commande.Parameters.AddWithValue("@adresse", client.Adresse);
                 commande.Parameters.AddWithValue("@telephone", client.Telephone);
+                commande.Parameters.AddWithValue("@id_user", MainWindow.noUsager);
 
-                commande.CommandText = "INSERT INTO Client (nom, prenom, email, addresse, no_telephone) VALUES(@nom, @prenom, @email, @adresse, @telephone)";
+                commande.CommandText = "INSERT INTO Client (nom, prenom, email, addresse, no_telephone, id_user) VALUES(@nom, @prenom, @email, @adresse, @telephone, @id_user)";
 
                 con.Open();
                 commande.Prepare();
@@ -276,9 +277,9 @@ namespace App1
                 commande.Parameters.AddWithValue("@telephone", m.Telephone);
                 commande.Parameters.AddWithValue("@email", m.Email);
                 commande.Parameters.AddWithValue("@no_permis", m.No_permis);
-                
+                commande.Parameters.AddWithValue("@id_user", MainWindow.noUsager);
 
-                commande.CommandText = "insert into chauffeur (nom, prenom,email , addresse,  no_telephone, no_permis) values(@nom, @prenom,@email, @adresse,  @telephone,   @no_permis) ";
+                commande.CommandText = "insert into chauffeur (nom, prenom,email , addresse,  no_telephone, no_permis, id_user) values(@nom, @prenom,@email, @adresse,  @telephone,   @no_permis, @id_user) ";
 
                     con.Open();
                     commande.Prepare();
@@ -353,7 +354,7 @@ namespace App1
                   
                         while (r.Read())
                         {
-                           MainWindow.type = r.GetInt32(0);
+                           MainWindow.noUsager = r.GetInt32(0);
                             
                         }
                                                                    
@@ -370,6 +371,63 @@ namespace App1
 
         }
 
+        // Aller chercher le type usager
+        public ObservableCollection<Trajet> getChauffeurType(int value)
+        {
+            
+            ObservableCollection <Trajet> listeTrajet = new ObservableCollection<Trajet>();
+            
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.Parameters.AddWithValue("@value", value);
+            commande.CommandText = "Select COUNT(*) FROM chauffeur WHERE id_user = @value";
+           
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                MainWindow.reponse = r.GetInt32(0);
+            }
+            if (MainWindow.reponse == 1)
+            {
+                MainWindow.type = "chauffeur";
+            }
+            MainWindow.reponse = 0;
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
+        //
+
+        public ObservableCollection<Trajet> getClientType(int value)
+        {
+        
+            ObservableCollection <Trajet> listeTrajet = new ObservableCollection<Trajet>();
+            
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "Select COUNT(*) FROM client WHERE id_user = @no;";
+            commande.Parameters.AddWithValue("@no", value);
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                MainWindow.reponse = r.GetInt32(0);
+            }
+            if (MainWindow.reponse == 1)
+            {
+                MainWindow.type = "client";
+            }
+            MainWindow.reponse = 0;
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
 
 
 
