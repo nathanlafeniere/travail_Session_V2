@@ -31,7 +31,7 @@
                 <NavigationViewItem Content="Créer un compte chauffeur" Name="CreationChauffeur" Tag="CreationChauffeur" Icon="Contact" Visibility="Collapsed" />
                 <NavigationViewItem Content="Créer un Trajet" Name="CreationTrajet" Tag="CreationTrajet" Icon="GlobalNavigationButton" Visibility="Collapsed" />
                 <NavigationViewItemSeparator />
-                
+                <NavigationViewItem Content="Se deconnecter" Name="Deconnection" Tag="Deconnection" Icon="Delete" Visibility="Collapsed" />
             </NavigationView.MenuItems>
             
             <!--FRAME QUI AFFICHE LES DIFFÉRENTES PAGES-->
@@ -39,6 +39,5 @@
             
         </NavigationView>
         
-        <Button x:Name="deconnection" Click="deconnection_Click" Visibility="Collapsed" >Se deconnecter</Button>
     </StackPanel>
 </Window>

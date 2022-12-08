@@ -17,11 +17,36 @@ namespace App1
 
         Frame frame;
         NavigationViewItem connexion;
+        NavigationViewItem accueil;
+        NavigationViewItem creationClient;
+        NavigationViewItem creationChauffeur;
+        NavigationViewItem creationTrajet;
+        NavigationViewItem infoClient;
+        NavigationViewItem infoChauf;
+        NavigationViewItem deconnection;
+
+        string type;
+        int noUsager;
+        int reponse;
 
         int z = 0;
 
+
+
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
+      
+        public NavigationViewItem Accueil { get => accueil; set => accueil = value; }
+        public NavigationViewItem CreationClient { get => creationClient; set => creationClient = value; }
+        public NavigationViewItem CreationChauffeur { get => creationChauffeur; set => creationChauffeur = value; }
+        public NavigationViewItem CreationTrajet { get => creationTrajet; set => creationTrajet = value; }
+        public NavigationViewItem InfoClient { get => infoClient; set => infoClient = value; }
+        public NavigationViewItem InfoChauf { get => infoChauf; set => infoChauf = value; }
+        public string Type { get => type; set => type = value; }
+        public int NoUsager { get => noUsager; set => noUsager = value; }
+        public int Reponse { get => reponse; set => reponse = value; }
+        public NavigationViewItem Deconnection { get => deconnection; set => deconnection = value; }
         public Frame Frame { get => frame; set => frame = value; }
+        
 
         public GestionBD()
         {
@@ -238,7 +263,7 @@ namespace App1
                 commande.Parameters.AddWithValue("@email", client.Email);
                 commande.Parameters.AddWithValue("@adresse", client.Adresse);
                 commande.Parameters.AddWithValue("@telephone", client.Telephone);
-                commande.Parameters.AddWithValue("@id_user", MainWindow.noUsager);
+                commande.Parameters.AddWithValue("@id_user", GestionBD.getInstance().NoUsager);
 
                 commande.CommandText = "INSERT INTO Client (nom, prenom, email, addresse, no_telephone, id_user) VALUES(@nom, @prenom, @email, @adresse, @telephone, @id_user)";
 
@@ -283,7 +308,7 @@ namespace App1
                 commande.Parameters.AddWithValue("@telephone", m.Telephone);
                 commande.Parameters.AddWithValue("@email", m.Email);
                 commande.Parameters.AddWithValue("@no_permis", m.No_permis);
-                commande.Parameters.AddWithValue("@id_user", MainWindow.noUsager);
+                commande.Parameters.AddWithValue("@id_user", GestionBD.getInstance().NoUsager);
 
                 commande.CommandText = "insert into chauffeur (nom, prenom,email , addresse,  no_telephone, no_permis, id_user) values(@nom, @prenom,@email, @adresse,  @telephone,   @no_permis, @id_user) ";
 
@@ -360,7 +385,7 @@ namespace App1
                   
                         while (r.Read())
                         {
-                           MainWindow.noUsager = r.GetInt32(0);
+                           GestionBD.getInstance().NoUsager = r.GetInt32(0);
                             
                         }
                                                                    
@@ -393,13 +418,13 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                MainWindow.reponse = r.GetInt32(0);
+                GestionBD.getInstance().reponse = r.GetInt32(0);
             }
-            if (MainWindow.reponse == 1)
+            if (GestionBD.getInstance().reponse == 1)
             {
-                MainWindow.type = "chauffeur";
+                GestionBD.getInstance().type = "chauffeur";
             }
-            MainWindow.reponse = 0;
+            GestionBD.getInstance().reponse = 0;
             r.Close();
             con.Close();
 
@@ -422,13 +447,13 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                MainWindow.reponse = r.GetInt32(0);
+                GestionBD.getInstance().reponse = r.GetInt32(0);
             }
-            if (MainWindow.reponse == 1)
+            if (GestionBD.getInstance().reponse == 1)
             {
-                MainWindow.type = "client";
+                GestionBD.getInstance().type = "client";
             }
-            MainWindow.reponse = 0;
+            GestionBD.getInstance().reponse = 0;
             r.Close();
             con.Close();
 

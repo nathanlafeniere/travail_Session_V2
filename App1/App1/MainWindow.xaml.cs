@@ -31,53 +31,27 @@ namespace App1
 
             GestionBD.getInstance().Frame = mainFrame;
             GestionBD.getInstance().Connexion = Connection;
+            GestionBD.getInstance().Accueil = Accueil;
+            GestionBD.getInstance().CreationClient = CreationClient;
+            GestionBD.getInstance().CreationChauffeur = CreationChauffeur;
+            GestionBD.getInstance().CreationTrajet = CreationTrajet;
+            GestionBD.getInstance().InfoClient = InfoClient;
+            GestionBD.getInstance().InfoChauf = InfoChauf;
+            GestionBD.getInstance().Deconnection = Deconnection;
 
             mainFrame.Navigate(typeof(Accueil));
             
             
         }
-        internal static string type;
-        internal static int noUsager;
-        internal static int reponse;
+        
 
 
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            if (MainWindow.noUsager > 0)
-            {
-                CreationChauffeur.Visibility = Visibility.Visible;
-                CreationClient.Visibility = Visibility.Visible;
-                Connection.Visibility = Visibility.Collapsed;
-                deconnection.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                CreationChauffeur.Visibility = Visibility.Collapsed;
-                CreationClient.Visibility = Visibility.Collapsed;
-                deconnection.Visibility= Visibility.Collapsed;
-                Connection.Visibility = Visibility.Visible;
-            }
-            if (type == "chauffeur")
-            {
-                InfoChauf.Visibility = Visibility.Visible;
-                CreationTrajet.Visibility = Visibility.Visible;
-                CreationChauffeur.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                InfoChauf.Visibility = Visibility.Collapsed;
-                CreationTrajet.Visibility = Visibility.Collapsed;
-            }
-            if (type == "client")
-            {
-                InfoClient.Visibility = Visibility.Visible;
-                CreationClient.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                InfoClient.Visibility = Visibility.Collapsed;
-            }
+            
+           
+            
             
 
             
@@ -107,7 +81,19 @@ namespace App1
                 case "InfoChauf":
                     mainFrame.Navigate(typeof(InfoChauffeur));
                     break;
-                
+                case "Deconnection":
+                    GestionBD.getInstance().Reponse = 0;
+                    GestionBD.getInstance().Type = "";
+                    GestionBD.getInstance().NoUsager = 0;
+
+                    GestionBD.getInstance().CreationChauffeur.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().CreationClient.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().Deconnection.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().Connexion.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().InfoChauf.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().CreationTrajet.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().InfoClient.Visibility = Visibility.Collapsed;
+                    break;
                 default:
                     break;
             }
@@ -117,11 +103,6 @@ namespace App1
 
         }
 
-        private void deconnection_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.reponse = 0;
-            MainWindow.type = "";
-            MainWindow.noUsager = 0;
-        }
+      
     }
 }
