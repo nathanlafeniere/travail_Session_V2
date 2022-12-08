@@ -41,7 +41,7 @@ namespace App1
             int no_trajet;
             no_trajet = t.Id;
 
-            tbltest.Text = lvTrajetClient.SelectedItem.ToString().Substring(0,1);
+            tbltest.Text = lvTrajetClient.SelectedItem.ToString().Substring(0,2);
 
         }
     }
