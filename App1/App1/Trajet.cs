@@ -25,9 +25,15 @@ namespace App1
         int no_chauffeur;
         int prix_place;
 
-        
-
         public Trajet()
+        {
+
+        }
+        public Trajet(Trajet trajet)
+        {
+        }
+
+        public Trajet(string v)
         {
         }
 

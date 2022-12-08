@@ -26,6 +26,7 @@
                 <NavigationViewItem Content="Connexion"  Name="Connection" Tag="Connection" Icon="People"/>
                 <NavigationViewItem Content="Créer un compte client" Name="CreationClient" Tag="CreationClient" Icon="Add" Visibility="Collapsed" />
                 <NavigationViewItem Content="Infos client" Name="InfoClient" Tag="InfoClient" Icon="MapDrive" Visibility="Collapsed"/>
+                <NavigationViewItem Content="Infos admin" Name="InfoAdmin" Tag="InfoAdmin" Icon="People" Visibility="Visible"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Infos chauffeur" Name="InfoChauf" Tag="InfoChauf" Icon="Italic" Visibility="Collapsed"/>
                 <NavigationViewItem Content="Créer un compte chauffeur" Name="CreationChauffeur" Tag="CreationChauffeur" Icon="Contact" Visibility="Collapsed" />

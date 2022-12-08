@@ -24,25 +24,30 @@ namespace App1
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class InfoClient : Page
+    public sealed partial class InfoAdmin : Page
     {
-        public InfoClient()
+        public InfoAdmin()
         {
             this.InitializeComponent();
-            lvTrajetClient.ItemsSource = GestionBD.getInstance().getTrajetClient();  
-            
+            lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetEnCour();
         }
 
-        private void btEmbarquer_Click(object sender, RoutedEventArgs e)
+        private void btRecherche_Click(object sender, RoutedEventArgs e)
         {
 
-            Trajet t = new Trajet(lvTrajetClient.SelectedItem.ToString().Substring(0,1));
+        }
 
-            int no_trajet;
-            no_trajet = t.Id;
+        private void btAjoutVille_Click(object sender, RoutedEventArgs e)
+        {
+            Ville v = new Ville();
+            {
+                v.Nom = tbxAjoutVille.Text;
+            }
 
-            tbltest.Text = lvTrajetClient.SelectedItem.ToString().Substring(0,1);
+            GestionBD.getInstance().ajouterVille(v);
 
+            tblAlertEnr.Text = "Enregistrement réussi!";
+            tblAlertEnr.Visibility = Visibility.Visible;
         }
     }
 }

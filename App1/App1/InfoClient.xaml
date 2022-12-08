@@ -20,5 +20,6 @@
         
         <!--BOUTON POUR EMBARQUER-->
         <Button x:Name="btEmbarquer" Content="Embarquer" Click="btEmbarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,50"></Button>
+        <TextBlock x:Name="tbltest"/>
     </StackPanel>
 </Page>

@@ -108,7 +108,9 @@ namespace App1
                 case "InfoChauf":
                     mainFrame.Navigate(typeof(InfoChauffeur));
                     break;
-                
+                case "InfoAdmin":
+                    mainFrame.Navigate(typeof(InfoAdmin));
+                    break;
                 default:
                     break;
             }
