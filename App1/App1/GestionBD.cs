@@ -134,7 +134,7 @@ namespace App1
         }
 
         //FONCTION POUR AFFICHER LES TRAJETS EN COURS AVEC LE NOMBRE DE PLACE > 0
-        //LES FORMATS ??? CEUX DE DATAGRIP OU CLASSE TRAJET ??? POUR LA POSITION 7 (TYPE VÉHICULE)
+
         public ObservableCollection<Trajet> getTrajetClient()
         {
             ObservableCollection<Trajet> listeTrajetClient = new ObservableCollection<Trajet>();
@@ -281,6 +281,35 @@ namespace App1
             }
         }
 
+        //FONCTION POUR AJOUTER UNE VILLE DANS LA BD
+
+        public void ajouterVille(Ville v)
+        {
+            int retour;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@nom", v.Nom);
+
+                commande.CommandText = "INSERT INTO Ville (nom) VALUE(@nom)";
+
+                con.Open();
+                commande.Prepare();
+
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+            catch(MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
         
         /*
          * Creation de compte chauffeur
