@@ -36,20 +36,16 @@ namespace App1
 
         private void btEmbarquer_Click(object sender, RoutedEventArgs e)
         {
-            int id;
+            
             string test;
             test = lvTrajetClient.SelectedItem.ToString();
 
-            Trajet t = new Trajet(lvTrajetClient.SelectedItem.ToString().Substring(0,1));
 
-            int no_trajet;
-            no_trajet = t.Id;
-
-            tbltest.Text = lvTrajetClient.SelectedItem.ToString().Substring(0,2);
+            GestionBD.getInstance().getNoTrajet(test);
 
             //test = ;
             //id = Convert.ToInt32(test);
-            name2.Text = test;
+            tbltest.Text = GestionBD.getInstance().NoTrajet.ToString();
         }
     }
 }

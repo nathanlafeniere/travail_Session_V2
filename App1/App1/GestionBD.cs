@@ -28,6 +28,7 @@ namespace App1
         string type;
         int noUsager;
         int reponse;
+        int noTrajet;
 
         int z = 0;
 
@@ -45,6 +46,7 @@ namespace App1
         public int NoUsager { get => noUsager; set => noUsager = value; }
         public int Reponse { get => reponse; set => reponse = value; }
         public NavigationViewItem Deconnection { get => deconnection; set => deconnection = value; }
+        public int NoTrajet { get => noTrajet; set => noTrajet = value; }
         public Frame Frame { get => frame; set => frame = value; }
         
 
@@ -490,6 +492,48 @@ namespace App1
         }
 
 
+        public void getNoTrajet(string u)
+        {
+            
+            try
+            {
+                int retour = 0;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@nom", u);
+
+
+                commande.CommandText = "SELECT f_noTrajet(@nom)";
+
+                con.Open();
+                commande.Prepare();
+                MySqlDataReader r = commande.ExecuteReader();
+
+
+                while (r.Read())
+                {
+                    GestionBD.getInstance().NoTrajet = r.GetInt32(0);
+
+                }
+
+
+
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+        }
+
+
 
     }
+
+   
 }
