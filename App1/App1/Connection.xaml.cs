@@ -63,13 +63,52 @@ namespace App1
 
                 //APPEL À LA FONCTION
                 GestionBD.getInstance().verifierInfo(usager);
-                GestionBD.getInstance().getChauffeurType(MainWindow.noUsager);
-                GestionBD.getInstance().getClientType(MainWindow.noUsager);
+                GestionBD.getInstance().getChauffeurType(GestionBD.getInstance().NoUsager);
+                GestionBD.getInstance().getClientType(GestionBD.getInstance().NoUsager);
 
                 //MESSAGE DE CONNECTION RÉUSSI
                 //tblAlertConnectionValide.Text = "Vous êtes connecté!";
-                tblAlertConnectionValide.Text = MainWindow.type;
+                tblAlertConnectionValide.Text = GestionBD.getInstance().Type;
                 tblAlertConnectionValide.Visibility = Visibility.Visible;
+
+                if (GestionBD.getInstance().NoUsager > 0)
+                {
+                GestionBD.getInstance().Connexion.Visibility = Visibility.Collapsed;
+                GestionBD.getInstance().CreationChauffeur.Visibility = Visibility.Visible;
+                GestionBD.getInstance().CreationClient.Visibility = Visibility.Visible;
+                GestionBD.getInstance().Deconnection.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    GestionBD.getInstance().CreationChauffeur.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().CreationClient.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().Deconnection.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().Connexion.Visibility = Visibility.Visible;
+                }
+                if (GestionBD.getInstance().Type == "chauffeur")
+                {
+                    GestionBD.getInstance().InfoChauf.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().CreationTrajet.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().CreationChauffeur.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    GestionBD.getInstance().InfoChauf.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().CreationTrajet.Visibility = Visibility.Collapsed;
+                }
+                if (GestionBD.getInstance().Type == "client")
+                {
+                    GestionBD.getInstance().InfoClient.Visibility = Visibility.Visible;
+                    GestionBD.getInstance().CreationClient.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    GestionBD.getInstance().InfoClient.Visibility = Visibility.Collapsed;
+                }
+
+
+
+                GestionBD.getInstance().Frame.Navigate(typeof(Accueil));
 
             }
         }
