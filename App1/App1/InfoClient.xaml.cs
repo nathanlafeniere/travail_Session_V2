@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -35,6 +36,9 @@ namespace App1
 
         private void btEmbarquer_Click(object sender, RoutedEventArgs e)
         {
+            int id;
+            string test;
+            test = lvTrajetClient.SelectedItem.ToString();
 
             Trajet t = new Trajet(lvTrajetClient.SelectedItem.ToString().Substring(0,1));
 
@@ -43,6 +47,9 @@ namespace App1
 
             tbltest.Text = lvTrajetClient.SelectedItem.ToString().Substring(0,2);
 
+            //test = ;
+            //id = Convert.ToInt32(test);
+            name2.Text = test;
         }
     }
 }
