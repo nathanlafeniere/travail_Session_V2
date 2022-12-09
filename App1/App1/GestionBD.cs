@@ -493,6 +493,33 @@ namespace App1
             return listeTrajet;
         }
 
+        public ObservableCollection<Trajet> getAdminType(int value)
+        {
+
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "Select COUNT(*) FROM admin WHERE no_admin = @no;";
+            commande.Parameters.AddWithValue("@no", value);
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                GestionBD.getInstance().reponse = r.GetInt32(0);
+            }
+            if (GestionBD.getInstance().reponse == 1)
+            {
+                GestionBD.getInstance().type = "admin";
+            }
+            GestionBD.getInstance().reponse = 0;
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
 
         public void getNoTrajet(string u)
         {
