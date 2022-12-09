@@ -24,6 +24,7 @@ namespace App1
         NavigationViewItem infoClient;
         NavigationViewItem infoChauf;
         NavigationViewItem deconnection;
+        NavigationViewItem infoAdmin;
 
         string type;
         int noUsager;
@@ -47,6 +48,7 @@ namespace App1
         public int Reponse { get => reponse; set => reponse = value; }
         public NavigationViewItem Deconnection { get => deconnection; set => deconnection = value; }
         public int NoTrajet { get => noTrajet; set => noTrajet = value; }
+        public NavigationViewItem InfoAdmin { get => infoAdmin; set => infoAdmin = value; }
         public Frame Frame { get => frame; set => frame = value; }
         
 
