@@ -35,36 +35,57 @@ namespace App1
 
         private void btRecherche_Click(object sender, RoutedEventArgs e)
         {
-            Boolean validation;
-            Boolean validation2;
+            Boolean validation = true;
+            string dateDebut;
+            string dateFin;
             DateTime dt;
 
-            validation = DateTime.TryParseExact(tbxDebut.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
-            validation2 = DateTime.TryParseExact(tbxFin.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+            dateDebut = tbxDebut.Text;
+            dateFin = tbxFin.Text;
 
             try
             {
-                if (validation == false)
+                if (dateDebut == "")
                 {
+                    validation = false;
                     tblAlertDebut.Text = "Vous devez entrer une date de début";
                     tblAlertDebut.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    tblAlertDebut.Visibility = Visibility.Collapsed;
-                    
+                    tblAlertDebut.Visibility = Visibility.Collapsed;                    
                 }
 
-                //APPEL DE LA FONCTION DANS LE GESTION BD
+                if (dateFin ==  "")
+                {
+                    validation = false;
+                    tblAlertFin.Text = "Vous devez entrer une date de fin";
+                    tblAlertFin.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tblAlertFin.Visibility = Visibility.Collapsed;
+                }
 
-                lvTrajet.ItemsSource = GestionBD.getInstance();
+                if(validation)
+                {
+                    tblAlertDebut.Visibility = Visibility.Collapsed;
+                    tblAlertFin.Visibility = Visibility.Collapsed;
+
+                    //APPEL DE LA FONCTION DANS LE GESTION BD
+
+                    lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetIntervalle(dateDebut, dateFin);
+
+
+                }
+                
 
             }
             catch (FormatException ex)
             {
 
-                tblAlertDate.Text = "Vous devez entrer une date valide";
-                tblAlertDate.Visibility = Visibility.Visible;
+                tblAlertDebut.Text = "Vous devez entrer une date valide";
+                tblAlertDebut.Visibility = Visibility.Visible;
             }
         }
 
