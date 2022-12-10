@@ -9,6 +9,7 @@ using Google.Protobuf.WellKnownTypes;
 using Microsoft.UI.Xaml.Controls;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.X509;
+using Windows.System;
 
 namespace App1
 {
@@ -34,7 +35,7 @@ namespace App1
         int noTrajet;
         int numTrajetD;
         int z = 0;
-
+        int no_chauffeur;
 
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
@@ -93,15 +94,39 @@ namespace App1
                     r.GetString(3),
                     r.GetString(4),
                     r.GetString(5),
-                    r.GetInt32(6),
-                    r.GetInt32(7),
+                    r.GetString(6),
+                    r.GetString(7),
                     r.GetInt32(8),
-                    r.GetInt32(9)));
+                    r.GetInt32(9),
+                    r.GetInt32(10),
+                    r.GetInt32(11)));
             }
             r.Close();
             con.Close();
 
             return listeTrajet;
+        }
+        // Get ville
+        public ObservableCollection<Ville> getVille()
+        {
+            ObservableCollection<Ville> listeVille = new ObservableCollection<Ville>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "SELECT nom FROM Ville";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                listeVille.Add(new Ville(r.GetString(0)
+                    ));
+            }
+            r.Close();
+            con.Close();
+
+            return listeVille;
         }
 
         /*
@@ -114,7 +139,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,\r\n       CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , t.ville_depart, t.ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
 
             con.Open();
 
@@ -127,10 +152,12 @@ namespace App1
                     r.GetString(3),
                     r.GetString(4),
                     r.GetString(5),
-                    r.GetInt32(6),
-                    r.GetInt32(7),
+                    r.GetString(6),
+                    r.GetString(7),
                     r.GetInt32(8),
-                    r.GetInt32(9)));;
+                    r.GetInt32(9),
+                    r.GetInt32(10),
+                    r.GetInt32(11)));;
             }
 
             r.Close();
@@ -219,18 +246,28 @@ namespace App1
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
 
-
+                string arret = t.Arret;
 
                 commande.Parameters.AddWithValue("@date", t.Date_depart);
                 commande.Parameters.AddWithValue("@Heure_depart", t.Heure_depart);
                 commande.Parameters.AddWithValue("@Heure_arrive", t.Heure_arrive);
-                commande.Parameters.AddWithValue("@arret", t.Arret);
+                commande.Parameters.AddWithValue("@villeD", t.Ville_depart);
+                commande.Parameters.AddWithValue("@villeA", t.Ville_arrive);
+                if (arret == "oui")
+                {
+                    commande.Parameters.AddWithValue("@arret", true);
+                }
+                if (arret == "non")
+                {
+                    commande.Parameters.AddWithValue("@arret", false);
+                }
                 commande.Parameters.AddWithValue("@Type_vehicule", t.Type_vehicule);
                 commande.Parameters.AddWithValue("@nb_place", t.Nb_place);
                 commande.Parameters.AddWithValue("@Prix_place", t.Prix_place);
+                GestionBD.getInstance().getChauffeurId();
+                commande.Parameters.AddWithValue("@no_chauffeur", GestionBD.getInstance().no_chauffeur);
 
-
-                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive, arret, type_vehicule, nb_place, prix_place) values(@date, @Heure_depart,@Heure_arrive, @arret,  @Type_vehicule,   @nb_place, @Prix_place ) ";
+                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive,ville_depart,ville_arrive, arret, type_vehicule, no_chauffeur , nb_place, prix_place) values(@date, @Heure_depart,@Heure_arrive,@villeD, @villeA ,@arret,  @Type_vehicule, @no_chauffeur  ,@nb_place, @Prix_place ) ";
 
                 con.Open();
                 commande.Prepare();
@@ -568,6 +605,31 @@ namespace App1
             r.Close();
             con.Close();
 
+            return listeTrajet;
+        }
+
+        // id_chauffeur
+        public ObservableCollection<User> getChauffeurId()
+        {
+
+            ObservableCollection<User> listeTrajet = new ObservableCollection<User>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.Parameters.AddWithValue("@value", GestionBD.getInstance().NoUsager);
+            commande.CommandText = "Select no_chauffeur FROM chauffeur WHERE id_user = @value";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                GestionBD.getInstance().no_chauffeur = r.GetInt32(0);
+            }
+            
+           
+            r.Close();
+            con.Close();
             return listeTrajet;
         }
 

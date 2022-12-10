@@ -28,7 +28,7 @@ namespace App1
 
         public override string ToString()
         {
-            return no_ville + " " + nom;
+            return nom;
         }
     }
 }

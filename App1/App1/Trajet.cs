@@ -18,13 +18,15 @@ namespace App1
         string date_depart;
         string heure_depart;
         string heure_arrive;
+        string ville_depart;
+        string ville_arrive;
         string arret;
         string type_vehicule;
         int nb_place;
         int no_voiture;
         int no_chauffeur;
         int prix_place;
-
+     
         public Trajet()
         {
 
@@ -35,6 +37,15 @@ namespace App1
 
         public Trajet(string v)
         {
+        }
+
+        public Trajet(string v, string v1, string v2, string v3, string v4)
+        {
+            this.date_depart = v;
+            this.heure_depart = v1;
+            this.heure_arrive = v2;
+            this.ville_depart = v3;
+            this.ville_arrive = v4;
         }
 
         public Trajet(int v1, string v2, string v3, string v4, string v5, int v6, int v7, int v9 ,int v11)
@@ -52,12 +63,18 @@ namespace App1
             this.prix_place = v11;
         }
 
-        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
+        public Trajet(int v1, string v2, string v3, string v4, string v5, string v6, int v7, int v8, int v9, int v10)
+        {
+        }
+
+        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string ville_depart, string ville_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
         {
             this.id = id;
             this.date_depart = date_depart;
             this.heure_depart = heure_depart;
             this.heure_arrive = heure_arrive;
+            this.ville_depart = ville_depart;
+            this.ville_arrive = ville_arrive;
             this.arret = arret;
             this.type_vehicule = type_vehicule;
             this.nb_place = nb_place;
@@ -65,8 +82,6 @@ namespace App1
             this.no_chauffeur = no_chauffeur;
             this.prix_place = prix_place;
         }
-
-      
 
         public int Id { get => id; set => id = value; }
         public string Date_depart { get => date_depart; set => date_depart = value; }
@@ -78,11 +93,19 @@ namespace App1
         public int No_voiture { get => no_voiture; set => no_voiture = value; }
         public int No_chauffeur { get => no_chauffeur; set => no_chauffeur = value; }
         public int Prix_place { get => prix_place; set => prix_place = value; }
+        public string Ville_depart { get => ville_depart; set => ville_depart = value; }
+        public string Ville_arrive { get => ville_arrive; set => ville_arrive = value; }
 
         public override string ToString()
         {
             // modifier plus tard
-            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + arret + " " + type_vehicule + " " + nb_place + " " + no_voiture + " " + no_chauffeur + " " + prix_place;
+            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + ville_depart + " " + ville_arrive +" " + arret + " " + type_vehicule + " " + nb_place + " " + no_voiture + " " + no_chauffeur + " " + prix_place;
+        }
+
+        public string ToStringTrajet()
+        {
+            // modifier plus tard
+            return date_depart + " " + heure_depart + " " + heure_arrive + " " + ville_depart + " " + ville_arrive + " " + arret;
         }
     }
 }
