@@ -105,6 +105,15 @@ namespace App1
                 {
                     GestionBD.getInstance().InfoClient.Visibility = Visibility.Collapsed;
                 }
+                if (GestionBD.getInstance().Type == "admin")
+                {
+                    GestionBD.getInstance().InfoAdmin.Visibility = Visibility.Visible;
+                    
+                }
+                else
+                {
+                    GestionBD.getInstance().InfoAdmin.Visibility = Visibility.Collapsed;
+                }
 
 
 

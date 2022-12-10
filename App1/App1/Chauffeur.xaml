@@ -14,22 +14,22 @@
     <StackPanel >
         <StackPanel x:Name="conn" Visibility="Visible">
              <TextBox x:Name="nom" Header="Nom:"/>
-        <TextBox x:Name="nomE" Text="Erreur avec le nom" Visibility="Collapsed"/>
+        <TextBlock x:Name="nomE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="prenom" Header="Prenom:"/>
-        <TextBox x:Name="prenomE" Text="Erreur avec le nom" Visibility="Collapsed"/>
+        <TextBlock x:Name="prenomE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="Adresse" Header="Adresse:"/>
-        <TextBox x:Name="AdresseE" Text="Erreur avec le nom" Visibility="Collapsed"/>
+            <TextBlock x:Name="AdresseE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="Telephone" Header="Téléphone: Exemple: (891)266-6543" />
-        <TextBox x:Name="telE" Text="Erreur avec le nom" Visibility="Collapsed"/>
+            <TextBlock x:Name="telE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="email" Header="Email:"/>
-        <TextBox x:Name="emailE" Text="Erreur avec le nom" Visibility="Collapsed"/>
+            <TextBlock x:Name="emailE" Text="Erreur avec le nom" Visibility="Collapsed"/>
 
         <TextBox x:Name="no_permis" Header="Permis:"/>
-        <TextBox x:Name="permisE" Text="Erreur avec le nom" Visibility="Collapsed"/>
+            <TextBlock x:Name="permisE" Text="Erreur avec le Le permis" Visibility="Collapsed"/>
 
         <Button x:Name="Ajouter" Click="Ajouter_Click">Confirmer les informations</Button>
 

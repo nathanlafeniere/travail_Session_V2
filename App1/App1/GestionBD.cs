@@ -24,6 +24,7 @@ namespace App1
         NavigationViewItem infoClient;
         NavigationViewItem infoChauf;
         NavigationViewItem deconnection;
+        NavigationViewItem infoAdmin;
 
         string type;
         int noUsager;
@@ -47,6 +48,7 @@ namespace App1
         public int Reponse { get => reponse; set => reponse = value; }
         public NavigationViewItem Deconnection { get => deconnection; set => deconnection = value; }
         public int NoTrajet { get => noTrajet; set => noTrajet = value; }
+        public NavigationViewItem InfoAdmin { get => infoAdmin; set => infoAdmin = value; }
         public Frame Frame { get => frame; set => frame = value; }
         
 
@@ -541,6 +543,33 @@ namespace App1
             if (GestionBD.getInstance().reponse == 1)
             {
                 GestionBD.getInstance().type = "client";
+            }
+            GestionBD.getInstance().reponse = 0;
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
+        public ObservableCollection<Trajet> getAdminType(int value)
+        {
+
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.CommandText = "Select COUNT(*) FROM admin WHERE no_admin = @no;";
+            commande.Parameters.AddWithValue("@no", value);
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                GestionBD.getInstance().reponse = r.GetInt32(0);
+            }
+            if (GestionBD.getInstance().reponse == 1)
+            {
+                GestionBD.getInstance().type = "admin";
             }
             GestionBD.getInstance().reponse = 0;
             r.Close();
