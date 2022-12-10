@@ -18,22 +18,23 @@
             <DatePicker Header="Date:" x:Name="tbxDateTrajet"></DatePicker>
             <TextBlock x:Name="tbxDateTrajetE" Text="" Visibility="Collapsed"/>
             <!--HeureDepart-->
-            <TextBox x:Name="tbxHeureDepart" Header="Ajouter l'heure de depart" />
+            <TimePicker x:Name="tbxHeureDepart" Header="Ajouter l'heure de depart" />
             <TextBlock x:Name="tbxHeureDepartE" Text="" Visibility="Collapsed"/>
             <!--heureArriver-->
-            <TextBox x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
+            <TimePicker x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
             <TextBlock x:Name="tbxHeureArriverE" Text="" Visibility="Collapsed"/>
             <!--Ville de depart-->
             <ComboBox>
-                
+                <ListView x:Name="lvVille" />
             </ComboBox>
             <!--ville d'arriver-->
             <ComboBox>
-                
+                <ListView x:Name="lvVille2"/>
             </ComboBox>
             <!--arret-->
             <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet">
-                
+                <x:String>oui</x:String>
+                <x:String>non</x:String>
             </ComboBox>
             
             <TextBlock x:Name="tbxArretE" Text="" Visibility="Collapsed"/>

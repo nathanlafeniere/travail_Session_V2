@@ -26,6 +26,8 @@ namespace App1
         public AjoutTrajet()
         {
             this.InitializeComponent();
+            lvVille.ItemsSource = GestionBD.getInstance().getVille();
+            lvVille2.ItemsSource = GestionBD.getInstance().getVille();
         }
 
         private void nb_ajout_Click(object sender, RoutedEventArgs e)
@@ -39,14 +41,14 @@ namespace App1
                 tbxDateTrajetE.Visibility = Visibility.Visible;
             }
 
-            if (tbxHeureDepart.Text == "")
+            if (tbxHeureDepart.ToString() == "")
             {
                 validation = false;
                 tbxHeureDepartE.Text = "Vous devez entrer un heure";
                 tbxHeureDepartE.Visibility = Visibility.Visible;
             }
 
-            if (tbxHeureArriver.Text == "")
+            if (tbxHeureArriver.ToString() == "")
             {
                 validation = false;
                 tbxHeureArriverE.Text = "Vous devez entrer un heure!";
@@ -101,8 +103,11 @@ namespace App1
                 Trajet trajet = new Trajet();
                 {
                     trajet.Date_depart = tbxDateTrajet.Date.Date.ToString("yyyy-MM-dd");
-                    trajet.Heure_depart = tbxHeureDepart.Text;
-                    trajet.Heure_arrive = tbxHeureArriver.Text;
+                    trajet.Heure_depart = tbxHeureDepart.Time.ToString();
+                    trajet.Heure_arrive = tbxHeureArriver.Time.ToString();
+                    trajet.Ville_depart = lvVille.SelectedItem.ToString();
+                    trajet.Ville_arrive= lvVille2.SelectedItem.ToString();
+                    trajet.Arret = tbxArret.SelectedItem.ToString();
                     trajet.Type_vehicule = tbxTypeVehicule.Text;
                     trajet.Nb_place = (int)tbxNbPlace.Value;
                     trajet.Prix_place = (int)tbxPrixPlace.Value;
