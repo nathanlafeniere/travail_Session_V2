@@ -312,6 +312,64 @@ namespace App1
                     con.Close();
             }
         }
+
+        //FONCTION POUR RÉDUIRE LE NOMBRE DE PLACE DANS UN TRAJET
+
+        public void reduireNbPlace(int i)
+        {
+            int retour;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@id_trajet", i);
+
+                commande.CommandText = "UPDATE Trajet SET nb_place= nb_place -1 WHERE no_trajet = @id_trajet";
+
+                con.Open();
+                commande.Prepare();
+
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch(MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+        //FONCTION POUR AUGMENTER LE NOMBRE DE PLACE DISPONIBLE POUR UN TRAJET
+
+        public void augmenterNbPlace(int i)
+        {
+            int retour;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@id_trajet", i);
+
+                commande.CommandText = "UPDATE Trajet SET nb_place= nb_place +1 WHERE no_trajet = @id_trajet";
+
+                con.Open();
+                commande.Prepare();
+
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch(MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
         
         /*
          * Creation de compte chauffeur

@@ -19,9 +19,11 @@
         <ListView x:Name="lvTrajetClient" HorizontalAlignment="Center" Header="Sélectionnez un trajet:" Margin="0,0,0,30"></ListView>
         
         <!--BOUTON POUR EMBARQUER-->
-        <Button x:Name="btEmbarquer" Content="Embarquer" Click="btEmbarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,50"></Button>
+        <Button x:Name="btEmbarquer" IsEnabled="True" Content="Embarquer" Click="btEmbarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
+        <TextBlock x:Name="tblAlertEmb" Foreground="green" Visibility="Collapsed" Text="Vous avez embarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
 
-       
-        <TextBlock x:Name="tbltest"/>
+        <!--BOUTON POUR DÉBARQUER-->
+        <Button x:Name="btDebarquer" IsEnabled="False" Content="Debarquer" Click="btDebarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
+        <TextBlock x:Name="tblAlertDebarquer" Foreground="green" Visibility="Collapsed" Text="Vous avez débarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
     </StackPanel>
 </Page>

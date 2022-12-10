@@ -34,6 +34,7 @@ namespace App1
             
         }
 
+        //BOUTON QUI PERMET D'EMBARQUER DANS UN TRAJET ET RÉDUIRE DE 1 LE NOMBRE DE PLACE DE CE TRAJET
         private void btEmbarquer_Click(object sender, RoutedEventArgs e)
         {
             
@@ -42,10 +43,43 @@ namespace App1
 
 
             GestionBD.getInstance().getNoTrajet(test);
+           
 
-            //test = ;
-            //id = Convert.ToInt32(test);
-            tbltest.Text = GestionBD.getInstance().NoTrajet.ToString();
+            int id_trajet = GestionBD.getInstance().NoTrajet;
+
+            GestionBD.getInstance().reduireNbPlace(id_trajet);
+
+            tblAlertEmb.Visibility= Visibility.Visible;
+
+            //RENDRE LE BOUTON DISABLE 
+
+            btEmbarquer.IsEnabled = false;
         }
+
+        //BOUTON QUI PERMET DE DÉBARQUER D'UN TRAJET ET D'AUGMENTER DE 1 LE NOMBRE DE PLACE DE CE TRAJET
+        private void btDebarquer_Click(object sender, RoutedEventArgs e)
+        {
+            //DÉCLARATION DE MES VARIABLES
+            int numTrajet;
+            int numUsager;
+
+            //RENDRE LE BOUTON ENABLED
+
+            if(btEmbarquer.IsEnabled == false)
+            {
+                btDebarquer.IsEnabled = true;
+            }
+
+            //FONCTION DOIT LINK LE NO_TRAJET ET LE ID_USER
+            //S'ASSURER QUE LE CLIENT NE PEUT PAS DÉBARQUER D'UN AUTRE TRAJET
+
+            numTrajet = GestionBD.getInstance().NoTrajet;
+            numUsager = GestionBD.getInstance().NoUsager;
+
+            tblAlertDebarquer.Text = numTrajet + " " + numUsager;
+        }
+
+        
+
     }
 }
