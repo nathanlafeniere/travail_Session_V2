@@ -31,40 +31,49 @@ namespace App1
         {            
             this.InitializeComponent();                        
             lvTrajetClient.ItemsSource = GestionBD.getInstance().getTrajetClient();              
-        }
-
-        
+        }        
 
         //BOUTON QUI PERMET D'EMBARQUER DANS UN TRAJET ET RÉDUIRE DE 1 LE NOMBRE DE PLACE DE CE TRAJET
         private void btEmbarquer_Click(object sender, RoutedEventArgs e)
         {
+            string test;
+            tblMessage.Visibility = Visibility.Collapsed;
 
             if (GestionBD.getInstance().NumTrajetD == 0)
             {
                 btEmbarquer.Visibility = Visibility.Visible;
                 btDebarquer.Visibility = Visibility.Collapsed;                
 
-                string test;
-                test = lvTrajetClient.SelectedItem.ToString();
+                try
+                {
+                 test = lvTrajetClient.SelectedItem.ToString();                          
+
+                    GestionBD.getInstance().getNoTrajet(test);
 
 
-                GestionBD.getInstance().getNoTrajet(test);
+                    int id_trajet = GestionBD.getInstance().NoTrajet;
 
+                    GestionBD.getInstance().reduireNbPlace(id_trajet);
 
-                int id_trajet = GestionBD.getInstance().NoTrajet;
+                    tblAlertEmb.Visibility = Visibility.Visible;
+                    tblAlertDebarquer.Visibility = Visibility.Collapsed;
 
-                GestionBD.getInstance().reduireNbPlace(id_trajet);
-
-                tblAlertEmb.Visibility = Visibility.Visible;
-                tblAlertDebarquer.Visibility = Visibility.Collapsed;
-
-                btDebarquer.Visibility = Visibility.Visible;
-                btEmbarquer.Visibility = Visibility.Collapsed;
+                    btDebarquer.Visibility = Visibility.Visible;
+                    btEmbarquer.Visibility = Visibility.Collapsed;
+                }
+                catch(NullReferenceException ex)
+                {
+                    tblMessage.Text = "Vous devez faire une sélection dans la liste des trajets!";
+                    tblMessage.Visibility = Visibility.Visible;
+                }
+                
             }
             else
             {
-                tblMessage.Text = "Vous devez sélectionner un trajet";
+                tblMessage.Text = "Vous êtes déja dans un trajet. Vous devez debarquer pour en sélectionner un autre!";
                 tblMessage.Visibility = Visibility.Visible;
+                btEmbarquer.Visibility = Visibility.Collapsed;
+                btDebarquer.Visibility = Visibility.Visible;
             }
             
         }
@@ -72,6 +81,7 @@ namespace App1
         //BOUTON QUI PERMET DE DÉBARQUER D'UN TRAJET ET D'AUGMENTER DE 1 LE NOMBRE DE PLACE DE CE TRAJET
         private void btDebarquer_Click(object sender, RoutedEventArgs e)
         {
+            tblMessage.Visibility = Visibility.Collapsed;
 
             if (GestionBD.getInstance().NumTrajetD > 0)
             {
@@ -101,8 +111,11 @@ namespace App1
             }
             else
             {
-                tblMessage.Text = "Vous devez embarquer dans un trajet pour pouvoir débarquer U Dipshit !!!";
+                tblMessage.Text = "Vous devez embarquer dans un trajet pour pouvoir débarquer!";
                 tblMessage.Visibility = Visibility.Visible;
+                btEmbarquer.Visibility = Visibility.Visible;
+                btDebarquer.Visibility = Visibility.Collapsed;
+
             }
 
         }

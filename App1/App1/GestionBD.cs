@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.UI.Xaml.Controls;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.X509;
@@ -412,6 +414,49 @@ namespace App1
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
+        }
+
+        //FONCTION DE RECHERCHE ( INTERVALLE ENTRE DATE DÉBUT ET DATE FIN )
+
+        public ObservableCollection<Trajet> getTrajetIntervalle(string dateDebut, string dateArrivee)
+        {
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
+
+            listeTrajet.Clear();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+
+            commande.Parameters.AddWithValue("@dateDebut", dateDebut);
+            commande.Parameters.AddWithValue("@dateFin", dateArrivee);
+
+            commande.CommandText = "SELECT * FROM Trajet WHERE dateTrajet BETWEEN @dateDebut AND @dateFin";
+            
+
+            con.Open();
+            commande.Prepare();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+
+                listeTrajet.Add(new Trajet(
+                    r.GetInt32(0),
+                    r.GetString(1),
+                    r.GetString(2),
+                    r.GetString(3),
+                    r.GetString(4),
+                    r.GetString(5),
+                    r.GetInt32(6),
+                    r.GetInt32(7),
+                    r.GetInt32(8),
+                    r.GetInt32(9))); ;
+            }
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
         }
         
         /*

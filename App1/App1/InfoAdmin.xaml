@@ -29,10 +29,10 @@
         <!--RECHERCHE AVEC UN FILTRE AVEC UNE DATE DÉPART ET DATE ARRIVÉE-->
         <TextBlock x:Name="tblRecherche" Text="Faire une recherche pour une période" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
 
-        <DatePicker x:Name="dpDebut" Header="Choisir une date de début" HorizontalAlignment="Center" Margin="0,0,0,30"></DatePicker>
+        <TextBox x:Name="tbxDebut" Header="Choisir une date de début" HorizontalAlignment="Center" Margin="0,0,0,30"></TextBox>
         <TextBlock x:Name="tblAlertDebut" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,30"/>
         
-        <DatePicker x:Name="dpFin" Header="Choisir une date de fin" HorizontalAlignment="Center" Margin="0,0,0,30"></DatePicker>
+        <TextBox x:Name="tbxFin" Header="Choisir une date de fin" HorizontalAlignment="Center" Margin="0,0,0,30"></TextBox>
         <TextBlock x:Name="tblAlertFin" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
         <Button x:Name="btRecherche" Content="Rechercher" Click="btRecherche_Click" HorizontalAlignment="Center" Margin="0,0,0,50"></Button>
