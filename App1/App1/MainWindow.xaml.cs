@@ -38,6 +38,7 @@ namespace App1
             GestionBD.getInstance().InfoClient = InfoClient;
             GestionBD.getInstance().InfoChauf = InfoChauf;
             GestionBD.getInstance().Deconnection = Deconnection;
+            GestionBD.getInstance().InfoAdmin = InfoAdmin;
 
             mainFrame.Navigate(typeof(Accueil));
             
