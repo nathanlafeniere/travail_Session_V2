@@ -29,7 +29,7 @@ namespace App1
             lvVille.ItemsSource = GestionBD.getInstance().getVille();
             lvVille2.ItemsSource = GestionBD.getInstance().getVille();
         }
-
+        
         private void nb_ajout_Click(object sender, RoutedEventArgs e)
         {
             Boolean validation = true;
@@ -121,5 +121,7 @@ namespace App1
                 tblAlertValidation.Visibility = Visibility.Visible;
             }
         }
+
+        
     }
 }

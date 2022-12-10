@@ -65,6 +65,7 @@ namespace App1
                 GestionBD.getInstance().verifierInfo(usager);
                 GestionBD.getInstance().getChauffeurType(GestionBD.getInstance().NoUsager);
                 GestionBD.getInstance().getClientType(GestionBD.getInstance().NoUsager);
+                GestionBD.getInstance().getAdminType(GestionBD.getInstance().NoUsager);
 
                 //MESSAGE DE CONNECTION RÉUSSI
                 //tblAlertConnectionValide.Text = "Vous êtes connecté!";

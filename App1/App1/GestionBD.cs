@@ -624,7 +624,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "Select COUNT(*) FROM admin WHERE no_admin = @no;";
+            commande.CommandText = "Select COUNT(*) FROM admin WHERE id_user = @no;";
             commande.Parameters.AddWithValue("@no", value);
             con.Open();
 
