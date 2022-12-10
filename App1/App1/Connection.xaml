@@ -25,7 +25,7 @@
         <TextBlock x:Name="tblAlertConnexion" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,50,0,30"/>
 
         <!--BLOC DE TEXTBOX ET TEXTBLOCK POUR LA CONNECTION-->
-        <TextBox x:Name="tbxCourrielUsager" Header="Adresse courriel:" PlaceholderText="exemple@gmail.com" HorizontalAlignment="Center" Margin="0,10,0,30"/>
+        <TextBox x:Name="tbxCourrielUsager" Header="Username:" PlaceholderText="exemple@gmail.com" HorizontalAlignment="Center" Margin="0,10,0,30"/>
         <TextBlock x:Name="tblAlertEmail" Foreground="Red" Visibility="Collapsed" HorizontalAlignment="Center" Margin="0,10,0,30"/>
         
         
@@ -43,7 +43,7 @@
         <StackPanel x:Name="stkpnlCreerCompte" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
             
             <!--BLOC DE TEXTBOX ET TEXTBLOCK POUR ENTRER LES INFORMATIONS-->
-            <TextBox x:Name="tbxCreerCourriel" Header="Entrer une adresse courriel:" PlaceholderText="exemple@gmail.com" HorizontalAlignment="Center"></TextBox>
+            <TextBox x:Name="tbxCreerCourriel" Header="Entrer un username:" PlaceholderText="exemple" HorizontalAlignment="Center"></TextBox>
             <TextBlock x:Name="tblAlertCreerCourriel" HorizontalAlignment="Center" Visibility="Collapsed" Foreground="Red" Margin="0,10,0,30"></TextBlock>
 
             <!--MOT DE PASSE ET CONFIRMATION DU MOT DE PASSE-->

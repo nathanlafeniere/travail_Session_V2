@@ -321,7 +321,7 @@ namespace App1
         {
             GestionBD.getInstance().numTrajetD = i;
             int retour;
-
+            GestionBD.getInstance().historique(GestionBD.getInstance().noUsager, GestionBD.getInstance().numTrajetD);
             try
             {
                 MySqlCommand commande = new MySqlCommand();
@@ -367,6 +367,7 @@ namespace App1
                 retour = commande.ExecuteNonQuery();
 
                 con.Close();
+                GestionBD.getInstance().numTrajetD = 0;
             }
             catch(MySqlException ex)
             {
@@ -608,6 +609,37 @@ namespace App1
                 }
 
 
+
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+        }
+
+        // function pour l'historique trajet/client
+        public void historique(int usager, int trajet)
+        {
+           
+            try
+            {
+                int retour = 0;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@usager", usager);
+                commande.Parameters.AddWithValue("@trajet", trajet);
+
+                commande.CommandText = "CALL p_historique(@usager, @trajet)";
+
+                con.Open();
+                commande.Prepare();
+                MySqlDataReader r = commande.ExecuteReader();
 
                 con.Close();
             }
