@@ -81,6 +81,9 @@ namespace App1
                 case "InfoChauf":
                     mainFrame.Navigate(typeof(InfoChauffeur));
                     break;
+                case "InfoAdmin":
+                    mainFrame.Navigate(typeof(InfoAdmin));
+                    break;
                 case "Deconnection":
                     GestionBD.getInstance().Reponse = 0;
                     GestionBD.getInstance().Type = "";
