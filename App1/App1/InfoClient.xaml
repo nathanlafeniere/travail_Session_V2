@@ -23,7 +23,7 @@
         <TextBlock x:Name="tblAlertEmb" Foreground="green" Visibility="Collapsed" Text="Vous avez embarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
 
         <!--BOUTON POUR DÉBARQUER-->
-        <Button x:Name="btDebarquer" IsEnabled="False" Content="Debarquer" Click="btDebarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
+        <Button x:Name="btDebarquer" IsEnabled="True" Content="Debarquer" Click="btDebarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
         <TextBlock x:Name="tblAlertDebarquer" Foreground="green" Visibility="Collapsed" Text="Vous avez débarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
     </StackPanel>
 </Page>

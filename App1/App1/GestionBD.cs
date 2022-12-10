@@ -30,7 +30,7 @@ namespace App1
         int noUsager;
         int reponse;
         int noTrajet;
-
+        int numTrajetD;
         int z = 0;
 
 
@@ -50,7 +50,7 @@ namespace App1
         public int NoTrajet { get => noTrajet; set => noTrajet = value; }
         public NavigationViewItem InfoAdmin { get => infoAdmin; set => infoAdmin = value; }
         public Frame Frame { get => frame; set => frame = value; }
-        
+        public int NumTrajetD { get => numTrajetD; set => numTrajetD = value; }
 
         public GestionBD()
         {
@@ -319,6 +319,7 @@ namespace App1
 
         public void reduireNbPlace(int i)
         {
+            GestionBD.getInstance().numTrajetD = i;
             int retour;
 
             try
@@ -348,6 +349,7 @@ namespace App1
 
         public void augmenterNbPlace(int i)
         {
+            
             int retour;
 
             try
