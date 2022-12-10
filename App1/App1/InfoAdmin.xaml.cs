@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -34,7 +35,37 @@ namespace App1
 
         private void btRecherche_Click(object sender, RoutedEventArgs e)
         {
+            Boolean validation;
+            Boolean validation2;
+            DateTime dt;
 
+            validation = DateTime.TryParseExact(tbxDebut.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+            validation2 = DateTime.TryParseExact(tbxFin.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+
+            try
+            {
+                if (validation == false)
+                {
+                    tblAlertDebut.Text = "Vous devez entrer une date de début";
+                    tblAlertDebut.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tblAlertDebut.Visibility = Visibility.Collapsed;
+                    
+                }
+
+                //APPEL DE LA FONCTION DANS LE GESTION BD
+
+                lvTrajet.ItemsSource = GestionBD.getInstance();
+
+            }
+            catch (FormatException ex)
+            {
+
+                tblAlertDate.Text = "Vous devez entrer une date valide";
+                tblAlertDate.Visibility = Visibility.Visible;
+            }
         }
 
         private void btAjoutVille_Click(object sender, RoutedEventArgs e)
