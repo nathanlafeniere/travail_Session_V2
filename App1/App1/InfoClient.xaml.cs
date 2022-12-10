@@ -28,56 +28,83 @@ namespace App1
     public sealed partial class InfoClient : Page
     {
         public InfoClient()
-        {
-            this.InitializeComponent();
-            lvTrajetClient.ItemsSource = GestionBD.getInstance().getTrajetClient();  
-            
+        {            
+            this.InitializeComponent();                        
+            lvTrajetClient.ItemsSource = GestionBD.getInstance().getTrajetClient();              
         }
+
+        
 
         //BOUTON QUI PERMET D'EMBARQUER DANS UN TRAJET ET RÉDUIRE DE 1 LE NOMBRE DE PLACE DE CE TRAJET
         private void btEmbarquer_Click(object sender, RoutedEventArgs e)
         {
-            //METTRE LE BOUTON DÉBARQUER À FALSE
-            btDebarquer.IsEnabled = false;
 
-            string test;
-            test = lvTrajetClient.SelectedItem.ToString();
+            if (GestionBD.getInstance().NumTrajetD == 0)
+            {
+                btEmbarquer.Visibility = Visibility.Visible;
+                btDebarquer.Visibility = Visibility.Collapsed;                
+
+                string test;
+                test = lvTrajetClient.SelectedItem.ToString();
 
 
-            GestionBD.getInstance().getNoTrajet(test);
-           
+                GestionBD.getInstance().getNoTrajet(test);
 
-            int id_trajet = GestionBD.getInstance().NoTrajet;
 
-            GestionBD.getInstance().reduireNbPlace(id_trajet);
+                int id_trajet = GestionBD.getInstance().NoTrajet;
 
-            tblAlertEmb.Visibility= Visibility.Visible;
+                GestionBD.getInstance().reduireNbPlace(id_trajet);
 
-            //RENDRE LE BOUTON DISABLE 
+                tblAlertEmb.Visibility = Visibility.Visible;
+                tblAlertDebarquer.Visibility = Visibility.Collapsed;
 
-            btEmbarquer.IsEnabled = false;
-            btDebarquer.IsEnabled = true;
+                btDebarquer.Visibility = Visibility.Visible;
+                btEmbarquer.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                tblMessage.Text = "Vous devez sélectionner un trajet";
+                tblMessage.Visibility = Visibility.Visible;
+            }
+            
         }
 
         //BOUTON QUI PERMET DE DÉBARQUER D'UN TRAJET ET D'AUGMENTER DE 1 LE NOMBRE DE PLACE DE CE TRAJET
         private void btDebarquer_Click(object sender, RoutedEventArgs e)
         {
-            //DÉCLARATION DE MES VARIABLES
-            int numTrajet;
-            int numUsager;
 
-            //RENDRE LE BOUTON ENABLED
+            if (GestionBD.getInstance().NumTrajetD > 0)
+            {
+                btEmbarquer.Visibility = Visibility.Collapsed;
+                btDebarquer.Visibility = Visibility.Visible;
 
-            
+                //DÉCLARATION DE MES VARIABLES
+                int numTrajet;
+                int numUsager;
 
-            //FONCTION DOIT LINK LE NO_TRAJET ET LE ID_USER
-            //S'ASSURER QUE LE CLIENT NE PEUT PAS DÉBARQUER D'UN AUTRE TRAJET
 
-            numTrajet = GestionBD.getInstance().NumTrajetD;
-            numUsager = GestionBD.getInstance().NoUsager;
+                //FONCTION DOIT LINK LE NO_TRAJET ET LE ID_USER
+                //S'ASSURER QUE LE CLIENT NE PEUT PAS DÉBARQUER D'UN AUTRE TRAJET
 
-            tblAlertDebarquer.Text = numTrajet + " " + numUsager;
-            tblAlertDebarquer.Visibility = Visibility.Visible;
+                numTrajet = GestionBD.getInstance().NumTrajetD;
+                numUsager = GestionBD.getInstance().NoUsager;
+
+
+                //APPEL À LA FONCTION QUI VA AUGMENTER LE NOMBRE DE PLACE DISPONIBLE 
+                GestionBD.getInstance().augmenterNbPlace(numTrajet);
+
+                tblAlertEmb.Visibility = Visibility.Collapsed;
+                tblAlertDebarquer.Visibility = Visibility.Visible;
+
+                btDebarquer.Visibility = Visibility.Collapsed;
+                btEmbarquer.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tblMessage.Text = "Vous devez embarquer dans un trajet pour pouvoir débarquer U Dipshit !!!";
+                tblMessage.Visibility = Visibility.Visible;
+            }
+
         }
 
         

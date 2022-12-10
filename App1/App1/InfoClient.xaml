@@ -18,12 +18,15 @@
         <!--LISTVIEW QUI AFFICHE TOUS MES TRAJETS EN COURS + AVEC UN NOMBRE DE PLACE > 0 -->
         <ListView x:Name="lvTrajetClient" HorizontalAlignment="Center" Header="Sélectionnez un trajet:" Margin="0,0,0,30"></ListView>
         
+        <!--TXTBLOCK POUR MESSAGES D'ALERTES-->
+        <TextBlock x:Name="tblMessage" Visibility="Collapsed" HorizontalAlignment="Center" Foreground="red" Margin="0,0,0,30"/>
         <!--BOUTON POUR EMBARQUER-->
-        <Button x:Name="btEmbarquer" IsEnabled="True" Content="Embarquer" Click="btEmbarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
+        <Button x:Name="btEmbarquer" Visibility="Visible"  Content="Embarquer" Click="btEmbarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
         <TextBlock x:Name="tblAlertEmb" Foreground="green" Visibility="Collapsed" Text="Vous avez embarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
 
         <!--BOUTON POUR DÉBARQUER-->
-        <Button x:Name="btDebarquer" IsEnabled="True" Content="Debarquer" Click="btDebarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
+        <Button x:Name="btDebarquer" Visibility="Collapsed" Content="Debarquer" Click="btDebarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
         <TextBlock x:Name="tblAlertDebarquer" Foreground="green" Visibility="Collapsed" Text="Vous avez débarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
+        
     </StackPanel>
 </Page>

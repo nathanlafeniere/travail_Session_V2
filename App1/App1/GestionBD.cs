@@ -367,6 +367,7 @@ namespace App1
                 retour = commande.ExecuteNonQuery();
 
                 con.Close();
+
                 GestionBD.getInstance().numTrajetD = 0;
             }
             catch(MySqlException ex)
