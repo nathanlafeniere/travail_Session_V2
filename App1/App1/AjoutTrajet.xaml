@@ -24,7 +24,8 @@
             <TimePicker x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
             <TextBlock x:Name="tbxHeureArriverE" Text="" Visibility="Collapsed"/>
             <!--Ville de depart-->
-            <ListView x:Name="lvVille">
+            <ComboBox>
+                 <ListView x:Name="lvVille">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Ville">
                         <StackPanel Orientation="Vertical"
@@ -34,6 +35,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </ComboBox>
+           
 
             <!--ville d'arriver-->
             <ComboBox Width="200" >
