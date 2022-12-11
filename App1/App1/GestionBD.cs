@@ -39,6 +39,7 @@ namespace App1
         int no_voiture;
         int prixPlace;
         int nbPlace;
+        string dateFacture;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -60,6 +61,8 @@ namespace App1
         public int No_voiture { get => no_voiture; set => no_voiture = value; }
         public int PrixPlace { get => prixPlace; set => prixPlace = value; }
         public int NbPlace { get => nbPlace; set => nbPlace = value; }
+        public string DateFacture { get => dateFacture; set => dateFacture = value; }
+
 
         public GestionBD()
         {
@@ -145,7 +148,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , t.ville_depart, t.ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , t.ville_depart, t.ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place, t.no_chauffeur, t.prix_place FROM trajet t\r\n   WHERE curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
 
             con.Open();
 
@@ -511,6 +514,81 @@ namespace App1
                 }
             }
 
+        //FONCTION POUR RETOURNER LA DATE DU TRAJET
+
+        public void getDate(int i)
+        {
+            
+            try
+            {
+                int retour = 0;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@no_trajet", GestionBD.getInstance().NoTrajet);
+
+
+                commande.CommandText = "SELECT dateTrajet  FROM trajet WHERE no_trajet = @no_trajet";
+
+                con.Open();
+                commande.Prepare();
+                MySqlDataReader r = commande.ExecuteReader();
+
+
+                while (r.Read())
+                {
+                    GestionBD.getInstance().dateFacture = r.GetString(0);
+                }
+
+
+
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+
+        //FONCTION POUR AJOUTER DANS LA TABLE FACTURE QUAND UN CLIENT CLIC SUR EMBARQUER
+
+        public void ajouterFacture(Facture f)
+        {
+            int retour;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+
+                commande.Parameters.AddWithValue("@no_facture", f.No_facture);
+                commande.Parameters.AddWithValue("@no_client", f.No_client);
+                commande.Parameters.AddWithValue("@no_chauffeur", f.No_chauffeur);
+                commande.Parameters.AddWithValue("@date_facture", f.Date_facturation);
+                commande.Parameters.AddWithValue("@montant_facture", f.Montant_facture);
+                commande.Parameters.AddWithValue("@dividende", f.Dividende);
+
+                
+                commande.CommandText = "INSERT INTO Facture (no_facture , no_client, no_chauffeur, date_facturation, montant_facture, dividende) values(@no_facture, @no_client, @no_chauffeur, @date_facture, @montant_facture, @dividende)";
+
+                con.Open();
+                commande.Prepare();
+                retour = commande.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
         public void ajouterUsager(Usager u)
         {
             int retour;
@@ -725,9 +803,10 @@ namespace App1
         }
 
 
-        public void getNoTrajet(string u)
+        public int getNoTrajet(string u)
         {
-            
+            int num_trajet;
+
             try
             {
                 int retour = 0;
@@ -751,7 +830,8 @@ namespace App1
 
                 }
 
-
+                num_trajet = GestionBD.getInstance().NoTrajet = r.GetInt32(0);
+                return num_trajet;
 
                 con.Close();
             }

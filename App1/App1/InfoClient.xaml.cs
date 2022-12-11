@@ -49,12 +49,13 @@ namespace App1
                  test = lvTrajetClient.SelectedItem.ToString();                          
 
                     GestionBD.getInstance().getNoTrajet(test);
-
+                    GestionBD.getInstance().getDate(GestionBD.getInstance().getNoTrajet(test));
 
                     int id_trajet = GestionBD.getInstance().NoTrajet;
 
                     GestionBD.getInstance().reduireNbPlace(id_trajet);
 
+                    
                     tblAlertEmb.Visibility = Visibility.Visible;
                     tblAlertDebarquer.Visibility = Visibility.Collapsed;
 
@@ -63,6 +64,13 @@ namespace App1
 
 
                     //FONCTION QUI AJOUTE DANS FACTURE AVEC LE NUMTRAJET:
+                    //CRÉATION DE L'OBJET FACTURE:
+
+                    Facture facture = new Facture();
+                    {
+                        facture.No_client = 
+                    }
+
 
 
                 }
