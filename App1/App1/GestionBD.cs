@@ -37,6 +37,8 @@ namespace App1
         int z = 0;
         int no_chauffeur;
         int no_voiture;
+        int prixPlace;
+        int nbPlace;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -56,6 +58,8 @@ namespace App1
         public int NumTrajetD { get => numTrajetD; set => numTrajetD = value; }
         public int No_chauffeur { get => no_chauffeur; set => no_chauffeur = value; }
         public int No_voiture { get => no_voiture; set => no_voiture = value; }
+        public int PrixPlace { get => prixPlace; set => prixPlace = value; }
+        public int NbPlace { get => nbPlace; set => nbPlace = value; }
 
         public GestionBD()
         {
@@ -100,8 +104,8 @@ namespace App1
                     r.GetString(7),
                     r.GetInt32(8),
                     r.GetInt32(9),
-                    r.GetInt32(10),
-                    r.GetInt32(11)));
+                    r.GetInt32(10)
+                  ));
             }
             r.Close();
             con.Close();
@@ -454,8 +458,7 @@ namespace App1
                     r.GetString(7),
                     r.GetInt32(8),
                     r.GetInt32(9),
-                    r.GetInt32(10),
-                    r.GetInt32(11))); ;
+                    r.GetInt32(10))); ;
             }
 
             r.Close();

@@ -54,12 +54,18 @@
             <!--typeVehicule-->
             <TextBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" />
             <TextBlock x:Name="tbxTypeVehiculeE" Text="" Visibility="Collapsed"/>
-            <!--nbplace-->
-            <NumberBox x:Name="tbxNbPlace" Header="Nombre de place disponible dans le vehicule au depart " Maximum="5" Minimum="0" />
+            <!--nbplace
+            
+              <NumberBox x:Name="tbxNbPlace" Header="Nombre de place disponible dans le vehicule au depart " Maximum="5" Minimum="0" />
             <TextBlock x:Name="tbxNbPlaceE" Text="" Visibility="Collapsed"/>
+            
+            -->
+          
             <!--Prix place-->
+            <!-- 
             <NumberBox x:Name="tbxPrixPlace" Header="Prix par place" Maximum="15" Minimum="10"/>
             <TextBlock x:Name="tbxPrixPlaceE" Text="" Visibility="Collapsed"/>
+            -->
 
             <Button x:Name="nb_ajout" Click="nb_ajout_Click">Confirmer l'ajout d'un trajet</Button>
 
