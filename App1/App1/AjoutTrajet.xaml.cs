@@ -54,13 +54,19 @@ namespace App1
                 tbxHeureArriverE.Text = "Vous devez entrer un heure!";
                 tbxHeureArriverE.Visibility = Visibility.Visible;
             }
-            if (Convert.ToInt32(tbxHeureArriver.ToString()) < Convert.ToInt32(tbxHeureDepart.ToString()))
+           
+            if (tbxHeureArriver.Time.Hours < tbxHeureDepart.Time.Hours)
             {
                 validation = false;
                 tbxHeureArriverE.Text = "Vous devez entrer un heure plus grande que celle de depart!";
                 tbxHeureArriverE.Visibility = Visibility.Visible;
             }
-
+            if (tbxHeureArriver.Time.Minutes < tbxHeureDepart.Time.Minutes)
+            {
+                validation = false;
+                tbxHeureArriverE.Text = "Vous devez entrer un heure plus grande que celle de depart!";
+                tbxHeureArriverE.Visibility = Visibility.Visible;
+            }
 
             if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
             {
