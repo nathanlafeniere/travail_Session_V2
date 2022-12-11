@@ -67,7 +67,7 @@ namespace App1
         {
         }
 
-        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string ville_depart, string ville_arrive, string arret, string type_vehicule, int nb_place, int no_voiture, int no_chauffeur, int prix_place)
+        public Trajet(int id, string date_depart, string heure_depart, string heure_arrive, string ville_depart, string ville_arrive, string arret, string type_vehicule, int nb_place, int no_chauffeur, int prix_place)
         {
             this.id = id;
             this.date_depart = date_depart;
@@ -78,7 +78,7 @@ namespace App1
             this.arret = arret;
             this.type_vehicule = type_vehicule;
             this.nb_place = nb_place;
-            this.no_voiture = no_voiture;
+            
             this.no_chauffeur = no_chauffeur;
             this.prix_place = prix_place;
         }

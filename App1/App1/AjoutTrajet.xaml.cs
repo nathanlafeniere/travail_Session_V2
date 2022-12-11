@@ -33,7 +33,7 @@ namespace App1
         private void nb_ajout_Click(object sender, RoutedEventArgs e)
         {
             Boolean validation = true;
-
+           
             if (tbxDateTrajet.ToString() == null)
             {
                 validation = false;
@@ -61,31 +61,23 @@ namespace App1
                 tbxTypeVehiculeE.Text = "Vous devez entrer un type!";
                 tbxTypeVehiculeE.Visibility = Visibility.Visible;
             }
-
-
-
-            if (tbxPrixPlace.Value != 15)
+            if (tbxTypeVehicule.Text != "vus" && tbxTypeVehicule.Text != "VUS" && tbxTypeVehicule.Text != "berline" && tbxTypeVehicule.Text != "BERLINE")
             {
-
-                if (tbxPrixPlace.Value != 10)
-                {
-
-                    validation = false;
-                    tbxPrixPlaceE.Text = "Vous devez entrer un prix valide!";
-                    tbxPrixPlaceE.Visibility = Visibility.Visible;
-                }
+                validation = false;
+                tbxTypeVehiculeE.Text = "Vous devez entrer un type valide entre vus et berline!";
+                tbxTypeVehiculeE.Visibility = Visibility.Visible;
             }
-            if (tbxPrixPlace.Value != 10)
+            if (tbxTypeVehicule.Text == "berline")
             {
-
-                if (tbxPrixPlace.Value != 15)
-                {
-
-                    validation = false;
-                    tbxPrixPlaceE.Text = "Vous devez entrer un prix valide!";
-                    tbxPrixPlaceE.Visibility = Visibility.Visible;
-                }
+                GestionBD.getInstance().PrixPlace = 10;
+                GestionBD.getInstance().NbPlace = 3;
             }
+            if (tbxTypeVehicule.Text == "vus")
+            {
+                GestionBD.getInstance().PrixPlace = 10;
+                GestionBD.getInstance().NbPlace = 3;
+            }
+            
 
             //QUAND TOUT EST VALIDER ON PEUT CRÉER NOTRE OBJET
             if (validation)
@@ -95,8 +87,8 @@ namespace App1
                 tbxHeureDepartE.Visibility = Visibility.Collapsed;
                 tbxHeureArriverE.Visibility = Visibility.Collapsed;
                 tbxTypeVehiculeE.Visibility = Visibility.Collapsed;
-                tbxNbPlaceE.Visibility = Visibility.Collapsed;
-                tbxPrixPlaceE.Visibility = Visibility.Collapsed;
+               // tbxNbPlaceE.Visibility = Visibility.Collapsed;
+               // tbxPrixPlaceE.Visibility = Visibility.Collapsed;
 
                 //CRÉER NOTRE OBJET AVEC TOUS LES CHAMPS
 
@@ -109,8 +101,8 @@ namespace App1
                     trajet.Ville_arrive= lvVille2.SelectedItem.ToString();
                     trajet.Arret = tbxArret.SelectedItem.ToString();
                     trajet.Type_vehicule = tbxTypeVehicule.Text;
-                    trajet.Nb_place = (int)tbxNbPlace.Value;
-                    trajet.Prix_place = (int)tbxPrixPlace.Value;
+                    trajet.Nb_place = GestionBD.getInstance().NbPlace;
+                    trajet.Prix_place = GestionBD.getInstance().PrixPlace;
                 }
 
                 //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD
