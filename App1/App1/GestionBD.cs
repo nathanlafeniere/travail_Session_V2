@@ -42,6 +42,7 @@ namespace App1
         int prixPlace;
         int nbPlace;
         string dateFacture;
+        int montant_trajet;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -66,7 +67,7 @@ namespace App1
         public int PrixPlace { get => prixPlace; set => prixPlace = value; }
         public int NbPlace { get => nbPlace; set => nbPlace = value; }
         public string DateFacture { get => dateFacture; set => dateFacture = value; }
-
+        public int Montant_trajet { get => montant_trajet; set => montant_trajet = value; }
 
         public GestionBD()
         {
@@ -169,7 +170,7 @@ namespace App1
                     r.GetString(7),
                     r.GetInt32(8),
                     r.GetInt32(9),
-                    r.GetInt32(10)));;
+                    r.GetInt32(10)));
             }
 
             r.Close();
@@ -186,24 +187,24 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,\r\n       CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE nb_place > 0 AND curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , t.ville_depart, t.ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place, t.no_chauffeur, t.prix_place FROM trajet t WHERE nb_place > 0 AND curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
 
             con.Open();
 
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajetClient.Add(new Trajet(
-                    r.GetInt32(0),
+                listeTrajetClient.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
                     r.GetString(4),
                     r.GetString(5),
-                    r.GetInt32(6),
-                    r.GetInt32(7),
+                    r.GetString(6),
+                    r.GetString(7),
                     r.GetInt32(8),
-                    r.GetInt32(9))); ;
+                    r.GetInt32(9),
+                    r.GetInt32(10)));
             }
 
             r.Close();
@@ -969,6 +970,40 @@ namespace App1
         }
 
         // montant par trajet
+        public void montant_Par_Trajet(int trajet)
+        {
+
+            try
+            {
+                int retour = 0;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@trajet", trajet);
+
+                commande.CommandText = "SELECT (SELECT COUNT(*) FROM historique_client_trajet c WHERE c.no_trajet = @trajet ) * prix_place FROM trajet t WHERE t.no_trajet = @trajet;";
+
+                con.Open();
+                commande.Prepare();
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+                    GestionBD.getInstance().Montant_trajet = r.GetInt32(0);
+
+                }
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
+
+        }
+
+
 
     }
 

@@ -44,6 +44,8 @@ namespace App1
 
             GestionBD.getInstance().getNoTrajet(test);
             lvClient.ItemsSource = GestionBD.getInstance().getClientNomPrenom();
+            GestionBD.getInstance().montant_Par_Trajet(GestionBD.getInstance().NoTrajet);
+            gain.Text = GestionBD.getInstance().Montant_trajet.ToString();
         }
     }
 }
