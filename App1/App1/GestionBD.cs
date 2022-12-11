@@ -186,7 +186,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,\r\n       CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE nb_place > 0 AND curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,\r\n       CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n    t.no_chauffeur, t.prix_place FROM trajet t\r\n   WHERE nb_place > 0 AND curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
 
             con.Open();
 
@@ -198,12 +198,11 @@ namespace App1
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
-                    r.GetString(4),
-                    r.GetString(5),
+                    r.GetString(4),                    
+                    r.GetInt32(5),                    
                     r.GetInt32(6),
                     r.GetInt32(7),
-                    r.GetInt32(8),
-                    r.GetInt32(9))); ;
+                    r.GetInt32(8))); ;
             }
 
             r.Close();
@@ -773,6 +772,34 @@ namespace App1
             while (r.Read())
             {
                 GestionBD.getInstance().No_client = r.GetInt32(0);
+            }
+
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
+        //FONCTION POUR RETOURNER LE MONTANT DE LA FACTURE
+
+        public ObservableCollection<User> getPrixPlace()
+        {
+
+            ObservableCollection<User> listeTrajet = new ObservableCollection<User>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+
+            commande.Parameters.AddWithValue("@value", GestionBD.getInstance().NoTrajet);
+            commande.CommandText = "SELECT prix_place FROM Trajet  WHERE no_trajet = @value";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                GestionBD.getInstance().PrixPlace = r.GetInt32(0);
             }
 
 

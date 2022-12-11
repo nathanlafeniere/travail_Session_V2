@@ -20,10 +20,12 @@
         
         <!--TXTBLOCK POUR MESSAGES D'ALERTES-->
         <TextBlock x:Name="tblMessage" Visibility="Collapsed" HorizontalAlignment="Center" Foreground="red" Margin="0,0,0,30"/>
+        
         <!--BOUTON POUR EMBARQUER-->
         <Button x:Name="btEmbarquer" Visibility="Visible"  Content="Embarquer" Click="btEmbarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
         <TextBlock x:Name="tblAlertEmb" Foreground="green" Visibility="Collapsed" Text="Vous avez embarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
-
+        <TextBlock x:Name="tblAlertFacture" Foreground="green" Visibility="Collapsed" Text="La facture est envoyée!" HorizontalAlignment="Center" Margin="0,0,0,50"/>
+        
         <!--BOUTON POUR DÉBARQUER-->
         <Button x:Name="btDebarquer" Visibility="Collapsed" Content="Debarquer" Click="btDebarquer_Click" HorizontalAlignment="Center" Margin="0,0,0,30"></Button>
         <TextBlock x:Name="tblAlertDebarquer" Foreground="green" Visibility="Collapsed" Text="Vous avez débarqué!" HorizontalAlignment="Center" Margin="0,0,0,50"/>

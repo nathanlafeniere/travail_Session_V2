@@ -71,15 +71,22 @@ namespace App1
                     //CRÉER FONCTION QUI DONNE LE MONTANT DE LA FACTURE EN PRENANT EN COMPTE LE TYPE DE VÉHICULE *****************************************
 
 
-                    //Facture facture = new Facture();
-                    //{
-                    //    facture.No_client = GestionBD.getInstance().No_client;
-                    //    facture.No_chauffeur = GestionBD.getInstance().No_chauffeurFacture;
-                    //    facture.Date_facturation = GestionBD.getInstance().getDate(GestionBD.getInstance().getNoTrajet(test));
-                    //    facture.Montant_facture = 
-                    //}
+                    Facture facture = new Facture();
+                    {
+                        facture.No_client = GestionBD.getInstance().No_client;
+                        facture.No_chauffeur = GestionBD.getInstance().No_chauffeurFacture;
+                        facture.Date_facturation = GestionBD.getInstance().getDate(GestionBD.getInstance().getNoTrajet(test));
+                        facture.Montant_facture = GestionBD.getInstance().PrixPlace;
+                        facture.Dividende = (GestionBD.getInstance().PrixPlace) * 9/10;
+                    }
 
+                    //APPEL DE LA FONCTION POUR INSERT L'OBJET FACTURE DANS LA TABLE
 
+                    GestionBD.getInstance().ajouterFacture(facture);
+
+                    //MESSAGE POUR L'ENVOI DE LA FACTURE:
+
+                    tblAlertFacture.Visibility = Visibility.Visible;
 
                 }
                 catch(NullReferenceException ex)
@@ -103,6 +110,7 @@ namespace App1
         private void btDebarquer_Click(object sender, RoutedEventArgs e)
         {
             tblMessage.Visibility = Visibility.Collapsed;
+            tblAlertFacture.Visibility = Visibility.Collapsed;
 
             if (GestionBD.getInstance().NumTrajetD > 0)
             {
