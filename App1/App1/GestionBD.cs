@@ -35,6 +35,8 @@ namespace App1
         int noTrajet;
         int numTrajetD;
         int z = 0;
+        int no_client;
+        int no_chauffeurFacture;
         int no_chauffeur;
         int no_voiture;
         int prixPlace;
@@ -57,6 +59,8 @@ namespace App1
         public NavigationViewItem InfoAdmin { get => infoAdmin; set => infoAdmin = value; }
         public Frame Frame { get => frame; set => frame = value; }
         public int NumTrajetD { get => numTrajetD; set => numTrajetD = value; }
+        public int No_client { get => no_client; set => no_client = value; }
+        public int No_chauffeurFacture { get => no_chauffeurFacture; set => no_chauffeurFacture = value; }
         public int No_chauffeur { get => no_chauffeur; set => no_chauffeur = value; }
         public int No_voiture { get => no_voiture; set => no_voiture = value; }
         public int PrixPlace { get => prixPlace; set => prixPlace = value; }
@@ -516,9 +520,9 @@ namespace App1
 
         //FONCTION POUR RETOURNER LA DATE DU TRAJET
 
-        public void getDate(int i)
+        public string getDate(int i)
         {
-            
+            string date;
             try
             {
                 int retour = 0;
@@ -541,13 +545,17 @@ namespace App1
                     GestionBD.getInstance().dateFacture = r.GetString(0);
                 }
 
+                date = dateFacture;                
 
 
                 con.Close();
+
+                return date;
             }
             catch (MySqlException ex)
             {
-
+                string dateR = "";
+                return dateR;
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
@@ -720,6 +728,61 @@ namespace App1
             return listeTrajet;
         }
 
+        //FONCTION POUR RETOURNER L'ID DE CHAUFFEUR POUR LA CRÉATION DE LA FACTURE
+
+        public ObservableCollection<User> getChauffeurFactureId()
+        {
+
+            ObservableCollection<User> listeTrajet = new ObservableCollection<User>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+
+            commande.Parameters.AddWithValue("@value", GestionBD.getInstance().NoTrajet);
+            commande.CommandText = "SELECT no_chauffeur FROM trajet WHERE no_trajet = @value";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                GestionBD.getInstance().No_chauffeurFacture = r.GetInt32(0);
+            }
+
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
+        //FONCTION POUR RECHERCHER L'ID DE CLIENT
+        public ObservableCollection<User> getClientId()
+        {
+
+            ObservableCollection<User> listeTrajet = new ObservableCollection<User>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+
+            commande.Parameters.AddWithValue("@value", GestionBD.getInstance().NoUsager);
+            commande.CommandText = "SELECT no_client FROM client  WHERE id_user = @value";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                GestionBD.getInstance().No_client = r.GetInt32(0);
+            }
+
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
         //get voiture id
         /*public observablecollection<user> getvoitureid()
         {
@@ -831,15 +894,20 @@ namespace App1
                 }
 
                 num_trajet = GestionBD.getInstance().NoTrajet = r.GetInt32(0);
-                return num_trajet;
+                
 
                 con.Close();
+
+                return num_trajet;
             }
             catch (MySqlException ex)
             {
-
+                int num_trajetR = 0;
+                
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
+
+                return num_trajetR;
             }
 
         }
