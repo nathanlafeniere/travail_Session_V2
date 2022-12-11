@@ -15,9 +15,31 @@
         <StackPanel >
             <!--combo box + list view-->
             <StackPanel>
-                <ListView x:Name="listeTrajet"/>
+                <ListView x:Name="listeTrajet" />
+                <StackPanel>
+                    <Button x:Name="btTrajet" Click="btTrajet_Click">Voir les informations sur le trajet</Button>
+                </StackPanel>
             </StackPanel>
+            
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Client du trajet"/>
+                <StackPanel>
+                    <ListView x:Name="lvClient" />
 
+
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Text="Gain: " />
+                    <TextBlock x:Name="gain" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="dividante: " />
+                    <TextBlock x:Name="dividante" />
+                </StackPanel>
+               
+            </StackPanel>
         </StackPanel>
 
     </StackPanel>

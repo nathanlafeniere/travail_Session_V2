@@ -164,8 +164,8 @@ namespace App1
                     r.GetString(6),
                     r.GetString(7),
                     r.GetInt32(8),
-                    r.GetInt32(10),
-                    r.GetInt32(11)));;
+                    r.GetInt32(9),
+                    r.GetInt32(10)));;
             }
 
             r.Close();
@@ -215,7 +215,7 @@ namespace App1
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
             commande.Parameters.AddWithValue("@valeur", valeur);
-            commande.CommandText = "SELECT t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,  t.type_vehicule , t.nb_place, t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t  INNER JOIN chauffeur c on t.no_chauffeur = c.no_chauffeur   WHERE t.no_chauffeur = @valeur GROUP BY c.no_chauffeur;";
+            commande.CommandText = "SELECT t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  ,  t.type_vehicule , t.nb_place, t.no_chauffeur, t.prix_place FROM trajet t  INNER JOIN chauffeur c on t.no_chauffeur = c.no_chauffeur   WHERE t.no_chauffeur = @valeur;";
             
             con.Open();
             
@@ -229,8 +229,7 @@ namespace App1
                     r.GetString(4),
                     r.GetInt32(5),
                     r.GetInt32(6),
-                    r.GetInt32(7),
-                    r.GetInt32(8))); ;
+                    r.GetInt32(7)));
             }
 
             r.Close();
@@ -831,15 +830,17 @@ namespace App1
                 }
 
                 num_trajet = GestionBD.getInstance().NoTrajet = r.GetInt32(0);
-                return num_trajet;
+                
 
                 con.Close();
+                return num_trajet;
             }
             catch (MySqlException ex)
             {
-
+                
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
+                return -1;
             }
 
         }
@@ -875,7 +876,34 @@ namespace App1
 
         }
 
+        // return nom prenom client selon le trajet selectionner 
+        public ObservableCollection<Compte> getClientNomPrenom()
+        {
+            ObservableCollection<Compte> lvClient = new ObservableCollection<Compte>();
 
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.Parameters.AddWithValue("@no_trajet", GestionBD.getInstance().NoTrajet);
+            commande.CommandText = "SELECT nom, prenom FROM client INNER JOIN historique_client_trajet hct on client.no_client = hct.no_client WHERE no_trajet = @no_trajet;";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                lvClient.Add(new Compte(
+                    r.GetString(0),
+                    r.GetString(1)
+                    
+                  ));
+            }
+            r.Close();
+            con.Close();
+
+            return lvClient;
+        }
+
+        // montant par trajet
 
     }
 

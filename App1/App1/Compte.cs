@@ -27,11 +27,22 @@ namespace App1
             this.telephone = telephone;
             this.email = email;
         }
+        public Compte(string nom, string prenom)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+         
+        }
 
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
         public string Adresse { get => adresse; set => adresse = value; }
         public string Telephone { get => telephone; set => telephone = value; }
         public string Email { get => email; set => email = value; }
+
+        public override string ToString()
+        {
+            return nom + " " + prenom;
+        }
     }
 }

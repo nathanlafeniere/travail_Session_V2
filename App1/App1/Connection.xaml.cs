@@ -64,6 +64,8 @@ namespace App1
                 //APPEL À LA FONCTION
                 GestionBD.getInstance().verifierInfo(usager);
                 GestionBD.getInstance().getChauffeurType(GestionBD.getInstance().NoUsager);
+                GestionBD.getInstance().getChauffeurId();
+                
                 GestionBD.getInstance().getClientType(GestionBD.getInstance().NoUsager);
                 GestionBD.getInstance().getAdminType(GestionBD.getInstance().NoUsager);
 

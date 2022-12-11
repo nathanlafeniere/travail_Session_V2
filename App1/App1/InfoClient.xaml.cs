@@ -68,7 +68,7 @@ namespace App1
 
                     Facture facture = new Facture();
                     {
-                        facture.No_client = 
+                        //facture.No_client = 
                     }
 
 

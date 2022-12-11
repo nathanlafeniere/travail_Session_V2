@@ -15,6 +15,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using static System.Net.Mime.MediaTypeNames;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -29,7 +30,20 @@ namespace App1
         public InfoChauffeur()
         {
             this.InitializeComponent();
-            listeTrajet.ItemsSource = GestionBD.getInstance().getTrajetsChauffeur(1);
+            listeTrajet.ItemsSource = GestionBD.getInstance().getTrajetsChauffeur(GestionBD.getInstance().No_chauffeur);
+
+        }
+
+       
+            
+           
+
+        private void btTrajet_Click(object sender, RoutedEventArgs e)
+        {
+            string test = listeTrajet.SelectedItem.ToString();
+
+            GestionBD.getInstance().getNoTrajet(test);
+            lvClient.ItemsSource = GestionBD.getInstance().getClientNomPrenom();
         }
     }
 }

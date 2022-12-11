@@ -63,6 +63,21 @@ namespace App1
             this.prix_place = v11;
         }
 
+        public Trajet(int v1, string v2, string v3, string v4, string v5, int v6, int v9, int v11)
+        {
+            this.id = v1;
+            this.date_depart = v2;
+            this.heure_depart = v3;
+            this.heure_arrive = v4;
+            this.type_vehicule = v5;
+
+            this.nb_place = v6;
+           
+            this.no_chauffeur = v9;
+
+            this.prix_place = v11;
+        }
+
         public Trajet(int v1, string v2, string v3, string v4, string v5, string v6, int v7, int v8, int v9, int v10)
         {
         }
@@ -99,7 +114,7 @@ namespace App1
         public override string ToString()
         {
             // modifier plus tard
-            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + ville_depart + " " + ville_arrive +" " + arret + " " + type_vehicule + " " + nb_place + " "  + no_chauffeur + " " + prix_place;
+            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + ville_depart + " " + ville_arrive +" " + arret + " " + type_vehicule + " nombre de place disponible: " + nb_place;
         }
 
         public string ToStringTrajet()

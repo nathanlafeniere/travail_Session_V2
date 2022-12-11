@@ -54,8 +54,14 @@ namespace App1
                 tbxHeureArriverE.Text = "Vous devez entrer un heure!";
                 tbxHeureArriverE.Visibility = Visibility.Visible;
             }
+            if (Convert.ToInt32(tbxHeureArriver.ToString()) < Convert.ToInt32(tbxHeureDepart.ToString()))
+            {
+                validation = false;
+                tbxHeureArriverE.Text = "Vous devez entrer un heure plus grande que celle de depart!";
+                tbxHeureArriverE.Visibility = Visibility.Visible;
+            }
 
-            
+
             if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
             {
                 GestionBD.getInstance().PrixPlace = 10;
