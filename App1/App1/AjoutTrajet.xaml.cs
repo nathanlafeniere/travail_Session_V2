@@ -55,24 +55,13 @@ namespace App1
                 tbxHeureArriverE.Visibility = Visibility.Visible;
             }
 
-            if (tbxTypeVehicule.Text == "")
-            {
-                validation = false;
-                tbxTypeVehiculeE.Text = "Vous devez entrer un type!";
-                tbxTypeVehiculeE.Visibility = Visibility.Visible;
-            }
-            if (tbxTypeVehicule.Text != "vus" && tbxTypeVehicule.Text != "VUS" && tbxTypeVehicule.Text != "berline" && tbxTypeVehicule.Text != "BERLINE")
-            {
-                validation = false;
-                tbxTypeVehiculeE.Text = "Vous devez entrer un type valide entre vus et berline!";
-                tbxTypeVehiculeE.Visibility = Visibility.Visible;
-            }
-            if (tbxTypeVehicule.Text == "berline")
+            
+            if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
             {
                 GestionBD.getInstance().PrixPlace = 10;
                 GestionBD.getInstance().NbPlace = 3;
             }
-            if (tbxTypeVehicule.Text == "vus")
+            if (tbxTypeVehicule.SelectedItem.ToString() == "VUS")
             {
                 GestionBD.getInstance().PrixPlace = 10;
                 GestionBD.getInstance().NbPlace = 3;
@@ -100,7 +89,7 @@ namespace App1
                     trajet.Ville_depart = lvVille.SelectedItem.ToString();
                     trajet.Ville_arrive= lvVille2.SelectedItem.ToString();
                     trajet.Arret = tbxArret.SelectedItem.ToString();
-                    trajet.Type_vehicule = tbxTypeVehicule.Text;
+                    trajet.Type_vehicule = tbxTypeVehicule.SelectedItem.ToString();
                     trajet.Nb_place = GestionBD.getInstance().NbPlace;
                     trajet.Prix_place = GestionBD.getInstance().PrixPlace;
                 }
