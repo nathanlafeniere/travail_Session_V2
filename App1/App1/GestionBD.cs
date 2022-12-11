@@ -922,9 +922,10 @@ namespace App1
                 }
 
                 num_trajet = GestionBD.getInstance().NoTrajet = r.GetInt32(0);
-                return num_trajet;
-
                 con.Close();
+               
+
+                
                 return num_trajet;
             }
             catch (MySqlException ex)
