@@ -45,14 +45,18 @@
                 </ScrollViewer>
             </ComboBox>
             <!--arret-->
-            <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet">
+            <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet" SelectedIndex="0">
                 <x:String>oui</x:String>
                 <x:String>non</x:String>
             </ComboBox>
             
             <TextBlock x:Name="tbxArretE" Text="" Visibility="Collapsed"/>
             <!--typeVehicule-->
-            <TextBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" />
+          
+            <ComboBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" SelectedIndex="0">
+                <x:String>Berline</x:String>
+                <x:String>VUS</x:String>
+            </ComboBox>
             <TextBlock x:Name="tbxTypeVehiculeE" Text="" Visibility="Collapsed"/>
             <!--nbplace
             
