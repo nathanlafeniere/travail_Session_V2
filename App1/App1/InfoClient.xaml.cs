@@ -60,6 +60,11 @@ namespace App1
 
                     btDebarquer.Visibility = Visibility.Visible;
                     btEmbarquer.Visibility = Visibility.Collapsed;
+
+
+                    //FONCTION QUI AJOUTE DANS FACTURE AVEC LE NUMTRAJET:
+
+
                 }
                 catch(NullReferenceException ex)
                 {
