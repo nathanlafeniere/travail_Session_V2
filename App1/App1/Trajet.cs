@@ -99,7 +99,7 @@ namespace App1
         public override string ToString()
         {
             // modifier plus tard
-            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + ville_depart + " " + ville_arrive +" " + arret + " " + type_vehicule + " " + nb_place + " " + no_voiture + " " + no_chauffeur + " " + prix_place;
+            return id + " " + date_depart + " " + heure_depart + " " + heure_arrive + " " + ville_depart + " " + ville_arrive +" " + arret + " " + type_vehicule + " " + nb_place + " "  + no_chauffeur + " " + prix_place;
         }
 
         public string ToStringTrajet()

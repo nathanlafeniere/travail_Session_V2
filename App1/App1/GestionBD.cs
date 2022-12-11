@@ -450,10 +450,12 @@ namespace App1
                     r.GetString(3),
                     r.GetString(4),
                     r.GetString(5),
-                    r.GetInt32(6),
-                    r.GetInt32(7),
+                    r.GetString(6),
+                    r.GetString(7),
                     r.GetInt32(8),
-                    r.GetInt32(9))); ;
+                    r.GetInt32(9),
+                    r.GetInt32(10),
+                    r.GetInt32(11))); ;
             }
 
             r.Close();

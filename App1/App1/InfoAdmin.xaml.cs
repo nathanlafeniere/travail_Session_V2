@@ -38,10 +38,9 @@ namespace App1
             Boolean validation = true;
             string dateDebut;
             string dateFin;
-            DateTime dt;
-
-            dateDebut = tbxDebut.Text;
-            dateFin = tbxFin.Text;
+            
+            dateDebut = tbxDebut.Date.Date.ToString("yyyy-MM-dd"); 
+            dateFin = tbxFin.Date.Date.ToString("yyyy-MM-dd");
 
             try
             {
@@ -79,11 +78,9 @@ namespace App1
 
                 }
                 
-
             }
             catch (FormatException ex)
             {
-
                 tblAlertDebut.Text = "Vous devez entrer une date valide";
                 tblAlertDebut.Visibility = Visibility.Visible;
             }
@@ -100,6 +97,11 @@ namespace App1
 
             tblAlertEnr.Text = "Enregistrement réussi!";
             tblAlertEnr.Visibility = Visibility.Visible;
+        }
+
+        private void btRechercheTrajetTermine_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
