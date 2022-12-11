@@ -102,7 +102,7 @@ namespace App1
 
                 Trajet trajet = new Trajet();
                 {
-                    trajet.Date_depart = tbxDateTrajet.Date.Date.ToString("yyyy-MM-dd");
+                    trajet.Date_depart = tbxDateTrajet.Date.Date.ToString("yyyy-MM-d");
                     trajet.Heure_depart = tbxHeureDepart.Time.ToString();
                     trajet.Heure_arrive = tbxHeureArriver.Time.ToString();
                     trajet.Ville_depart = lvVille.SelectedItem.ToString();

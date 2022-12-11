@@ -36,7 +36,7 @@ namespace App1
         int numTrajetD;
         int z = 0;
         int no_chauffeur;
-
+        int no_voiture;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -54,6 +54,8 @@ namespace App1
         public NavigationViewItem InfoAdmin { get => infoAdmin; set => infoAdmin = value; }
         public Frame Frame { get => frame; set => frame = value; }
         public int NumTrajetD { get => numTrajetD; set => numTrajetD = value; }
+        public int No_chauffeur { get => no_chauffeur; set => no_chauffeur = value; }
+        public int No_voiture { get => no_voiture; set => no_voiture = value; }
 
         public GestionBD()
         {
@@ -265,9 +267,11 @@ namespace App1
                 commande.Parameters.AddWithValue("@nb_place", t.Nb_place);
                 commande.Parameters.AddWithValue("@Prix_place", t.Prix_place);
                 GestionBD.getInstance().getChauffeurId();
-                commande.Parameters.AddWithValue("@no_chauffeur", GestionBD.getInstance().no_chauffeur);
+                GestionBD.getInstance().getVoitureId();
+                commande.Parameters.AddWithValue("@no_chauffeur", GestionBD.getInstance().No_chauffeur);
+                commande.Parameters.AddWithValue("@no_voiture", GestionBD.getInstance().No_voiture);
 
-                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive,ville_depart,ville_arrive, arret, type_vehicule, no_chauffeur , nb_place, prix_place) values(@date, @Heure_depart,@Heure_arrive,@villeD, @villeA ,@arret,  @Type_vehicule, @no_chauffeur  ,@nb_place, @Prix_place ) ";
+                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive,ville_depart,ville_arrive, arret, type_vehicule, nb_place ,no_voiture, no_chauffeur , prix_place) values(@date, @Heure_depart,@Heure_arrive,@villeD, @villeA ,@arret,  @Type_vehicule,  @nb_place,@no_voiture, @no_chauffeur , @Prix_place ) ";
 
                 con.Open();
                 commande.Prepare();
@@ -619,14 +623,15 @@ namespace App1
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
             commande.Parameters.AddWithValue("@value", GestionBD.getInstance().NoUsager);
-            commande.CommandText = "Select no_chauffeur FROM chauffeur WHERE id_user = @value";
+            commande.CommandText = "Select c.no_chauffeur FROM chauffeur c WHERE id_user = @value";
 
             con.Open();
 
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().no_chauffeur = r.GetInt32(0);
+                GestionBD.getInstance().No_chauffeur = r.GetInt32(0);
+           
             }
             
            
@@ -635,6 +640,31 @@ namespace App1
             return listeTrajet;
         }
 
+        //get voiture id
+        public ObservableCollection<User> getVoitureId()
+        {
+
+            ObservableCollection<User> listeTrajet = new ObservableCollection<User>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+            commande.Parameters.AddWithValue("@value", GestionBD.getInstance().No_chauffeur);
+            commande.CommandText = "Select no_voiture FROM Voiture c WHERE no_chauffeur = @value";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+            
+                GestionBD.getInstance().No_voiture = r.GetInt32(0);
+            }
+
+
+            r.Close();
+            con.Close();
+            return listeTrajet;
+        }
         //
 
         public ObservableCollection<Trajet> getClientType(int value)

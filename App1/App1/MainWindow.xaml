@@ -36,7 +36,10 @@
             </NavigationView.MenuItems>
             
             <!--FRAME QUI AFFICHE LES DIFFÉRENTES PAGES-->
-            <Frame x:Name="mainFrame"/>
+            <ScrollViewer>
+                <Frame x:Name="mainFrame"/>
+            </ScrollViewer>
+            
             
         </NavigationView>
         
