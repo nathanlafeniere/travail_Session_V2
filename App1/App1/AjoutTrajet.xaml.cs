@@ -33,6 +33,7 @@ namespace App1
         private void nb_ajout_Click(object sender, RoutedEventArgs e)
         {
             Boolean validation = true;
+            int prix = 0;
 
             if (tbxDateTrajet.ToString() == null)
             {
@@ -61,31 +62,21 @@ namespace App1
                 tbxTypeVehiculeE.Text = "Vous devez entrer un type!";
                 tbxTypeVehiculeE.Visibility = Visibility.Visible;
             }
-
-
-
-            if (tbxPrixPlace.Value != 15)
+            if (tbxTypeVehicule.Text != "vus" || tbxTypeVehicule.Text != "VUS" || tbxTypeVehicule.Text != "berline" || tbxTypeVehicule.Text != "BERLINE")
             {
-
-                if (tbxPrixPlace.Value != 10)
-                {
-
-                    validation = false;
-                    tbxPrixPlaceE.Text = "Vous devez entrer un prix valide!";
-                    tbxPrixPlaceE.Visibility = Visibility.Visible;
-                }
+                validation = false;
+                tbxTypeVehiculeE.Text = "Vous devez entrer un type valide entre vus et berline!";
+                tbxTypeVehiculeE.Visibility = Visibility.Visible;
             }
-            if (tbxPrixPlace.Value != 10)
+            if (tbxTypeVehicule.Text == "berline" || tbxTypeVehicule.Text == "BERLINE")
             {
-
-                if (tbxPrixPlace.Value != 15)
-                {
-
-                    validation = false;
-                    tbxPrixPlaceE.Text = "Vous devez entrer un prix valide!";
-                    tbxPrixPlaceE.Visibility = Visibility.Visible;
-                }
+                prix = 10;
             }
+            if (tbxTypeVehicule.Text == "vus" || tbxTypeVehicule.Text == "VUS")
+            {
+                prix = 15;
+            }
+            
 
             //QUAND TOUT EST VALIDER ON PEUT CRÉER NOTRE OBJET
             if (validation)
@@ -110,7 +101,7 @@ namespace App1
                     trajet.Arret = tbxArret.SelectedItem.ToString();
                     trajet.Type_vehicule = tbxTypeVehicule.Text;
                     trajet.Nb_place = (int)tbxNbPlace.Value;
-                    trajet.Prix_place = (int)tbxPrixPlace.Value;
+                    trajet.Prix_place = prix;
                 }
 
                 //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD

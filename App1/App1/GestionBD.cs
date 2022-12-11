@@ -141,7 +141,7 @@ namespace App1
 
             MySqlCommand commande = new MySqlCommand();
             commande.Connection = con;
-            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , t.ville_depart, t.ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place,\r\n       t.no_voiture, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
+            commande.CommandText = "SELECT   t.no_trajet, t.dateTrajet ,t.heure_depart ,t.heure_arrive  , t.ville_depart, t.ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , t.type_vehicule , t.nb_place, t.no_chauffeur, t.prix_place FROM trajet t\r\n        INNER JOIN voiture v on t.no_voiture = v.no_voiture  WHERE curdate() = t.dateTrajet AND curtime() >= t.heure_depart  AND curtime() <= t.heure_arrive;";
 
             con.Open();
 
@@ -157,7 +157,6 @@ namespace App1
                     r.GetString(6),
                     r.GetString(7),
                     r.GetInt32(8),
-                    r.GetInt32(9),
                     r.GetInt32(10),
                     r.GetInt32(11)));;
             }
@@ -267,11 +266,11 @@ namespace App1
                 commande.Parameters.AddWithValue("@nb_place", t.Nb_place);
                 commande.Parameters.AddWithValue("@Prix_place", t.Prix_place);
                 GestionBD.getInstance().getChauffeurId();
-                GestionBD.getInstance().getVoitureId();
+                //GestionBD.getInstance().getVoitureId();
                 commande.Parameters.AddWithValue("@no_chauffeur", GestionBD.getInstance().No_chauffeur);
-                commande.Parameters.AddWithValue("@no_voiture", GestionBD.getInstance().No_voiture);
+                //commande.Parameters.AddWithValue("@no_voiture", GestionBD.getInstance().No_voiture);
 
-                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive,ville_depart,ville_arrive, arret, type_vehicule, nb_place ,no_voiture, no_chauffeur , prix_place) values(@date, @Heure_depart,@Heure_arrive,@villeD, @villeA ,@arret,  @Type_vehicule,  @nb_place,@no_voiture, @no_chauffeur , @Prix_place ) ";
+                commande.CommandText = "insert into trajet (dateTrajet , heure_depart, heure_arrive,ville_depart,ville_arrive, arret, type_vehicule, nb_place, no_chauffeur , prix_place) values(@date, @Heure_depart,@Heure_arrive,@villeD, @villeA ,@arret,  @Type_vehicule,  @nb_place, @no_chauffeur , @Prix_place ) ";
 
                 con.Open();
                 commande.Prepare();
@@ -639,30 +638,31 @@ namespace App1
         }
 
         //get voiture id
-        public ObservableCollection<User> getVoitureId()
+        /*public observablecollection<user> getvoitureid()
         {
 
-            ObservableCollection<User> listeTrajet = new ObservableCollection<User>();
+            observablecollection<user> listetrajet = new observablecollection<user>();
 
-            MySqlCommand commande = new MySqlCommand();
-            commande.Connection = con;
-            commande.Parameters.AddWithValue("@value", GestionBD.getInstance().No_chauffeur);
-            commande.CommandText = "Select no_voiture FROM Voiture c WHERE no_chauffeur = @value";
+            mysqlcommand commande = new mysqlcommand();
+            commande.connection = con;
+            commande.parameters.addwithvalue("@value", gestionbd.getinstance().no_chauffeur);
+            commande.commandtext = "select no_voiture from voiture c where no_chauffeur = @value";
 
-            con.Open();
+            con.open();
 
-            MySqlDataReader r = commande.ExecuteReader();
-            while (r.Read())
+            mysqldatareader r = commande.executereader();
+            while (r.read())
             {
             
-                GestionBD.getInstance().No_voiture = r.GetInt32(0);
+                gestionbd.getinstance().no_voiture = r.getint32(0);
             }
 
 
-            r.Close();
-            con.Close();
-            return listeTrajet;
+            r.close();
+            con.close();
+            return listetrajet;
         }
+        */
         //
 
         public ObservableCollection<Trajet> getClientType(int value)
