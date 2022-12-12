@@ -179,6 +179,81 @@ namespace App1
             return listeTrajet;
         }
 
+        //FONCTION POUR AFFICHER LES INFOS DES TRAJETS TERMINÉS
+
+        public ObservableCollection<Trajet> getTrajetTermine(string date)
+        {
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+
+            commande.Parameters.AddWithValue("@date", date);
+
+            commande.CommandText = "CALL p_date_terminer(@date)";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                    r.GetString(1),
+                    r.GetString(2),
+                    r.GetString(3),
+                    r.GetString(4),
+                    r.GetString(5),
+                    r.GetString(6),
+                    r.GetString(7),
+                    r.GetInt32(8),
+                    r.GetInt32(9),
+                    r.GetInt32(10)));
+            }
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
+        //FONCTION POUR AFFICHER TOUS LES TRAJETS TERMINER PUIS CALCULER LA SOMME DES MONTANTS POUR LES CHAUFFEURS
+
+        public ObservableCollection<Trajet> getMontantChauffeur(string date)
+        {
+            ObservableCollection<Trajet> listeTrajet = new ObservableCollection<Trajet>();
+
+            MySqlCommand commande = new MySqlCommand();
+            commande.Connection = con;
+
+            commande.Parameters.AddWithValue("@date", date);
+
+            commande.CommandText = "CALL p_date_terminer(@date)";
+
+            con.Open();
+
+            MySqlDataReader r = commande.ExecuteReader();
+            while (r.Read())
+            {
+                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                    r.GetString(1),
+                    r.GetString(2),
+                    r.GetString(3),
+                    r.GetString(4),
+                    r.GetString(5),
+                    r.GetString(6),
+                    r.GetString(7),
+                    r.GetInt32(8),
+                    r.GetInt32(9),
+                    r.GetInt32(10)));
+            }
+
+            r.Close();
+            con.Close();
+
+            return listeTrajet;
+        }
+
+
         //FONCTION POUR AFFICHER LES TRAJETS EN COURS AVEC LE NOMBRE DE PLACE > 0
 
         public ObservableCollection<Trajet> getTrajetClient()
@@ -573,8 +648,7 @@ namespace App1
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
 
-
-                commande.Parameters.AddWithValue("@no_facture", f.No_facture);
+                
                 commande.Parameters.AddWithValue("@no_client", f.No_client);
                 commande.Parameters.AddWithValue("@no_chauffeur", f.No_chauffeur);
                 commande.Parameters.AddWithValue("@date_facture", f.Date_facturation);
@@ -582,7 +656,7 @@ namespace App1
                 commande.Parameters.AddWithValue("@dividende", f.Dividende);
 
                 
-                commande.CommandText = "INSERT INTO Facture (no_facture , no_client, no_chauffeur, date_facturation, montant_facture, dividende) values(@no_facture, @no_client, @no_chauffeur, @date_facture, @montant_facture, @dividende)";
+                commande.CommandText = "INSERT INTO Facture ( no_client, no_chauffeur, date_facturation, montant_facture, dividende) values( @no_client, @no_chauffeur, @date_facture, @montant_facture, @dividende)";
 
                 con.Open();
                 commande.Prepare();

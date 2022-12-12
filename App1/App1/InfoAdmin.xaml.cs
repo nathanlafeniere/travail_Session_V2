@@ -31,6 +31,7 @@ namespace App1
         {
             this.InitializeComponent();
             lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetEnCour();
+            //tblMontantChauffeur.Text = GestionBD.getInstance
         }
 
         private void btRecherche_Click(object sender, RoutedEventArgs e)
@@ -74,8 +75,6 @@ namespace App1
                     //APPEL DE LA FONCTION DANS LE GESTION BD
 
                     lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetIntervalle(dateDebut, dateFin);
-
-
                 }
                 
             }
@@ -101,7 +100,41 @@ namespace App1
 
         private void btRechercheTrajetTermine_Click(object sender, RoutedEventArgs e)
         {
+            Boolean validation = true;
+            string dateRecherche = dpRecherche.Date.Date.ToString("yyyy-MM-dd");
 
+            try
+            {
+                if(dateRecherche == "")
+                {
+                    validation = false;
+                    tblAlertDate.Text = "Vous devez entrer une date!";
+                    tblAlertDate.Visibility = Visibility.Visible;
+                }
+
+                if (validation)
+                {
+                    tblAlertDate.Visibility = Visibility.Collapsed;
+
+                    //APPEL DE LA FONCTION POUR AFFICHER LES TRAJETS TERMINÉS AVEC LA DATE INDIQUÉ
+
+                    lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetTermine(dateRecherche);
+
+
+                    //AFFICHER LE MONTANT POUR LES CHAUFFEURS
+
+
+                    //AFFICHER LE MONTANT TOTAL DES GAINS DE LA COMP
+                }
+
+
+                
+            }
+            catch (FormatException ex)
+            {
+                tblAlertDate.Text = "Vous devez entrer une dans le format (AAAA-MM-JJ)";
+                tblAlertDate.Visibility = Visibility.Visible;
+            }
         }
     }
 }

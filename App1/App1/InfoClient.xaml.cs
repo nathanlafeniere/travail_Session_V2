@@ -54,9 +54,7 @@ namespace App1
                     int id_trajet = GestionBD.getInstance().NoTrajet;
 
                     GestionBD.getInstance().reduireNbPlace(id_trajet);
-
-
-                    tblAlertEmb.Text = GestionBD.getInstance().No_client.ToString();
+                    
 
                     tblAlertEmb.Visibility = Visibility.Visible;
                     tblAlertDebarquer.Visibility = Visibility.Collapsed;
@@ -68,8 +66,11 @@ namespace App1
                     //FONCTION QUI AJOUTE DANS FACTURE AVEC LE NUMTRAJET:
                     //CRÉATION DE L'OBJET FACTURE:
 
-                    //CRÉER FONCTION QUI DONNE LE MONTANT DE LA FACTURE EN PRENANT EN COMPTE LE TYPE DE VÉHICULE *****************************************
+                    
 
+                    GestionBD.getInstance().getClientId();
+                    GestionBD.getInstance().getChauffeurFactureId();                    
+                    GestionBD.getInstance().getPrixPlace();                    
 
                     Facture facture = new Facture();
                     {
@@ -77,7 +78,7 @@ namespace App1
                         facture.No_chauffeur = GestionBD.getInstance().No_chauffeurFacture;
                         facture.Date_facturation = GestionBD.getInstance().getDate(GestionBD.getInstance().getNoTrajet(test));
                         facture.Montant_facture = GestionBD.getInstance().PrixPlace;
-                        facture.Dividende = (GestionBD.getInstance().PrixPlace) * 9/10;
+                        facture.Dividende = (GestionBD.getInstance().PrixPlace*9/10);
                     }
 
                     //APPEL DE LA FONCTION POUR INSERT L'OBJET FACTURE DANS LA TABLE
