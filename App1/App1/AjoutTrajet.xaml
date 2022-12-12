@@ -15,17 +15,17 @@
             <!--Date-->
 
             <TextBlock x:Name="DateTrajet" Text="Ajouter La date du projet" />
-            <DatePicker Header="Date:" x:Name="tbxDateTrajet"></DatePicker>
+            <DatePicker Header="Date:" x:Name="tbxDateTrajet" />
             <TextBlock x:Name="tbxDateTrajetE" Text="" Visibility="Collapsed"/>
             <!--HeureDepart-->
-            <TimePicker x:Name="tbxHeureDepart" Header="Ajouter l'heure de depart" />
+            <TimePicker x:Name="tbxHeureDepart" Header="Ajouter l'heure de depart" SelectedTime="07:00:00"/>
             <TextBlock x:Name="tbxHeureDepartE" Text="" Visibility="Collapsed"/>
             <!--heureArriver-->
-            <TimePicker x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" />
+            <TimePicker x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" SelectedTime="08:00:00"/>
             <TextBlock x:Name="tbxHeureArriverE" Text="" Visibility="Collapsed"/>
             <!--Ville de depart-->
             <ComboBox>
-                 <ListView x:Name="lvVille">
+                 <ListView x:Name="lvVille" SelectedIndex="2">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Ville">
                         <StackPanel Orientation="Vertical"
@@ -41,7 +41,7 @@
             <!--ville d'arriver-->
             <ComboBox Width="200" >
                 <ScrollViewer>
-                    <ListView x:Name="lvVille2"/>
+                    <ListView x:Name="lvVille2" SelectedIndex="1"/>
                 </ScrollViewer>
             </ComboBox>
             <!--arret-->

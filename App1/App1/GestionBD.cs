@@ -670,6 +670,11 @@ namespace App1
                 if (con.State == System.Data.ConnectionState.Open)
                     con.Close();
             }
+            catch(System.Data.SqlTypes.SqlNullValueException e)
+            {
+                con.Close();
+            }
+            
 
         }
 

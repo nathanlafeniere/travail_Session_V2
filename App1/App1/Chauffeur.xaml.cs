@@ -124,7 +124,7 @@ namespace App1
                 {
 
                     valide = false;
-                    telE.Text = "Le nom doit avoir un maximum de 13 lettre et le meme format que dans l'exemple";
+                    telE.Text = "Le telephone doit avoir un maximum de 13 lettre et le meme format que dans l'exemple";
                     telE.Visibility = Visibility.Visible;
                 }
                 string expression = "^[(][0-9]{3}[)][0-9]{3}[-][0-9]{4}";

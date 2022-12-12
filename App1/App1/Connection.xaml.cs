@@ -34,8 +34,9 @@ namespace App1
 
         //FONCTION QUI GÈRE LA CONNEXION
         private void btLogin_Click(object sender, RoutedEventArgs e)
-        {            
-
+        {
+            try
+            {
             Boolean validation = true;
 
             if (tbxCourrielUsager.Text == "")
@@ -62,7 +63,10 @@ namespace App1
                 Usager usager = new Usager(tbxCourrielUsager.Text, pwdbxMdp.Password);
 
                 //APPEL À LA FONCTION
+                
                 GestionBD.getInstance().verifierInfo(usager);
+
+
                 GestionBD.getInstance().getChauffeurType(GestionBD.getInstance().NoUsager);
                 GestionBD.getInstance().getChauffeurId();
                 
@@ -121,7 +125,15 @@ namespace App1
 
 
                 GestionBD.getInstance().Frame.Navigate(typeof(Accueil));
+            }
+            
 
+        }
+        catch (NullReferenceException ex)
+            {
+                tblAlertEnr.Text = "Vous devez faire une sélection dans la liste des trajets!";
+               
+                tblAlertEnr.Visibility = Visibility.Visible;
             }
         }
 

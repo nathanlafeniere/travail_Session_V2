@@ -12,24 +12,29 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <StackPanel >
-            <!--combo box + list view-->
-            <StackPanel>
+        
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ScrollViewer>
                 <ListView x:Name="listeTrajet" />
+                </ScrollViewer>
                 <StackPanel>
                     <Button x:Name="btTrajet" Click="btTrajet_Click">Voir les informations sur le trajet</Button>
                 </StackPanel>
             </StackPanel>
+        
+        <StackPanel >
+            <!--combo box + list view-->
             
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Client du trajet"/>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <TextBlock Text="Client du trajet" />
                 <StackPanel>
                     <ListView x:Name="lvClient" />
 
 
                 </StackPanel>
             </StackPanel>
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel>
                     <TextBlock Text="Gain: " />
                     <TextBlock x:Name="gain" />

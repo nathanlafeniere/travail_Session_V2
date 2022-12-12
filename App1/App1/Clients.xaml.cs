@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -66,12 +68,25 @@ namespace App1
             if(tbxNoTel.Text == "")
             {
                 validation = false;
-                tblAlertAdresse.Text = "Vous devez entrer un numero de telephone!";
-                tblAlertAdresse.Visibility= Visibility.Visible;
+                tblAlertNoTel.Text = "Vous devez entrer un numero de telephone!";
+                tblAlertNoTel.Visibility= Visibility.Visible;
+            }
+            string expression = "^[(][0-9]{3}[)][0-9]{3}[-][0-9]{4}";
+            if (Regex.IsMatch(tbxNoTel.Text, expression))
+            {
+
+
+
+            }
+            else
+            {
+                validation = false;
+                tblAlertNoTel.Text = "Le format du telephone ne fonctionne pas";
+                tblAlertNoTel.Visibility = Visibility.Visible;
             }
 
             //QUAND TOUT EST VALIDER ON PEUT CRÉER NOTRE OBJET
-            if(validation)
+            if (validation)
             {
                 //METTRE TOUS LES TEXTBLOCKS COLLAPSED
                 tblAlertNom.Visibility= Visibility.Collapsed;

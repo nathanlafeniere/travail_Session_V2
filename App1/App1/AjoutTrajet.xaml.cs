@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -32,16 +33,33 @@ namespace App1
         
         private void nb_ajout_Click(object sender, RoutedEventArgs e)
         {
-            Boolean validation = true;
+            try
+            {
+Boolean validation = true;
            
-            if (tbxDateTrajet.ToString() == null)
+            if (tbxDateTrajet.Date.ToString() == null)
             {
                 validation = false;
                 tbxDateTrajetE.Text = "Vous devez entrer une date!";
                 tbxDateTrajetE.Visibility = Visibility.Visible;
             }
 
-            if (tbxHeureDepart.ToString() == "")
+                string expression = "^[2][0][0-9]{2}";
+                if (Regex.IsMatch(tbxDateTrajet.Date.ToString(), expression))
+                {
+
+                   
+
+                }
+                else
+                {
+                    validation = false;
+                    tbxDateTrajetE.Text = "Vous devez entrer une date valide!";
+                    tbxDateTrajetE.Visibility = Visibility.Visible;
+                }
+            
+
+                if (tbxHeureDepart.ToString() == "")
             {
                 validation = false;
                 tbxHeureDepartE.Text = "Vous devez entrer un heure";
@@ -60,15 +78,28 @@ namespace App1
                 validation = false;
                 tbxHeureArriverE.Text = "Vous devez entrer un heure plus grande que celle de depart!";
                 tbxHeureArriverE.Visibility = Visibility.Visible;
-            }
             if (tbxHeureArriver.Time.Minutes < tbxHeureDepart.Time.Minutes)
             {
                 validation = false;
                 tbxHeureArriverE.Text = "Vous devez entrer un heure plus grande que celle de depart!";
                 tbxHeureArriverE.Visibility = Visibility.Visible;
             }
+            }
+                
+                    if(lvVille.SelectedIndex.ToString() == "")
+                {
+                    validation = false;
+                }
+                if (lvVille2.SelectedItem.ToString() == "")
+                {
+                    validation = false;
+                }
 
-            if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
+               
+                    lvVille2.SelectedItem.ToString();
+                
+               
+                if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
             {
                 GestionBD.getInstance().PrixPlace = 10;
                 GestionBD.getInstance().NbPlace = 3;
@@ -88,33 +119,56 @@ namespace App1
                 tbxHeureDepartE.Visibility = Visibility.Collapsed;
                 tbxHeureArriverE.Visibility = Visibility.Collapsed;
                 tbxTypeVehiculeE.Visibility = Visibility.Collapsed;
-               // tbxNbPlaceE.Visibility = Visibility.Collapsed;
-               // tbxPrixPlaceE.Visibility = Visibility.Collapsed;
+                    // tbxNbPlaceE.Visibility = Visibility.Collapsed;
+                    // tbxPrixPlaceE.Visibility = Visibility.Collapsed;
 
-                //CRÉER NOTRE OBJET AVEC TOUS LES CHAMPS
-
-                Trajet trajet = new Trajet();
-                {
-                    trajet.Date_depart = tbxDateTrajet.Date.Date.ToString("yyyy-MM-d");
+                    //CRÉER NOTRE OBJET AVEC TOUS LES CHAMPS
+                    try
+                    {
+                    Trajet trajet = new Trajet();
+                    {
+                    trajet.Date_depart = tbxDateTrajet.Date.ToString("yyyy-MM-d");
                     trajet.Heure_depart = tbxHeureDepart.Time.ToString();
                     trajet.Heure_arrive = tbxHeureArriver.Time.ToString();
-                    trajet.Ville_depart = lvVille.SelectedItem.ToString();
-                    trajet.Ville_arrive= lvVille2.SelectedItem.ToString();
+                           
+                                trajet.Ville_depart = lvVille.SelectedItem.ToString();
+                            
+                           
+                           
+                                trajet.Ville_arrive = lvVille2.SelectedItem.ToString();
+                            
+                            
+                            
                     trajet.Arret = tbxArret.SelectedItem.ToString();
                     trajet.Type_vehicule = tbxTypeVehicule.SelectedItem.ToString();
                     trajet.Nb_place = GestionBD.getInstance().NbPlace;
                     trajet.Prix_place = GestionBD.getInstance().PrixPlace;
-                }
+                    }
+                        //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD
+                      GestionBD.getInstance().ajouterTrajet(trajet);
+                    }
+                    catch(System.NullReferenceException ex)
+                    {
+                        tblAlertValidation.Text = "Enregistrement échoué!";
+                    }
+                
 
-                //APPEL DE LA FONCTION POUR INSÉRER DANS LA BD
-                GestionBD.getInstance().ajouterTrajet(trajet);
+               
+                
 
                 //MESSAGE D'ENREGISTREMENT RÉUSSI
                 tblAlertValidation.Text = "Enregistrement réussi!";
                 tblAlertValidation.Visibility = Visibility.Visible;
             }
+            }
+            catch(System.NullReferenceException ex)
+            {
+                tblAlertValidation.Text = "Enregistrement échoué!";
+            }
+
+            
         }
 
-        
+       
     }
 }

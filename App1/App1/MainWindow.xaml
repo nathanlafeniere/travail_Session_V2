@@ -9,7 +9,7 @@
 
 
 
-    <StackPanel>
+    <ScrollViewer>
         <!--TITRE DU PANEL-->
         <NavigationView PaneDisplayMode="Left" PaneTitle="Menu Principal" SelectionChanged="NavigationView_SelectionChanged" IsSettingsVisible="False">
 
@@ -36,12 +36,12 @@
             </NavigationView.MenuItems>
             
             <!--FRAME QUI AFFICHE LES DIFFÉRENTES PAGES-->
-            <ScrollViewer>
+            
                 <Frame x:Name="mainFrame"/>
-            </ScrollViewer>
+            
             
             
         </NavigationView>
         
-    </StackPanel>
+    </ScrollViewer>
 </Window>
