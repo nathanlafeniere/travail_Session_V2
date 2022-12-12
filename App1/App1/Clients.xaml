@@ -11,7 +11,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
+    <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center">
         <!--TITRE PAGE-->
                         
         <!--<TextBlock Text="Creation d'un compte client" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>-->

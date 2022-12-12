@@ -11,7 +11,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel >
+    <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel x:Name="conn" Visibility="Visible">
              <TextBox x:Name="nom" Header="Nom:"/>
         <TextBlock x:Name="nomE" Text="Erreur avec le nom" Visibility="Collapsed"/>

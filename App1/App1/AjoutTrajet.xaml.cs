@@ -27,15 +27,15 @@ namespace App1
         public AjoutTrajet()
         {
             this.InitializeComponent();
-            lvVille.ItemsSource = GestionBD.getInstance().getVille();
-            lvVille2.ItemsSource = GestionBD.getInstance().getVille();
+            cbVilleD.ItemsSource = GestionBD.getInstance().getVille();
+            cbVilleA.ItemsSource = GestionBD.getInstance().getVille();
         }
         
         private void nb_ajout_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-Boolean validation = true;
+            Boolean validation = true;
            
             if (tbxDateTrajet.Date.ToString() == null)
             {
@@ -86,17 +86,17 @@ Boolean validation = true;
             }
             }
                 
-                    if(lvVille.SelectedIndex.ToString() == "")
+                if(cbVilleD.SelectedIndex == -1)
                 {
                     validation = false;
                 }
-                if (lvVille2.SelectedItem.ToString() == "")
+                if (cbVilleA.SelectedIndex == -1)
                 {
                     validation = false;
                 }
 
                
-                    lvVille2.SelectedItem.ToString();
+                    
                 
                
                 if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
@@ -131,11 +131,11 @@ Boolean validation = true;
                     trajet.Heure_depart = tbxHeureDepart.Time.ToString();
                     trajet.Heure_arrive = tbxHeureArriver.Time.ToString();
                            
-                                trajet.Ville_depart = lvVille.SelectedItem.ToString();
+                                trajet.Ville_depart = cbVilleD.SelectedItem.ToString();
                             
                            
                            
-                                trajet.Ville_arrive = lvVille2.SelectedItem.ToString();
+                                trajet.Ville_arrive = cbVilleA.SelectedItem.ToString();
                             
                             
                             

@@ -11,7 +11,7 @@
     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
 
         <!--Ajout de données pour l'insertion-->
-        <StackPanel>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <!--Date-->
 
             <TextBlock x:Name="DateTrajet" Text="Ajouter La date du projet" />
@@ -24,25 +24,14 @@
             <TimePicker x:Name="tbxHeureArriver" Header="Ajouter  l'heure estimer de l'arriver" SelectedTime="08:00:00"/>
             <TextBlock x:Name="tbxHeureArriverE" Text="" Visibility="Collapsed"/>
             <!--Ville de depart-->
-            <ComboBox>
-                 <ListView x:Name="lvVille" SelectedIndex="2">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local:Ville">
-                        <StackPanel Orientation="Vertical"
-                                Margin="5" HorizontalAlignment="Stretch">
-                            <TextBlock Text="{x:Bind Nom}" Margin="5,5,5,10"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ComboBox x:Name="cbVilleD" Width="200" >
+                 
             </ComboBox>
            
 
             <!--ville d'arriver-->
-            <ComboBox Width="200" >
-                <ScrollViewer>
-                    <ListView x:Name="lvVille2" SelectedIndex="1"/>
-                </ScrollViewer>
+            <ComboBox x:Name="cbVilleA" Width="200" >
+               
             </ComboBox>
             <!--arret-->
             <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet" SelectedIndex="0">
@@ -53,7 +42,7 @@
             <TextBlock x:Name="tbxArretE" Text="" Visibility="Collapsed"/>
             <!--typeVehicule-->
           
-            <ComboBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" SelectedIndex="0">
+            <ComboBox x:Name="tbxTypeVehicule" Header="Le type de vehicule" SelectedIndex="0" >
                 <x:String>Berline</x:String>
                 <x:String>VUS</x:String>
             </ComboBox>

@@ -11,13 +11,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
+    <StackPanel  >
         
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ScrollViewer>
                 <ListView x:Name="listeTrajet" />
                 </ScrollViewer>
-                <StackPanel>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button x:Name="btTrajet" Click="btTrajet_Click">Voir les informations sur le trajet</Button>
                 </StackPanel>
             </StackPanel>
