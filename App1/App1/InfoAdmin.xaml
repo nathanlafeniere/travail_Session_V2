@@ -12,6 +12,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <!--PAGE ADMINISTRATEUR-->
+    <ScrollViewer>
     <StackPanel>
         <TextBlock x:Name="tblTitre" Text="Page Admin" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
         
@@ -39,6 +40,7 @@
         
         <!--VOIR LES MONTANTS DES TRAJETS TERMINÉ POUR UNE DATE DONNÉE (VOIR LA PART DES CHAUFFEURS ET CELLE DE LA SOCIETE)-->
         <DatePicker x:Name="dpRecherche" Header="Entrer une date pour afficher les infos" HorizontalAlignment="Center"></DatePicker>
+        <TextBlock x:Name="tblAlertDate" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,30"/>
         <Button x:Name="btRechercheTrajetTermine" Content="Rechercher" Click="btRechercheTrajetTermine_Click" HorizontalAlignment="Center"  Margin="0,0,0,50"></Button>
         
         <!--TEXTBLOCK MONTANT CHAUFFEUR-->
@@ -51,4 +53,5 @@
         <TextBlock x:Name="tblMontantProfitComp" />
 
     </StackPanel>
+    </ScrollViewer>
 </Page>
