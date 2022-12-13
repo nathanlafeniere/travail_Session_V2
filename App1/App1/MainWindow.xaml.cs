@@ -89,6 +89,7 @@ namespace App1
                     GestionBD.getInstance().Reponse = 0;
                     GestionBD.getInstance().Type = "";
                     GestionBD.getInstance().NoUsager = 0;
+                    GestionBD.getInstance().NumTrajetD = 0;
 
                     GestionBD.getInstance().CreationChauffeur.Visibility = Visibility.Collapsed;
                     GestionBD.getInstance().CreationClient.Visibility = Visibility.Collapsed;

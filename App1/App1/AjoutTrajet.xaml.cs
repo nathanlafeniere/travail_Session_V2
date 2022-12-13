@@ -109,14 +109,14 @@ namespace App1
                     
                 
                
-                if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
+            if (tbxTypeVehicule.SelectedItem.ToString() == "Berline")
             {
                 GestionBD.getInstance().PrixPlace = 10;
                 GestionBD.getInstance().NbPlace = 3;
             }
             if (tbxTypeVehicule.SelectedItem.ToString() == "VUS")
             {
-                GestionBD.getInstance().PrixPlace = 10;
+                GestionBD.getInstance().PrixPlace = 15;
                 GestionBD.getInstance().NbPlace = 3;
             }
             
