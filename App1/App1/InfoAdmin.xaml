@@ -45,12 +45,15 @@
         <Button x:Name="btRechercheTrajetTermine" Content="Rechercher" Click="btRechercheTrajetTermine_Click" HorizontalAlignment="Center"  Margin="0,0,0,50"></Button>
         
         <!--TEXTBLOCK MONTANT CHAUFFEUR-->
+        <TextBlock x:Name="tblHeaderMontantChauffeur" HorizontalAlignment="Center" Text="Le montant versé au chauffeur:"/>
         <TextBlock x:Name="tblMontantChauffeur" HorizontalAlignment="Center" />
         
         <!--TEXTBLOCK MONTANT DIVIDENDE-->
-        <TextBlock x:Name="tblMontantDividende" HorizontalAlignment="Center"  />
+        <TextBlock x:Name="tblHeaderMontantDividende" HorizontalAlignment="Center" Text="Le montant de la dividende:"/>
+        <TextBlock x:Name="tblMontantDividende" HorizontalAlignment="Center"/>
         
         <!--TEXTBLOCK MONTANT PROFIT TOTAL DE LA COMPAGNIE-->
+        <TextBlock x:Name="tblHeaderMontantCompagnie" HorizontalAlignment="Center" Text="Total des revenus de la société:"/>
         <TextBlock x:Name="tblMontantProfitComp"/>
 
 
