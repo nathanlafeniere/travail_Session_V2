@@ -117,6 +117,10 @@ namespace App1
             return id + " Date du trajet: " + date_depart + " Heure de départ: " + heure_depart + " heure d'arriver " + heure_arrive + " " + ville_depart + " " + ville_arrive +" " + arret + " " + type_vehicule + " nombre de place disponible: " + nb_place;
         }
 
+        public string exportCSV()
+        {
+            return id + " ; " + date_depart + " ; " + heure_depart + " ; " + heure_arrive + " ; " + ville_depart + " ; " + ville_arrive + " ; " + arret + " ; " + type_vehicule + " ; " + nb_place;
+        }
         public string ToStringTrajet()
         {
             // modifier plus tard

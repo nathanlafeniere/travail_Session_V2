@@ -519,7 +519,7 @@ namespace App1
             commande.Parameters.AddWithValue("@dateDebut", dateDebut);
             commande.Parameters.AddWithValue("@dateFin", dateArrivee);
 
-            commande.CommandText = "SELECT * FROM Trajet WHERE dateTrajet BETWEEN @dateDebut AND @dateFin";
+            commande.CommandText = "SELECT  no_trajet, dateTrajet ,heure_depart ,heure_arrive  , ville_depart, ville_arrive, CASE   WHEN arret = true THEN 'Arrêt disponible'    ELSE 'Pas d arrêt'\r\n           END  , type_vehicule , nb_place, no_chauffeur, prix_place FROM Trajet WHERE dateTrajet BETWEEN @dateDebut AND @dateFin";
             
 
             con.Open();

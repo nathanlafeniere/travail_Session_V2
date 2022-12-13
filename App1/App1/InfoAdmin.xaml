@@ -29,7 +29,7 @@
         
         <!--RECHERCHE AVEC UN FILTRE AVEC UNE DATE DÉPART ET DATE ARRIVÉE-->
         <TextBlock x:Name="tblRecherche" Text="Faire une recherche pour une période" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,50"/>
-
+        
         <DatePicker x:Name="tbxDebut" Header="Choisir une date de début" HorizontalAlignment="Center" Margin="0,0,0,30"></DatePicker>
         <TextBlock x:Name="tblAlertDebut" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,30"/>
         
@@ -37,7 +37,7 @@
         <TextBlock x:Name="tblAlertFin" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
         <Button x:Name="btRecherche" Content="Rechercher" Click="btRecherche_Click" HorizontalAlignment="Center" Margin="0,0,0,50"></Button>
-        
+        <Button Content="CSV" x:Name="csv2" Click="csv2_Click"/>
         <!--VOIR LES MONTANTS DES TRAJETS TERMINÉ POUR UNE DATE DONNÉE (VOIR LA PART DES CHAUFFEURS ET CELLE DE LA SOCIETE)-->
         <DatePicker x:Name="dpRecherche" Header="Entrer une date pour afficher les infos" HorizontalAlignment="Center"></DatePicker>
         <TextBlock x:Name="tblAlertDate" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Center" Margin="0,0,0,30"/>
@@ -47,11 +47,13 @@
         <TextBlock x:Name="tblMontantChauffeur" />
         
         <!--TEXTBLOCK MONTANT DIVIDENDE-->
-        <TextBlock x:Name="tblMontantDividende"/>
+        <TextBlock x:Name="tblMontantDividende"  />
         
         <!--TEXTBLOCK MONTANT PROFIT TOTAL DE LA COMPAGNIE-->
-        <TextBlock x:Name="tblMontantProfitComp" />
+        <TextBlock x:Name="tblMontantProfitComp"/>
 
+
+        
     </StackPanel>
     
 </Page>

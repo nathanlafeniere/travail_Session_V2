@@ -136,5 +136,32 @@ namespace App1
                 tblAlertDate.Visibility = Visibility.Visible;
             }
         }
+
+        
+
+        private async void csv2_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileSavePicker();
+
+            /******************** POUR WINUI3 ***************************/
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
+            //var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            //WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
+            /************************************************************/
+
+            picker.SuggestedFileName = "test2";
+            picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
+
+            //crée le fichier
+            Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+
+            string texteAEcrire = "id;date_depart;heure_depart;heure_arrive;ville_depart;ville_arrive;arret;type_vehicule;nb_place";
+
+            //écrit dans le fichier chacune des lignes du tableau
+            await Windows.Storage.FileIO.WriteTextAsync(monFichier, texteAEcrire, Windows.Storage.Streams.UnicodeEncoding.Utf8);
+            //  Windows.Storage.Streams.UnicodeEncoding.Utf8
+            // Cela permet de garder les accents etc... dans le code
+        }
     }
 }
