@@ -54,7 +54,7 @@
         
         <!--TEXTBLOCK MONTANT PROFIT TOTAL DE LA COMPAGNIE-->
         <TextBlock x:Name="tblHeaderMontantCompagnie" HorizontalAlignment="Center" Text="Total des revenus de la société:"/>
-        <TextBlock x:Name="tblMontantProfitComp"/>
+        <TextBlock x:Name="tblMontantProfitComp" HorizontalAlignment="Center"/>
 
 
         

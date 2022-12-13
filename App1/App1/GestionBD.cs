@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.X509;
 using Windows.System;
@@ -44,6 +47,8 @@ namespace App1
         string dateFacture;
         int montant_trajet;
         string montantChauffeur;
+        string montantDividende;
+        string montantRevenus;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -70,6 +75,10 @@ namespace App1
         public string DateFacture { get => dateFacture; set => dateFacture = value; }
         public int Montant_trajet { get => montant_trajet; set => montant_trajet = value; }
         public string MontantChauffeur { get => montantChauffeur; set => montantChauffeur = value; }
+
+        public string MontantDividende { get => montantDividende; set => montantDividende = value; }
+
+        public string MontantRevenus { get => montantRevenus; set => montantRevenus = value; }
 
         public GestionBD()
         {
@@ -1247,6 +1256,117 @@ lvClient.Add(new Compte(
             }
         }
 
+
+        //FONCTION POUR AFFICHER LE MONTANT DE LA DIVIDENDE
+
+        public string fonctionMontantDividende(string date)
+        {
+            try
+            {
+
+                int retour = 0;
+                string resultat;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@date", date);
+
+                commande.CommandText = "SELECT (SUM(montant_facture)*0.90) FROM facture WHERE date_facturation = @date";
+
+                con.Open();
+                commande.Prepare();
+
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+                    try
+                    {
+                        GestionBD.getInstance().MontantDividende = Convert.ToString(r.GetDouble(0));
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                }
+                con.Close();
+
+                resultat = Convert.ToString(GestionBD.getInstance().MontantDividende);
+
+                return resultat;
+            }
+            catch (MySqlException ex)
+            {
+                string resultat = "";
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+
+                    resultat = ex.Message;
+
+                    return resultat;
+                }
+                return resultat;
+            }
+        }
+
+
+        //FONCTION POUR AFFICHER LE MONTANT DES REVENUS DE LA COMPAGNIE
+
+        public string fonctionMontantRevenus(string date)
+        {
+            try
+            {
+
+                int retour = 0;
+                string resultat;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@date", date);
+
+                commande.CommandText = "SELECT SUM(dividende) FROM facture WHERE date_facturation = @date";
+
+                con.Open();
+                commande.Prepare();
+
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+                    try
+                    {
+                        GestionBD.getInstance().MontantRevenus = Convert.ToString(r.GetDouble(0));
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                }
+                con.Close();
+
+                resultat = Convert.ToString(GestionBD.getInstance().MontantRevenus);
+
+                return resultat;
+            }
+            catch (MySqlException ex)
+            {
+                string resultat = "";
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+
+                    resultat = ex.Message;
+
+                    return resultat;
+                }
+                return resultat;
+            }
+        }
 
 
     }

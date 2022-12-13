@@ -123,16 +123,18 @@ namespace App1
 
 
                     //AFFICHER LE MONTANT POUR LES CHAUFFEURS
-
-
                                       
                     tblMontantChauffeur.Text = GestionBD.getInstance().montantPourChauffeur(dateRecherche);
                     
                     
-                    
+                    //AFFICHER LE MONTANT DE LA DIVIDENDE
+
+                    tblMontantDividende.Text = GestionBD.getInstance().fonctionMontantDividende(dateRecherche);
 
 
                     //AFFICHER LE MONTANT TOTAL DES GAINS DE LA COMP
+
+                    tblMontantProfitComp.Text = GestionBD.getInstance().fonctionMontantRevenus(dateRecherche);
                 }
 
 
