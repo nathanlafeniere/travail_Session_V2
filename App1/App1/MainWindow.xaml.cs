@@ -98,6 +98,7 @@ namespace App1
                     GestionBD.getInstance().InfoChauf.Visibility = Visibility.Collapsed;
                     GestionBD.getInstance().CreationTrajet.Visibility = Visibility.Collapsed;
                     GestionBD.getInstance().InfoClient.Visibility = Visibility.Collapsed;
+                    GestionBD.getInstance().InfoAdmin.Visibility = Visibility.Collapsed;
                     break;
                 default:
                     break;
