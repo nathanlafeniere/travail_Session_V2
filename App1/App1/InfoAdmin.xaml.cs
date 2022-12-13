@@ -87,6 +87,7 @@ namespace App1
 
         private void btAjoutVille_Click(object sender, RoutedEventArgs e)
         {
+            
             Ville v = new Ville();
             {
                 v.Nom = tbxAjoutVille.Text;
@@ -141,10 +142,12 @@ namespace App1
 
         private async void csv2_Click(object sender, RoutedEventArgs e)
         {
-            var picker = new Windows.Storage.Pickers.FileSavePicker();
+            try
+            {
+var picker = new Windows.Storage.Pickers.FileSavePicker();
 
             /******************** POUR WINUI3 ***************************/
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this.Frame);
             WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
             //var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             //WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
@@ -162,6 +165,13 @@ namespace App1
             await Windows.Storage.FileIO.WriteTextAsync(monFichier, texteAEcrire, Windows.Storage.Streams.UnicodeEncoding.Utf8);
             //  Windows.Storage.Streams.UnicodeEncoding.Utf8
             // Cela permet de garder les accents etc... dans le code
+            }
+            catch(Exception ex)
+            {
+                csve.Text = "Erreur dans la creation du fichier csv";
+                csve.Visibility = Visibility.Visible;
+            }
+            
         }
     }
 }
