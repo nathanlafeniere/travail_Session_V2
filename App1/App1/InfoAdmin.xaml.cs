@@ -124,7 +124,15 @@ namespace App1
 
                     //AFFICHER LE MONTANT POUR LES CHAUFFEURS
 
-                    tblMontantChauffeur.Text = GestionBD.getInstance().montantPourChauffeur(dateRecherche);
+                    try
+                    {
+                        tblMontantChauffeur.Text = GestionBD.getInstance().montantPourChauffeur(dateRecherche);
+                    }
+                    catch(NullReferenceException ex)
+                    {
+                        tblAlertDate.Text = "Il n'y a aucune donnée pour la date sélectionnée!";
+                        tblAlertDate.Visibility = Visibility.Visible;
+                    }
 
 
                     //AFFICHER LE MONTANT TOTAL DES GAINS DE LA COMP

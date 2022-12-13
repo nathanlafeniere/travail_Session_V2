@@ -43,7 +43,7 @@ namespace App1
         int nbPlace;
         string dateFacture;
         int montant_trajet;
-        int montantChauffeur;
+        string montantChauffeur;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -69,7 +69,7 @@ namespace App1
         public int NbPlace { get => nbPlace; set => nbPlace = value; }
         public string DateFacture { get => dateFacture; set => dateFacture = value; }
         public int Montant_trajet { get => montant_trajet; set => montant_trajet = value; }
-        public int MontantChauffeur { get => montantChauffeur; set => montantChauffeur = value; }
+        public string MontantChauffeur { get => montantChauffeur; set => montantChauffeur = value; }
 
         public GestionBD()
         {
@@ -1137,7 +1137,7 @@ namespace App1
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    GestionBD.getInstance().MontantChauffeur = r.GetInt32(0);
+                    GestionBD.getInstance().MontantChauffeur = r.GetDouble(0);
 
                 }
                 con.Close();
