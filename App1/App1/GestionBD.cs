@@ -104,7 +104,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                try
+                {
+listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
@@ -116,6 +118,13 @@ namespace App1
                     r.GetInt32(9),
                     r.GetInt32(10)
                   ));
+                }
+                catch(Exception ex)
+                {
+
+                }
+                
+                
             }
             r.Close();
             con.Close();
@@ -136,8 +145,13 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeVille.Add(new Ville(r.GetString(0)
+                try
+                {
+listeVille.Add(new Ville(r.GetString(0)
                     ));
+                }
+                catch(Exception ex) { 
+                }
             }
             r.Close();
             con.Close();
@@ -162,7 +176,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                try
+                {
+listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
@@ -173,6 +189,8 @@ namespace App1
                     r.GetInt32(8),
                     r.GetInt32(9),
                     r.GetInt32(10)));
+                }
+                catch(Exception ex) { }
             }
 
             r.Close();
@@ -199,7 +217,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                try
+                {
+listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
@@ -210,6 +230,8 @@ namespace App1
                     r.GetInt32(8),
                     r.GetInt32(9),
                     r.GetInt32(10)));
+                }
+                catch(Exception ex) { }
             }
 
             r.Close();
@@ -236,7 +258,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                try
+                {
+listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
@@ -247,6 +271,8 @@ namespace App1
                     r.GetInt32(8),
                     r.GetInt32(9),
                     r.GetInt32(10)));
+                }
+                catch(Exception ex) { }
             }
 
             r.Close();
@@ -271,7 +297,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajetClient.Add(new Trajet(r.GetInt32(0),
+                try
+                {
+listeTrajetClient.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
@@ -282,6 +310,8 @@ namespace App1
                     r.GetInt32(8),
                     r.GetInt32(9),
                     r.GetInt32(10)));
+                }
+                catch(Exception ex) { }
             }
 
             r.Close();
@@ -304,7 +334,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                listeTrajet.Add(new Trajet(r.GetInt32(0),
+                try
+                {
+listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
                     r.GetString(3),
@@ -312,6 +344,8 @@ namespace App1
                     r.GetInt32(5),
                     r.GetInt32(6),
                     r.GetInt32(7)));
+                }
+                catch(Exception ex) { }
             }
 
             r.Close();
@@ -530,8 +564,9 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-
-                listeTrajet.Add(new Trajet(
+                try
+                {
+listeTrajet.Add(new Trajet(
                     r.GetInt32(0),
                     r.GetString(1),
                     r.GetString(2),
@@ -543,6 +578,8 @@ namespace App1
                     r.GetInt32(8),
                     r.GetInt32(9),
                     r.GetInt32(10))); ;
+                }
+                catch(Exception ex) { }
             }
 
             r.Close();
@@ -732,7 +769,11 @@ namespace App1
                   
                         while (r.Read())
                         {
-                           GestionBD.getInstance().NoUsager = r.GetInt32(0);
+                    try
+                    {
+                    GestionBD.getInstance().NoUsager = r.GetInt32(0);
+                    }
+                    catch(MySqlException ex) { }  
                             
                         }
                                                                    
@@ -770,7 +811,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().reponse = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().reponse = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
             }
             if (GestionBD.getInstance().reponse == 1)
             {
@@ -799,7 +844,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().No_chauffeur = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().No_chauffeur = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
            
             }
             
@@ -827,7 +876,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().No_chauffeurFacture = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().No_chauffeurFacture = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
             }
 
 
@@ -854,7 +907,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().No_client = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().No_client = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
             }
 
 
@@ -882,7 +939,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().PrixPlace = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().PrixPlace = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
             }
 
 
@@ -934,7 +995,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().reponse = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().reponse = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
             }
             if (GestionBD.getInstance().reponse == 1)
             {
@@ -961,7 +1026,11 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                GestionBD.getInstance().reponse = r.GetInt32(0);
+                try
+                {
+                    GestionBD.getInstance().reponse = r.GetInt32(0);
+                }
+                catch(MySqlException ex) { }
             }
             if (GestionBD.getInstance().reponse == 1)
             {
@@ -998,7 +1067,11 @@ namespace App1
 
                 while (r.Read())
                 {
-                    GestionBD.getInstance().NoTrajet = r.GetInt32(0);
+                    try
+                    {
+                        GestionBD.getInstance().NoTrajet = r.GetInt32(0);
+                    }
+                    catch(MySqlException ex) { }
 
                 }
 
@@ -1067,11 +1140,15 @@ namespace App1
             MySqlDataReader r = commande.ExecuteReader();
             while (r.Read())
             {
-                lvClient.Add(new Compte(
+                try
+                {
+lvClient.Add(new Compte(
                     r.GetString(0),
                     r.GetString(1)
                     
                   ));
+                }
+                catch(Exception ex) { }
             }
             r.Close();
             con.Close();
