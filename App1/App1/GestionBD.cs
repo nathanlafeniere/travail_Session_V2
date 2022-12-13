@@ -1137,7 +1137,15 @@ namespace App1
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    GestionBD.getInstance().MontantChauffeur = r.GetDouble(0);
+                    try
+                    {
+                        GestionBD.getInstance().MontantChauffeur =Convert.ToString(r.GetDouble(0));
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                    
 
                 }
                 con.Close();
