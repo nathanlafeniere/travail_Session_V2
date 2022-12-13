@@ -1120,6 +1120,7 @@ namespace App1
         {
             try
             {
+                
                 int retour = 0;
                 string resultat;
 
@@ -1147,7 +1148,7 @@ namespace App1
             }
             catch (MySqlException ex)
             {
-                string resultat;
+                string resultat = "";
                 if (con.State == System.Data.ConnectionState.Open)
                 {
                     con.Close();
@@ -1156,8 +1157,8 @@ namespace App1
 
                     return resultat;
                 }
+                return resultat;
 
-                    
             }
         }
 
