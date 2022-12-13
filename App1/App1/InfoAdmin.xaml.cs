@@ -124,6 +124,8 @@ namespace App1
 
                     //AFFICHER LE MONTANT POUR LES CHAUFFEURS
 
+                    tblMontantChauffeur.Text = GestionBD.getInstance().montantPourChauffeur(dateRecherche);
+
 
                     //AFFICHER LE MONTANT TOTAL DES GAINS DE LA COMP
                 }
@@ -144,7 +146,7 @@ namespace App1
         {
             try
             {
-var picker = new Windows.Storage.Pickers.FileSavePicker();
+              var picker = new Windows.Storage.Pickers.FileSavePicker();
 
             /******************** POUR WINUI3 ***************************/
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this.Frame);

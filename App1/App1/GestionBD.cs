@@ -43,6 +43,7 @@ namespace App1
         int nbPlace;
         string dateFacture;
         int montant_trajet;
+        int montantChauffeur;
 
         public NavigationViewItem Connexion { get => connexion; set => connexion = value; }
       
@@ -68,6 +69,7 @@ namespace App1
         public int NbPlace { get => nbPlace; set => nbPlace = value; }
         public string DateFacture { get => dateFacture; set => dateFacture = value; }
         public int Montant_trajet { get => montant_trajet; set => montant_trajet = value; }
+        public int MontantChauffeur { get => montantChauffeur; set => montantChauffeur = value; }
 
         public GestionBD()
         {
@@ -1109,6 +1111,54 @@ namespace App1
                     con.Close();
             }
 
+        }
+
+
+        //FONCTION POUR APPELER LA PROCEDURE POUR MONTANT CHAUFFEUR
+
+        public string montantPourChauffeur(string date)
+        {
+            try
+            {
+                int retour = 0;
+                string resultat;
+
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+
+                commande.Parameters.AddWithValue("@date", date);
+
+                commande.CommandText = "SELECT (SUM(montant_facture)*0.10) FROM facture WHERE date_facturation = @date";
+
+                con.Open();
+                commande.Prepare();
+
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+                    GestionBD.getInstance().MontantChauffeur = r.GetInt32(0);
+
+                }
+                con.Close();
+
+                resultat = Convert.ToString(GestionBD.getInstance().MontantChauffeur);
+
+                return resultat;
+            }
+            catch (MySqlException ex)
+            {
+                string resultat;
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+
+                    resultat = ex.Message;
+
+                    return resultat;
+                }
+
+                    
+            }
         }
 
 
