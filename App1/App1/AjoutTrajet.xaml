@@ -27,12 +27,13 @@
             <ComboBox x:Name="cbVilleD" Width="200" >
                  
             </ComboBox>
-           
+            <TextBlock x:Name="cbV1E" Text="" Visibility="Collapsed"/>
 
             <!--ville d'arriver-->
             <ComboBox x:Name="cbVilleA" Width="200" >
                
             </ComboBox>
+            <TextBlock x:Name="cbV2E" Text="" Visibility="Collapsed"/>
             <!--arret-->
             <ComboBox x:Name="tbxArret" Header="Ajouter un arret dans le trajet" SelectedIndex="0">
                 <x:String>oui</x:String>

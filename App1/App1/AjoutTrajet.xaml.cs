@@ -35,7 +35,13 @@ namespace App1
         {
             try
             {
-            Boolean validation = true;
+                tbxDateTrajetE.Visibility = Visibility.Collapsed;
+                tbxHeureDepartE.Visibility = Visibility.Collapsed;
+                tbxHeureArriverE.Visibility = Visibility.Collapsed;
+                tbxTypeVehiculeE.Visibility = Visibility.Collapsed;
+                cbV1E.Visibility = Visibility.Collapsed;
+                cbV2E.Visibility = Visibility.Collapsed;
+                Boolean validation = true;
            
             if (tbxDateTrajet.Date.ToString() == null)
             {
@@ -89,10 +95,14 @@ namespace App1
                 if(cbVilleD.SelectedIndex == -1)
                 {
                     validation = false;
+                    cbV1E.Text = "Donnée invalide";
+                    cbV1E.Visibility = Visibility.Visible;
                 }
                 if (cbVilleA.SelectedIndex == -1)
                 {
                     validation = false;
+                    cbV2E.Text = "Donnée invalide";
+                    cbV2E.Visibility = Visibility.Visible;
                 }
 
                
