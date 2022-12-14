@@ -130,7 +130,7 @@ listeTrajet.Add(new Trajet(r.GetInt32(0),
                 }
                 catch(Exception ex)
                 {
-
+                    break;
                 }
                 
                 
@@ -159,7 +159,8 @@ listeTrajet.Add(new Trajet(r.GetInt32(0),
 listeVille.Add(new Ville(r.GetString(0)
                     ));
                 }
-                catch(Exception ex) { 
+                catch(Exception ex) {
+                    break;
                 }
             }
             r.Close();
@@ -199,7 +200,7 @@ listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetInt32(9),
                     r.GetInt32(10)));
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) { break; }
             }
 
             r.Close();
@@ -240,7 +241,9 @@ listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetInt32(9),
                     r.GetInt32(10)));
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) {
+                    break;
+                }
             }
 
             r.Close();
@@ -281,7 +284,7 @@ listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetInt32(9),
                     r.GetInt32(10)));
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) { break; }
             }
 
             r.Close();
@@ -320,7 +323,7 @@ listeTrajetClient.Add(new Trajet(r.GetInt32(0),
                     r.GetInt32(9),
                     r.GetInt32(10)));
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) { break; }
             }
 
             r.Close();
@@ -354,7 +357,7 @@ listeTrajet.Add(new Trajet(r.GetInt32(0),
                     r.GetInt32(6),
                     r.GetInt32(7)));
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) { break; }
             }
 
             r.Close();
@@ -588,7 +591,7 @@ listeTrajet.Add(new Trajet(
                     r.GetInt32(9),
                     r.GetInt32(10))); ;
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) { break; }
             }
 
             r.Close();
@@ -782,7 +785,7 @@ listeTrajet.Add(new Trajet(
                     {
                     GestionBD.getInstance().NoUsager = r.GetInt32(0);
                     }
-                    catch(MySqlException ex) { }  
+                    catch(MySqlException ex) { break; }  
                             
                         }
                                                                    
@@ -857,7 +860,7 @@ listeTrajet.Add(new Trajet(
                 {
                     GestionBD.getInstance().No_chauffeur = r.GetInt32(0);
                 }
-                catch(MySqlException ex) { }
+                catch(MySqlException ex) { break; }
            
             }
             
@@ -889,7 +892,7 @@ listeTrajet.Add(new Trajet(
                 {
                     GestionBD.getInstance().No_chauffeurFacture = r.GetInt32(0);
                 }
-                catch(MySqlException ex) { }
+                catch(MySqlException ex) { break; }
             }
 
 
@@ -920,7 +923,7 @@ listeTrajet.Add(new Trajet(
                 {
                     GestionBD.getInstance().No_client = r.GetInt32(0);
                 }
-                catch(MySqlException ex) { }
+                catch(MySqlException ex) { break; }
             }
 
 
@@ -952,7 +955,7 @@ listeTrajet.Add(new Trajet(
                 {
                     GestionBD.getInstance().PrixPlace = r.GetInt32(0);
                 }
-                catch(MySqlException ex) { }
+                catch(MySqlException ex) { break; }
             }
 
 
@@ -1008,7 +1011,7 @@ listeTrajet.Add(new Trajet(
                 {
                     GestionBD.getInstance().reponse = r.GetInt32(0);
                 }
-                catch(MySqlException ex) { }
+                catch(MySqlException ex) { break; }
             }
             if (GestionBD.getInstance().reponse == 1)
             {
@@ -1039,7 +1042,7 @@ listeTrajet.Add(new Trajet(
                 {
                     GestionBD.getInstance().reponse = r.GetInt32(0);
                 }
-                catch(MySqlException ex) { }
+                catch(MySqlException ex) { break; }
             }
             if (GestionBD.getInstance().reponse == 1)
             {
@@ -1080,7 +1083,7 @@ listeTrajet.Add(new Trajet(
                     {
                         GestionBD.getInstance().NoTrajet = r.GetInt32(0);
                     }
-                    catch(MySqlException ex) { }
+                    catch(MySqlException ex) { break; }
 
                 }
 
@@ -1157,7 +1160,7 @@ lvClient.Add(new Compte(
                     
                   ));
                 }
-                catch(Exception ex) { }
+                catch(Exception ex) { break; }
             }
             r.Close();
             con.Close();
@@ -1229,7 +1232,7 @@ lvClient.Add(new Compte(
                     }
                     catch(Exception ex)
                     {
-
+                        break;
                     }
                     
 
@@ -1286,7 +1289,7 @@ lvClient.Add(new Compte(
                     }
                     catch (Exception ex)
                     {
-
+                        break;
                     }
 
 
@@ -1342,7 +1345,7 @@ lvClient.Add(new Compte(
                     }
                     catch (Exception ex)
                     {
-
+                        break;
                     }
 
 
