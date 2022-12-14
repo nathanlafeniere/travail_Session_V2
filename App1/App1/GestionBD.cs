@@ -1208,7 +1208,7 @@ lvClient.Add(new Compte(
             {
                 
                 int retour = 0;
-                string resultat;
+                string resultat = "";
 
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
@@ -1265,7 +1265,7 @@ lvClient.Add(new Compte(
             {
 
                 int retour = 0;
-                string resultat;
+                string resultat ="";
 
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
@@ -1321,7 +1321,7 @@ lvClient.Add(new Compte(
             {
 
                 int retour = 0;
-                string resultat;
+                string resultat ="";
 
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;

@@ -119,23 +119,35 @@ namespace App1
                     tblAlertDate.Visibility = Visibility.Collapsed;
 
                     //APPEL DE LA FONCTION POUR AFFICHER LES TRAJETS TERMINÉS AVEC LA DATE INDIQUÉ
-
-                    lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetTermine(dateRecherche);
+                    try
+                    {
+                        lvTrajet.ItemsSource = GestionBD.getInstance().getTrajetTermine(dateRecherche);
+                    }
+                    catch(Exception ex) { }
 
 
                     //AFFICHER LE MONTANT POUR LES CHAUFFEURS
-                                      
-                    tblMontantChauffeur.Text = GestionBD.getInstance().montantPourChauffeur(dateRecherche);
-                    
-                    
-                    //AFFICHER LE MONTANT DE LA DIVIDENDE
+                    try
+                    {
+                        tblMontantChauffeur.Text = GestionBD.getInstance().montantPourChauffeur(dateRecherche);
+                    }         
+                    catch(Exception ex) { }
 
-                    tblMontantDividende.Text = GestionBD.getInstance().fonctionMontantDividende(dateRecherche);
+
+                    //AFFICHER LE MONTANT DE LA DIVIDENDE
+                    try
+                    {
+                        tblMontantDividende.Text = GestionBD.getInstance().fonctionMontantDividende(dateRecherche);
+                    }
+                    catch(Exception ex) { }
 
 
                     //AFFICHER LE MONTANT TOTAL DES GAINS DE LA COMP
-
-                    tblMontantProfitComp.Text = GestionBD.getInstance().fonctionMontantRevenus(dateRecherche);
+                    try
+                    {
+                        tblMontantProfitComp.Text = GestionBD.getInstance().fonctionMontantRevenus(dateRecherche);
+                    }
+                    catch(Exception ex) { }
                 }
 
 
