@@ -39,10 +39,11 @@ namespace App1
             Boolean validation = true;
             string dateDebut;
             string dateFin;
-            
+            tblMontantChauffeur.Text = "";
             dateDebut = tbxDebut.Date.Date.ToString("yyyy-MM-dd"); 
             dateFin = tbxFin.Date.Date.ToString("yyyy-MM-dd");
-
+            tblMontantDividende.Text = "";
+            tblMontantProfitComp.Text = "";
             try
             {
                 if (dateDebut == "")
